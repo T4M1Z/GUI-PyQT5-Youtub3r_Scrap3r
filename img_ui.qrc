@@ -255,4 +255,11 @@
     <file>icons/logo/mongodb.png</file>
     <file>icons/logo/scrap_settings.png</file>
   </qresource>
+  <qresource prefix="flags">
+    <file>icons/flags/it.svg</file>
+  </qresource>
+  <qresource prefix="channel">
+    <file>icons/channel/cover.png</file>
+    <file>icons/channel/profile.jpg</file>
+  </qresource>
 </RCC>
