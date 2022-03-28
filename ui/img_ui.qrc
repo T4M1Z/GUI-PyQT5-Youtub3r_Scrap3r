@@ -262,4 +262,8 @@
     <file>icons/channel/cover.png</file>
     <file>icons/channel/profile.jpg</file>
   </qresource>
+  <qresource prefix="connection">
+    <file>icons/connection/connection-on-24.png</file>
+    <file>icons/connection/connection-off-24.png</file>
+  </qresource>
 </RCC>
