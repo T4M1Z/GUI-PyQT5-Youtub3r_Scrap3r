@@ -13,7 +13,7 @@
 import os
 import sys
 from modules import *
-from PyQt5.QtChart import QCandlestickSeries, QCandlestickSet, QChart, QChartView, QLineSeries
+# from PyQt5.QtChart import QCandlestickSeries, QCandlestickSet, QChart, QChartView, QLineSeries
 from PyQt5.QtWidgets import QFileDialog, QFrame, QGraphicsOpacityEffect, QHBoxLayout, QLabel, QMainWindow, QPushButton
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
@@ -82,11 +82,11 @@ class MainWindow(QMainWindow):
 
 
     def resizeEvent(self, event):
-        self.resizeFunction()
+        # self.resizeFunction()
         return super(MainWindow, self).resizeEvent(event)
 
-    def resizeFunction(self):
-        print('Height: ' + str(self.height()) + ' | Width: ' + str(self.width()))
+    # def resizeFunction(self):
+    #     print('Height: ' + str(self.height()) + ' | Width: ' + str(self.width()))
     ## ==> END ##
 
 

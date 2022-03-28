@@ -1,5 +1,5 @@
-from PyQt5.QtChart import (QBarCategoryAxis, QBarSeries, QBarSet, QBoxPlotSeries, QCategoryAxis, QBoxSet, QDateTimeAxis, QLegend,
-                            QLogValueAxis, QPercentBarSeries, QPieSeries, QScatterSeries, QSplineSeries, QStackedBarSeries, QValueAxis)
+# from PyQt5.QtChart import (QBarCategoryAxis, QBarSeries, QBarSet, QBoxPlotSeries, QCategoryAxis, QBoxSet, QDateTimeAxis, QLegend,
+#                             QLogValueAxis, QPercentBarSeries, QPieSeries, QScatterSeries, QSplineSeries, QStackedBarSeries, QValueAxis)
 from PyQt5.QtCore import QLocale, QPointF, QRandomGenerator
 from PyQt5.QtGui import QGradient, QImage, QPaintEngine, QPainter, QPen
 import matplotlib
