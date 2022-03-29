@@ -21,11 +21,9 @@ class UIFunctions(MainWindow):
     ########################################################################
     def uiDefinitions(self):
         global GLOBAL_TITLE_BAR
-        ## REMOVE ==> STANDARD TITLE BAR
         if GLOBAL_TITLE_BAR:
             self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
             self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
         else:
             self.ui.horizontalLayout.setContentsMargins(0, 0, 0, 0)
             self.ui.frame.setContentsMargins(8, 0, 0, 5)
@@ -33,9 +31,9 @@ class UIFunctions(MainWindow):
 
         ## SHOW ==> DROP SHADOW
         self.shadow = QGraphicsDropShadowEffect(self)
-        self.shadow.setBlurRadius(14.0)
-        self.shadow.setOffset(4.0)
-        self.shadow.setColor(QColor(0, 0, 0, 140))
+        self.shadow.setOffset(5.0)
+        self.shadow.setColor(QColor(0, 0, 0, 100))
+        self.shadow.setBlurRadius(5.0)
         self.setGraphicsEffect(self.shadow)
 
         # ## SHOW ==> CLOSE APPLICATION
@@ -44,10 +42,7 @@ class UIFunctions(MainWindow):
         self.ui.btn_minimize.clicked.connect(lambda: self.showMinimized())
         ## ==> MAXIMIZE/RESTORE
         self.ui.btn_resize.clicked.connect(lambda: UIFunctions.maximize_restore(self))
-
         
-
-    
         
     ########################################################################
     ## START - GUI FUNCTIONS
@@ -55,8 +50,6 @@ class UIFunctions(MainWindow):
 
     ## ==> MAXIMIZE/RESTORE
     ########################################################################
-
-
     def maximize_restore(self,x=0 ,y=0):
         global GLOBAL_STATE
         status = GLOBAL_STATE
@@ -65,13 +58,12 @@ class UIFunctions(MainWindow):
             self.ui.horizontalLayout.setContentsMargins(0, 0, 0, 0)
             self.showMaximized()
             GLOBAL_STATE = 1
-
         else:
             GLOBAL_STATE = 0
             self.showNormal()
+            self.ui.frame.setContentsMargins(8, 5, 8, 5)
             self.resize(self.width(), self.height())
             self.move(x-500,y)
-
 
     ## ==> RETURN STATUS
     def returStatus():
@@ -81,3 +73,5 @@ class UIFunctions(MainWindow):
     def setStatus(status):
         global GLOBAL_STATE
         GLOBAL_STATE = status
+
+    ## ==> END Maximize/Restore GUI ##

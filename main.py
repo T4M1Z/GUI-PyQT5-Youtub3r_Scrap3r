@@ -12,16 +12,22 @@
 
 import os
 import sys
+
+from matplotlib import style
 from modules import *
-# from PyQt5.QtChart import QCandlestickSeries, QCandlestickSet, QChart, QChartView, QLineSeries
+from PyQt5.QtChart import QCandlestickSeries, QCandlestickSet, QChart, QChartView, QLineSeries
 from PyQt5.QtWidgets import QFileDialog, QFrame, QGraphicsOpacityEffect, QHBoxLayout, QLabel, QMainWindow, QPushButton
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
 from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPainterPath, QPalette, QPixmap, QRadialGradient)
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QBasicTimer, QEasingCurve, pyqtSignal
-
 from PyQt5 import QtWebEngineWidgets
+
+from scraper_channel.test_db import MongoDB
+
+
+
 class MainWindow(QMainWindow):
     # Globals
 
@@ -36,36 +42,40 @@ class MainWindow(QMainWindow):
                 cursor = QtGui.QCursor()
                 UIFunctions.maximize_restore(self, cursor.pos().x(), cursor.pos().y())
 
-
-            # MOVE WINDOW
             if event.buttons() == Qt.LeftButton:
                 self.move(self.pos() + event.globalPos() - self.dragPos)
                 self.dragPos = event.globalPos()
                 event.accept()
         self.ui.title_frame.mouseMoveEvent = moveWindow
-        
         # ----------------------- # 
 
 
         # ------ FUNCTIONS ------ #
         UIFunctions.uiDefinitions(self)
         # ----------------------- #
-        self.show()
 
-        # ------ Variables ------ #
+        # ------ Settings ------ #
         self.door = False
-        # ----------------------- #
-
-        # --- BTN Change pages --- #
-        self.ui.drag_btn.pressed.connect(self.pressed_window)
-        # ------------------------ #
+        self.ui.stop_scraping_btn.hide()
         self.ui.frame.setContentsMargins(2, 2, 10, 10)
 
+
+
+
+        # ------ Actions ------ #
+        self.ui.drag_btn.pressed.connect(self.pressed_window)
+        self.ui.cluster_checkBox.toggled.connect(self.enable_cluster)
+        self.ui.start_scraping_btn.pressed.connect(self.start_scraping)
+        self.ui.stop_scraping_btn.pressed.connect(self.stop_scraping)
+        self.ui.test_db_btn.pressed.connect(self.test_connection_db)
+
+
+
+        self.show()
+        # ------------------------ #
         
     ########################################################################
     ## ----- Grip window Move ----- ##
-    
-
     def mouseMoveEvent(self, event): # Mouse coordinate when Btn_drag pressed
         if self.door:
             self.resize(event.x(), event.y())
@@ -77,17 +87,93 @@ class MainWindow(QMainWindow):
         self.dragPos = event.globalPos()
     ## ---------------------------- ##
     ########################################################################
+    ## ==> END Configuration GUI ##
 
 
 
 
-    def resizeEvent(self, event):
-        # self.resizeFunction()
-        return super(MainWindow, self).resizeEvent(event)
+    ########################################################################
+    ## ----- Scraping Settings ----- ##
+    def enable_cluster(self):
+        # If you want to use cluster
+        if self.ui.cluster_checkBox.isChecked():
+            self.ui.cluster_spinBox.setEnabled(True)
+        else: 
+            self.ui.cluster_spinBox.setEnabled(False)
 
-    # def resizeFunction(self):
-    #     print('Height: ' + str(self.height()) + ' | Width: ' + str(self.width()))
-    ## ==> END ##
+
+    def test_connection_db(self):
+        # Make a request to the database
+        return_status = MongoDB(self.ui.username_db.text(), 
+                                self.ui.password_db.text()).test_connection()
+        
+        if return_status == "connected":
+            self.ui.status_db_connection.setText("Online")
+            self.ui.status_db_connection.setStyleSheet(stylesheet.db_online)
+        else: 
+            self.ui.status_db_connection.setText("Offline")
+            self.ui.status_db_connection.setStyleSheet(stylesheet.db_offline)
+
+
+    def start_scraping(self):
+        # Cluster state
+        cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False 
+        
+        # Input URL 
+        if not self.ui.url_Input.text():
+        # if "https://www.youtube.com/channel" not in self.ui.url_Input.text():
+            self.ui.url_Input.setStyleSheet(stylesheet.input_style_error)
+        else: 
+            self.ui.url_Input.setStyleSheet(stylesheet.input_style)
+
+        # Database Status
+        if self.ui.status_db_connection.text() == "Offline":
+            self.ui.username_db.setStyleSheet(stylesheet.input_style_error)
+            self.ui.password_db.setStyleSheet(stylesheet.input_style_error)
+        else:
+            self.ui.username_db.setStyleSheet(stylesheet.input_style)
+            self.ui.password_db.setStyleSheet(stylesheet.input_style)
+
+        # Final controll
+        if self.ui.status_db_connection.text() == "Online" and self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
+            self.ui.start_scraping_btn.hide()
+            self.ui.stop_scraping_btn.show()
+
+            self.serialReaderThread = Scraping(self.ui.url_Input.text(), 
+                                                self.ui.threads_spinBox.value(),
+                                                cluster)
+            self.serialReaderThread.receivedPacketSignal.connect(self.serialPacketReceiverCallback)
+            self.serialReaderThread.start()
+
+    def stop_scraping(self):
+        print("stop")
+        self.serialReaderThread.stop()
+        self.ui.stop_scraping_btn.hide()
+        self.ui.start_scraping_btn.show()
+
+
+    ## ---------------------------- ##
+    ########################################################################
+    ## ==> END Scraping configuration ##
+
+    def serialPacketReceiverCallback(self, packet):
+        if "message" in packet.keys():
+            print(packet["message"])
+        if "channel_data" in packet.keys():
+            packet_data = packet["channel_data"]
+            print( f""" {packet_data["username"]}, 
+                        {packet_data["location"]}, 
+                        {packet_data["joined_date"]},
+                        {packet_data["tot_video"]}, 
+                        {packet_data["tot_visual"]}, 
+                        {packet_data["subs"]}, 
+                        {packet_data["profile_img"]}, 
+                        {packet_data["cover_img"]}, 
+                        {packet_data["social"]}
+                        """)
+
+
+
 
 
 
