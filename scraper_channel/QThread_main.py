@@ -10,7 +10,7 @@ class Scraping(QThread):
     def __init__(self, url, threads, cluster):    
         super(Scraping, self).__init__()
         self.isRunning = False
-
+        print("URL", url)
         self.url = url
         self.threads = threads
         self.cluster = cluster
@@ -22,7 +22,7 @@ class Scraping(QThread):
     def run(self):
         self.isRunning = True
         self.receivedPacketSignal.emit({"message":"Is starting"})
-        
+
         while self.isRunning:
             self.start_channel_scraping()
             time.sleep(1)

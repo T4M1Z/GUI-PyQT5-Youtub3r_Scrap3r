@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'second_gui_styleTkvhNN.ui'
+## Form generated from reading UI file 'second_gui_styleLPwyYb.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1096,6 +1096,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_9.addWidget(self.password_db)
 
+        self.loading_db = QHBoxLayout()
+        self.loading_db.setObjectName(u"loading_db")
+        self.loading_db.setContentsMargins(0, -1, -1, -1)
+        self.label_gif = QLabel(self.frame_22)
+        self.label_gif.setObjectName(u"label_gif")
+
+        self.loading_db.addWidget(self.label_gif)
+
+
+        self.horizontalLayout_9.addLayout(self.loading_db)
+
         self.test_db_btn = QPushButton(self.frame_22)
         self.test_db_btn.setObjectName(u"test_db_btn")
         self.test_db_btn.setEnabled(True)
@@ -1172,8 +1183,8 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_9.setStretch(0, 5)
         self.horizontalLayout_9.setStretch(1, 5)
-        self.horizontalLayout_9.setStretch(2, 3)
-        self.horizontalLayout_9.setStretch(3, 5)
+        self.horizontalLayout_9.setStretch(3, 3)
+        self.horizontalLayout_9.setStretch(4, 5)
 
         self.verticalLayout_9.addWidget(self.frame_22)
 
@@ -1368,9 +1379,10 @@ class Ui_MainWindow(object):
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Threads", None))
         self.username_db.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.password_db.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Password", None))
+        self.label_gif.setText("")
         self.test_db_btn.setText(QCoreApplication.translate("MainWindow", u"Test DB", None))
         self.status_db_connection.setText(QCoreApplication.translate("MainWindow", u"Offline", None))
-        self.stop_scraping_btn.setText(QCoreApplication.translate("MainWindow", u"Stop scraping", None))
+        self.stop_scraping_btn.setText(QCoreApplication.translate("MainWindow", u"Start scraping", None))
         self.start_scraping_btn.setText(QCoreApplication.translate("MainWindow", u"Start scraping", None))
         self.drag_btn.setText("")
     # retranslateUi
