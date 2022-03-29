@@ -27,7 +27,7 @@ class UIFunctions(MainWindow):
         else:
             self.ui.horizontalLayout.setContentsMargins(0, 0, 0, 0)
             self.ui.frame.setContentsMargins(8, 0, 0, 5)
-            self.ui.frame.setMinimumHeight(42)
+            # self.ui.frame.setMinimumHeight(42)
 
         ## SHOW ==> DROP SHADOW
         self.shadow = QGraphicsDropShadowEffect(self)

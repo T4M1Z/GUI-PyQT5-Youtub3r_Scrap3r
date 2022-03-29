@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'second_gui_styleLPwyYb.ui'
+## Form generated from reading UI file 'second_gui_styleIniucm.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -252,7 +252,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6 = QHBoxLayout(self.frame_3)
         self.horizontalLayout_6.setSpacing(11)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(15, 20, 15, 21)
+        self.horizontalLayout_6.setContentsMargins(15, 20, 15, 20)
         self.frame_8 = QFrame(self.frame_3)
         self.frame_8.setObjectName(u"frame_8")
         self.frame_8.setMinimumSize(QSize(0, 630))
@@ -261,27 +261,28 @@ class Ui_MainWindow(object):
         self.verticalLayout_6 = QVBoxLayout(self.frame_8)
         self.verticalLayout_6.setSpacing(9)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 5)
-        self.frame_2 = QFrame(self.frame_8)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setMinimumSize(QSize(220, 600))
-        self.frame_2.setMaximumSize(QSize(220, 600))
-        self.frame_2.setStyleSheet(u"QFrame{\n"
-"background-color: rgb(66, 66, 66);\n"
-"border-radius:4px;\n"
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 9)
+        self.frame_left = QFrame(self.frame_8)
+        self.frame_left.setObjectName(u"frame_left")
+        self.frame_left.setMinimumSize(QSize(220, 590))
+        self.frame_left.setMaximumSize(QSize(220, 590))
+        self.frame_left.setStyleSheet(u"QFrame{\n"
+"	background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(66, 66, 66, 255), stop:1 rgba(81, 81, 81, 255));\n"
 "\n"
-"	border-bottom: 4px solid rgb(84, 84, 84);\n"
+"border-radius:4px;\n"
+"border:2px solid  rgb(55,55,55);\n"
+"\n"
 "\n"
 "\n"
 "}\n"
 "")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_2 = QVBoxLayout(self.frame_2)
+        self.frame_left.setFrameShape(QFrame.StyledPanel)
+        self.frame_left.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_2 = QVBoxLayout(self.frame_left)
         self.verticalLayout_2.setSpacing(8)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(9, -1, -1, -1)
-        self.frame_6 = QFrame(self.frame_2)
+        self.verticalLayout_2.setContentsMargins(9, -1, -1, 9)
+        self.frame_6 = QFrame(self.frame_left)
         self.frame_6.setObjectName(u"frame_6")
         self.frame_6.setMinimumSize(QSize(0, 300))
         self.frame_6.setStyleSheet(u"border:none")
@@ -301,6 +302,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setContentsMargins(-1, 0, -1, 1)
         self.frame_9 = QFrame(self.frame_7)
         self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setStyleSheet(u"background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 59, 69, 0), stop:1 rgba(91, 99, 115, 0));")
         self.frame_9.setFrameShape(QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QFrame.Raised)
         self.verticalLayout_5 = QVBoxLayout(self.frame_9)
@@ -625,51 +627,43 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.frame_7)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_3.addItem(self.verticalSpacer)
-
         self.verticalLayout_3.setStretch(0, 2)
-        self.verticalLayout_3.setStretch(1, 10)
 
         self.verticalLayout_2.addWidget(self.frame_6)
 
 
-        self.verticalLayout_6.addWidget(self.frame_2)
+        self.verticalLayout_6.addWidget(self.frame_left)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_6.addItem(self.verticalSpacer_2)
+        self.verticalLayout_6.addItem(self.verticalSpacer)
 
-        self.verticalLayout_6.setStretch(0, 1)
-        self.verticalLayout_6.setStretch(1, 10)
 
         self.horizontalLayout_6.addWidget(self.frame_8)
 
-        self.frame_5 = QFrame(self.frame_3)
-        self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setMinimumSize(QSize(0, 600))
-        self.frame_5.setMaximumSize(QSize(16777215, 16777215))
-        self.frame_5.setStyleSheet(u"QFrame{\n"
-"background-color: rgb(66, 66, 66);\n"
+        self.frame_center = QFrame(self.frame_3)
+        self.frame_center.setObjectName(u"frame_center")
+        self.frame_center.setMinimumSize(QSize(0, 590))
+        self.frame_center.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_center.setStyleSheet(u"QFrame {\n"
+"	background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(66, 66, 66, 255), stop:1 rgba(81, 81, 81, 255));\n"
 "border-radius:4px;\n"
 "\n"
-"	border-bottom: 4px solid rgb(84, 84, 84);\n"
-"\n"
-"\n"
+"border:2px solid  rgb(55,55,55);\n"
 "}\n"
 "")
-        self.frame_5.setFrameShape(QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_13 = QVBoxLayout(self.frame_5)
+        self.frame_center.setFrameShape(QFrame.StyledPanel)
+        self.frame_center.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_13 = QVBoxLayout(self.frame_center)
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(-1, 26, -1, 9)
-        self.frame_31 = QFrame(self.frame_5)
+        self.frame_31 = QFrame(self.frame_center)
         self.frame_31.setObjectName(u"frame_31")
         self.frame_31.setMinimumSize(QSize(0, 130))
         self.frame_31.setMaximumSize(QSize(16777215, 130))
-        self.frame_31.setStyleSheet(u"border:none")
+        self.frame_31.setStyleSheet(u"border:none;\n"
+"background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 59, 69, 0), stop:1 rgba(91, 99, 115, 0));")
         self.frame_31.setFrameShape(QFrame.StyledPanel)
         self.frame_31.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_15 = QHBoxLayout(self.frame_31)
@@ -681,14 +675,14 @@ class Ui_MainWindow(object):
         self.section_1.setMinimumSize(QSize(800, 130))
         self.section_1.setMaximumSize(QSize(16777215, 130))
         self.section_1.setStyleSheet(u"background-color: rgb(49, 49, 49);\n"
-"border-radius:2px;\n"
+"border-radius:3px;\n"
 "border:0px;")
         self.section_1.setFrameShape(QFrame.StyledPanel)
         self.section_1.setFrameShadow(QFrame.Raised)
         self.verticalLayout_7 = QVBoxLayout(self.section_1)
         self.verticalLayout_7.setSpacing(13)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(6, 6, 6, 6)
+        self.verticalLayout_7.setContentsMargins(4, 4, 4, 4)
         self.frame_10 = QFrame(self.section_1)
         self.frame_10.setObjectName(u"frame_10")
         self.frame_10.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
@@ -1097,6 +1091,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.password_db)
 
         self.loading_db = QHBoxLayout()
+        self.loading_db.setSpacing(0)
         self.loading_db.setObjectName(u"loading_db")
         self.loading_db.setContentsMargins(0, -1, -1, -1)
         self.label_gif = QLabel(self.frame_22)
@@ -1203,9 +1198,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_13.addWidget(self.frame_31)
 
-        self.frame_30 = QFrame(self.frame_5)
+        self.frame_30 = QFrame(self.frame_center)
         self.frame_30.setObjectName(u"frame_30")
-        self.frame_30.setStyleSheet(u"border:none")
+        self.frame_30.setStyleSheet(u"background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 59, 69, 0), stop:1 rgba(91, 99, 115, 0));\n"
+"border:none")
         self.frame_30.setFrameShape(QFrame.StyledPanel)
         self.frame_30.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.frame_30)
@@ -1280,14 +1276,19 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_13.addWidget(self.frame_30)
 
+        self.selenium_layout = QVBoxLayout()
+        self.selenium_layout.setObjectName(u"selenium_layout")
+
+        self.verticalLayout_13.addLayout(self.selenium_layout)
+
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_13.addItem(self.verticalSpacer_4)
 
 
-        self.horizontalLayout_6.addWidget(self.frame_5)
+        self.horizontalLayout_6.addWidget(self.frame_center)
 
-        self.horizontalLayout_6.setStretch(0, 1)
+        self.horizontalLayout_6.setStretch(0, 10)
         self.horizontalLayout_6.setStretch(1, 120)
 
         self.verticalLayout.addWidget(self.frame_3)
@@ -1323,8 +1324,7 @@ class Ui_MainWindow(object):
         self.drag_btn.setMaximumSize(QSize(20, 20))
         self.drag_btn.setCursor(QCursor(Qt.SizeFDiagCursor))
         self.drag_btn.setStyleSheet(u"image: url(:/16x16/icons/16x16/cil-caret-bottom.png);\n"
-"border:none;\n"
-"transform: rotate(20deg);")
+"border:none;\n")
 
         self.horizontalLayout_22.addWidget(self.drag_btn)
 
