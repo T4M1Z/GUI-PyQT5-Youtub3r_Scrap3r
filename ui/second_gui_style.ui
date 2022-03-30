@@ -671,8 +671,8 @@ border:2px solid  rgb(55,55,55);
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">border:1px solid rgb(91, 91, 91);
-border-radius:65px;
+                            <string notr="true">
+
 background-color:  rgb(91, 91, 91);</string>
                            </property>
                            <property name="frameShape">
@@ -686,44 +686,28 @@ background-color:  rgb(91, 91, 91);</string>
                              <number>6</number>
                             </property>
                             <property name="leftMargin">
-                             <number>0</number>
+                             <number>3</number>
                             </property>
                             <property name="topMargin">
-                             <number>0</number>
+                             <number>3</number>
                             </property>
                             <property name="rightMargin">
-                             <number>9</number>
+                             <number>3</number>
                             </property>
                             <property name="bottomMargin">
-                             <number>0</number>
+                             <number>3</number>
                             </property>
                             <item>
-                             <widget class="QFrame" name="picture_channel">
-                              <property name="minimumSize">
-                               <size>
-                                <width>140</width>
-                                <height>140</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>140</width>
-                                <height>140</height>
-                               </size>
-                              </property>
+                             <widget class="QLabel" name="profile_image">
                               <property name="styleSheet">
-                               <string notr="true">
-background-color: rgb(89, 89, 89);
-
-border-radius:70px;
- border-image: url(:/channel/icons/channel/profile.jpg);
-</string>
+                               <string notr="true">    QLabel{
+        border:2px solid rgb(90, 90, 90);
+        background-color: rgb(89, 89, 89);
+        border-image: url(:/channel/icons/channel/profile.jpg);
+    }</string>
                               </property>
-                              <property name="frameShape">
-                               <enum>QFrame::StyledPanel</enum>
-                              </property>
-                              <property name="frameShadow">
-                               <enum>QFrame::Raised</enum>
+                              <property name="text">
+                               <string/>
                               </property>
                              </widget>
                             </item>
@@ -764,7 +748,7 @@ QLineEdit::hover{background-color: rgb(59, 59, 59);}
 
 
 QLineEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }
 
 </string>
@@ -797,7 +781,7 @@ QLineEdit::focus{
                         <property name="minimumSize">
                          <size>
                           <width>0</width>
-                          <height>35</height>
+                          <height>25</height>
                          </size>
                         </property>
                         <property name="maximumSize">
@@ -823,7 +807,7 @@ QFrame::hover{background-color: rgb(59, 59, 59);}
 
 
 QLineEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }</string>
                         </property>
                         <property name="frameShape">
@@ -852,13 +836,13 @@ QLineEdit::focus{
                           <widget class="QLabel" name="country_channel">
                            <property name="minimumSize">
                             <size>
-                             <width>51</width>
+                             <width>48</width>
                              <height>0</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>58</width>
+                             <width>52</width>
                              <height>24</height>
                             </size>
                            </property>
@@ -883,7 +867,13 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, st
                           </widget>
                          </item>
                          <item>
-                          <widget class="QLabel" name="label_4">
+                          <widget class="QLabel" name="flag_label">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="maximumSize">
                             <size>
                              <width>27</width>
@@ -891,7 +881,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, st
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">image: url(:/flags/icons/flags/it.svg);
+                            <string notr="true">image: url(:/flags/icons/flags/none.svg);
 border:none;
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));</string>
                            </property>
@@ -934,7 +924,7 @@ QLineEdit::hover{background-color: rgb(59, 59, 59);}
 
 
 QLineEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }
 
 </string>
@@ -993,7 +983,7 @@ QLineEdit::hover{background-color: rgb(59, 59, 59);}
 
 
 QLineEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }
 
 </string>
@@ -1052,7 +1042,7 @@ QLineEdit::hover{background-color: rgb(59, 59, 59);}
 
 
 QLineEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }
 
 </string>
@@ -1111,7 +1101,7 @@ QLineEdit::hover{background-color: rgb(59, 59, 59);}
 
 
 QLineEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }
 
 </string>
@@ -1175,7 +1165,7 @@ QComboBox::drop-down
 }
 
 QComboBox::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 
 }
 /* Define a new custom arrow icon for the combo box */
@@ -1235,7 +1225,7 @@ QTextEdit::hover{background-color: rgb(59, 59, 59);}
 
 
 QTextEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }
 
 </string>
@@ -1314,7 +1304,7 @@ border:2px solid  rgb(55,55,55);
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_13">
+            <layout class="QVBoxLayout" name="verticalLayout_13" stretch="0,0,15,0">
              <property name="spacing">
               <number>0</number>
              </property>
@@ -1650,7 +1640,7 @@ padding:5px;
 QLineEdit::hover{background-color: rgb(59, 59, 59);}
 
 QLineEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }</string>
                                  </property>
                                  <property name="placeholderText">
@@ -1797,7 +1787,7 @@ QSpinBox::up-button  {
 		height:10px;
 		}
 QSpinBox::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }
 
 QSpinBox::up-arrow:hover { 	
@@ -1927,7 +1917,7 @@ QSpinBox::up-button  {
 		height:10px;
 		}
 QSpinBox::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }
 
 QSpinBox::up-arrow:hover { 	
@@ -2034,7 +2024,7 @@ padding:5px;
 QLineEdit::hover{background-color: rgb(59, 59, 59);}
 
 QLineEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }</string>
                                  </property>
                                  <property name="echoMode">
@@ -2077,7 +2067,7 @@ padding:5px;
 QLineEdit::hover{background-color: rgb(59, 59, 59);}
 
 QLineEdit::focus{
-	border:1px solid rgb(195, 75, 75);
+	border:1px solid  rgb(121,121, 121);
 }</string>
                                  </property>
                                  <property name="echoMode">
@@ -2227,6 +2217,7 @@ QPushButton::pressed{
                                     <property name="font">
                                      <font>
                                       <family>Roboto Black</family>
+                                      <pointsize>8</pointsize>
                                       <weight>50</weight>
                                       <bold>false</bold>
                                      </font>
@@ -2234,7 +2225,7 @@ QPushButton::pressed{
                                     <property name="styleSheet">
                                      <string notr="true">QLabel{
 background-color: rgb(55, 55, 55);
-	color: rgb(195, 75, 75);
+	color: rgb(227, 87, 87);
 border: 1px solid  rgb(91, 91, 91);
 border-bottom-left-radius:0px;
 border-top-left-radius:2px;
@@ -2245,7 +2236,7 @@ padding:5px;
 </string>
                                     </property>
                                     <property name="text">
-                                     <string>Offline</string>
+                                     <string>OFFLINE</string>
                                     </property>
                                     <property name="alignment">
                                      <set>Qt::AlignCenter</set>
@@ -2293,7 +2284,7 @@ border:none</string>
                  <number>0</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>0</number>
+                 <number>9</number>
                 </property>
                 <item>
                  <spacer name="horizontalSpacer_3">
@@ -2352,7 +2343,7 @@ QPushButton::pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Start scraping</string>
+                   <string>Stop Scraping</string>
                   </property>
                  </widget>
                 </item>
@@ -2421,7 +2412,74 @@ QPushButton::pressed{
               </widget>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="selenium_layout"/>
+              <widget class="QFrame" name="frame_14">
+               <property name="styleSheet">
+                <string notr="true">border:none;
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_18">
+                <item>
+                 <widget class="QFrame" name="frame_5">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(49, 49, 49);
+border-radius:3px;
+border:0px;border:none</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_14">
+                   <property name="leftMargin">
+                    <number>4</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>4</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>4</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_2">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(66, 66, 66);
+border:2px solid rgb(90, 90, 90);</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_11">
+                      <property name="leftMargin">
+                       <number>9</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>9</number>
+                      </property>
+                      <item>
+                       <layout class="QVBoxLayout" name="selenium_layout"/>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </item>
              <item>
               <spacer name="verticalSpacer_4">
@@ -2431,7 +2489,7 @@ QPushButton::pressed{
                <property name="sizeHint" stdset="0">
                 <size>
                  <width>20</width>
-                 <height>40</height>
+                 <height>2</height>
                 </size>
                </property>
               </spacer>

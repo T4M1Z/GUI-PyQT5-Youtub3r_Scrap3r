@@ -36,6 +36,13 @@ class UIFunctions(MainWindow):
         self.shadow.setBlurRadius(5.0)
         self.setGraphicsEffect(self.shadow)
 
+        ## SHOW ==> DROP SHADOW
+        self.shadow = QGraphicsDropShadowEffect(self.ui.frame_center)
+        self.shadow.setOffset(5.0)
+        self.shadow.setColor(QColor(0, 0, 0, 100))
+        self.shadow.setBlurRadius(5.0)
+        self.setGraphicsEffect(self.shadow)
+
         # ## SHOW ==> CLOSE APPLICATION
         self.ui.btn_close.clicked.connect(lambda: self.close())
         ### ==> MINIMIZE

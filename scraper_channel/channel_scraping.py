@@ -7,40 +7,113 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
+import win32gui
+from PyQt5 import QtGui, QtWidgets
+from PyQt5.QtCore import QThread, pyqtSignal
+import ctypes
+import win32gui
+import win32con
+import winxpgui
+import win32api
+user32 = ctypes.windll.user32
+width,height = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
 
-class channel_scraping:
-    def __init__(self):
-        
-        print(os.getcwd())
+class Channel_Scraping(QThread):
+    receivedPacketSignal = pyqtSignal(dict)
+
+    def __init__(self, ui):
+        super(Channel_Scraping, self).__init__()
+
+        self.ui = ui
+        self.url = self.ui.url_Input.text()
+        print("fffffffffff",self.url)
+        self.threads = self.ui.threads_spinBox.value()
+        self.cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False 
+        self.yt_name = self.url.split("/")[4] 
+
+
+        # --- * Selenium Settings * --- #
         PATH = os.getcwd()+"/scraper_channel/webdriver/chromedriver.exe"
         options = Options() 
-
         # options.add_argument("--headless")
-        options.add_argument("start-maximized")
+        # options.add_argument("start-maximized")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_argument('log-level=3')
         options.add_argument("--lang=en")
         options.add_argument('--disable-notifications')
         options.add_argument('--mute-audio')
-        self.driver = webdriver.Chrome(PATH, options=options)
+        options.add_argument("disable-infobars")
+        options.add_argument("--kiosk")
+        options.add_argument("--window-size="+str(int(2*width))+","+str(int(2*height)))
+        options.add_argument("--window-position=-10,-10")
+        options.add_argument("disable-infobars")
+        options.add_argument("--kiosk")
+        options.add_argument("--window-position=-3500,-3500") 
 
-        # PAth
+        self.driver = webdriver.Chrome(PATH, options=options)
+        print(f"Canale YouTube: {self.yt_name}")
+        self.driver.set_window_size(1,1)
+
+        
+        self.driver.get(self.url)
+        time.sleep(0.5)
+        # ------------------------------------------ #
+        self.hwnd = 0
+        self.tries = 30
+        self.total_tries = 0
+        while(self.hwnd==0 and self.total_tries<=self.tries):
+            try:
+                win32gui.EnumWindows(self.hwnd_method, None)
+                self.embed_window = QtGui.QWindow.fromWinId(self.hwnd)
+                self.embed_widget = QtWidgets.QWidget.createWindowContainer(self.embed_window)
+                self.ui.selenium_layout.addWidget(self.embed_widget)        
+                self.tries+= 1
+                break
+            except Exception as e:
+                print(e)
+                self.tries += 1
+        # ------------------------------------------ #
+        # self.driver.set_window_size(1,1)
+        
+        # --- * ----------------- * --- #
+
+
+    
+        
+        # XPATH Elements location
         self.location_path = "//div[@id='details-container']//table//tbody//tr[2]//td[2]"
         self.joined_date_path = "//div[@id='right-column']//yt-formatted-string[2]//span[2]"
         self.tot_visual_path = "//div[@id='right-column']//yt-formatted-string[3]"
         self.subs_path = "//yt-formatted-string[@id='subscriber-count']"
         self.profile_img_path = "//yt-img-shadow[@id='avatar']//img"
         self.cover_img_path = "//div[@id='header']//ytd-c4-tabbed-header-renderer"
+        self.social_primary = "//div[@id='primary-links']"
+        self.social_secondary = "//div[@id='secondary-links']"
         self.social_path = "//div[@id='links-holder']"
+        self.channel_desc_path = "//div[@id='description-container']"
+        
+
+    def hwnd_method(self, hwnd, ctx):
+        window_title = win32gui.GetWindowText(hwnd)
+        if "before you continue to youtube" in window_title.lower():
+            self.hwnd = hwnd
+            '''        
+            old_style = win32gui.GetWindowLong(hwnd, -16)
+            # building the new style(old style AND NOT Maximize AND NOT Minimize)
+            new_style = old_style & ~win32con.WS_MAXIMIZEBOX & ~win32con.WS_MINIMIZEBOX
+            # setting new style
+            win32gui.SetWindowLong(hwnd, -16, new_style)
+            # updating non - client area
+            win32gui.SetWindowPos(hwnd, 0, 0, 0, 0, 0, win32con.SWP_NOMOVE | win32con.SWP_NOSIZE | win32con.SWP_NOZORDER | win32con.SWP_FRAMECHANGED)
+            win32gui.UpdateWindow(hwnd)
+            '''
 
 
 
-    def Youtube_Channel(self, url, ch_name):
-        print(f"Canale YouTube: {ch_name}")
-        self.driver.get(url)
-
+    def run(self):
+        # self.driver.set_window_size(1,1)
 
         try: 
             WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH,"//div[@class='VfPpkd-dgl2Hf-ppHlrf-sM5MNb']//button"))).click()
@@ -59,6 +132,7 @@ class channel_scraping:
         except Exception as e:
             print("== STEP_2 ===")
 
+
         try:
             WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//form[@class='bBXLMd']//div/button"))).click()
         except Exception as e:
@@ -66,6 +140,7 @@ class channel_scraping:
 
         username = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//ytd-channel-name[@id='channel-name']"))).text
         # 1scroll = 30video
+        
         try:
             WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//div[@id='primary-items']//yt-dropdown-menu//tp-yt-paper-menu-button//div"))).click()
             WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//div[@id='contentWrapper']//div//tp-yt-paper-listbox//a[1]//tp-yt-paper-item//tp-yt-paper-item-body"))).click()
@@ -76,13 +151,13 @@ class channel_scraping:
             n_all_video = self.driver.find_element(By.XPATH, "//div[@id='publisher-container']//div//yt-formatted-string//span[3]")
             print("Numero video: ",n_all_video.text)
             scroll = int(str(n_all_video.text).replace(",",""))//23
-            self.driver.get(url)
+            self.driver.get(self.url)
         except Exception as e:
             try:
                 print(f"errore 1 {e}")
                 input = self.driver.find_element(By.XPATH, "//input[@id='search']")
                 input.click()
-                input.send_keys(ch_name)
+                input.send_keys(self.yt_name)
                 input.send_keys(Keys.ENTER)
                 WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//span[@id='video-count']")))
                 n_all_video = self.driver.find_element(By.XPATH, "//span[@id='video-count']")
@@ -93,7 +168,6 @@ class channel_scraping:
                 print("errore 2")
                 scroll = 30
                 self.driver.execute_script("window.history.go(-1)")
-
 
         # Scroll the page and load more videos
         time.sleep(1)
@@ -119,7 +193,7 @@ class channel_scraping:
         
 
         # __ INFO CHANNEL __
-        self.driver.get(url[:-6]+"/about")
+        self.driver.get(self.url[:-6]+"/about")
         
         try:location = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.location_path ))).text
         except: location = ""
@@ -131,6 +205,9 @@ class channel_scraping:
         except: subs = ""
         try:profile_img = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.profile_img_path))).get_attribute("src")
         except: profile_img = ""
+        try:channel_desc = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.channel_desc_path))).text
+        except: channel_desc = ""
+
         
         # Cover img
         try:
@@ -147,27 +224,23 @@ class channel_scraping:
             WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.social_path)))
             socials = self.driver.find_elements(By.XPATH, self.social_path + "//a")
             for i in socials:
-                a, sep, b = i.get_attribute("href").partition("https%3A%2F%2F")
+                if "https%3A%2F%2F" in i.get_attribute("href"):
+                    a, sep, b = i.get_attribute("href").partition("https%3A%2F%2F")
+                elif "http%3A%2F%2F" in i.get_attribute("href"):
+                    a, sep, b = i.get_attribute("href").partition("http%3A%2F%2F")
+                    
+                print(i.get_attribute("href"))
                 b = b.replace(r"%2F", "/")
                 b = b.replace(r"%3F", "?")
                 b = b.replace(r"%3D", "=")
                 socials_lst.append(b)
-        except: print(f"[CHANNEL][SOCIAL] Error: No social?")
-
-        print(ch_name)
-        print(location)
-        print(joined_date)
-        print(tot_visual)
-        print(subs)
-        print(profile_img)
-        print(cover_img)
-
+        except: 
+            print(f"[CHANNEL][SOCIAL] Error: No social?")
         
         self.driver.quit()
-        print(f"Numero di video trovati: {len(links)}")
 
-        print({"username": username,"location": location, "joined_date":joined_date,"tot_video":len(links), "tot_visual": tot_visual, 
-                        "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst})
-        return {"username": username,"location": location, "joined_date":joined_date,"tot_video":len(links), "tot_visual": tot_visual, 
-                        "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst}
-    
+        self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date,"tot_video":len(links), "tot_visual": tot_visual, 
+                        "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})
+
+
+

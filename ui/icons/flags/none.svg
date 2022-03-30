@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="flag-icons-ma" version="1.1" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+ <path d="m640 0h-640v246.64h640z" fill="#b3b3b3" stroke-width=".71682"/>
+ <path d="m640 246.64h-640v232.78h640z" fill="#808080" stroke-width=".69639"/>
+ <text x="315.60226" y="383.17099" fill="#000000" font-family="sans-serif" stroke-width="1.5274" text-anchor="middle" style="line-height:1.25" xml:space="preserve"><tspan x="315.60226" y="383.17099" font-size="400px" text-align="center">?</tspan><tspan x="315.60226" y="622.9884" font-size="114.04px" text-align="center"/></text>
+</svg>

@@ -257,10 +257,12 @@
   </qresource>
   <qresource prefix="flags">
     <file>icons/flags/it.svg</file>
+    <file>icons/flags/none.svg</file>
   </qresource>
   <qresource prefix="channel">
     <file>icons/channel/cover.png</file>
     <file>icons/channel/profile.jpg</file>
+    <file>icons/channel/profile_new.jpg</file>
   </qresource>
   <qresource prefix="connection">
     <file>icons/connection/connection-on-24.png</file>

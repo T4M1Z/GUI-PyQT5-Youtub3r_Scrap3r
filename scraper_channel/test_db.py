@@ -38,4 +38,4 @@ class MongoDB(QThread):
                         self.receivedPacketSignal.emit("connected")
                     
             except Exception as e:
-                self.receivedPacketSignal.emit(e)
+                self.receivedPacketSignal.emit(str(e))
