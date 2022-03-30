@@ -7,3 +7,6 @@ This is a 2days work, this time I wanted to start from the design of the applica
 
 ## Version 0.2
 <img src="https://user-images.githubusercontent.com/97179746/160380980-510b382f-06f0-4b4a-a939-96dc17a5e469.png" width="600" height="330" />
+
+## Version 0.3
+<img src="https://user-images.githubusercontent.com/97179746/160888332-0b43fa11-411c-43a5-84cd-25a7a6cc6ce4.png" width="600" height="330" />
