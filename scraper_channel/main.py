@@ -3,7 +3,6 @@ from threading import Thread
 import numpy as np
 import time
 import shutil
-from distutils.dir_util import copy_tree
     
 # from links_scraping import scrap_1
 # from py_mongo import MongoDB
@@ -14,38 +13,38 @@ from distutils.dir_util import copy_tree
 
 
 
-class main:
-    def __init__(self, url, yt_name):
-        self.url = url
-        self.yt_name = yt_name
+# class main:
+#     def __init__(self, url, yt_name):
+#         self.url = url
+#         self.yt_name = yt_name
 
 
-    def folder_cleaning(self):
-        folders = ["output","csv","comments_json"]
+    # def folder_cleaning(self):
+    #     folders = ["output","csv","comments_json"]
 
-        # take number of elements inside the folder
-        try:
-            new_folder = os.listdir("output")[0].replace("csv","backup")
+    #     # take number of elements inside the folder
+    #     try:
+    #         new_folder = os.listdir("output")[0].replace("csv","backup")
 
-            # copy folder_backup into database fodler
-            if not os.path.exists(new_folder):
-                os.makedirs("database/"+new_folder)
-            for folder in folders:
-                dest_dir = os.path.join("database/"+new_folder, os.path.basename(folder))
-                if not os.path.exists(dest_dir):
-                    shutil.copytree("database/"+new_folder,dest_dir)
+    #         # copy folder_backup into database fodler
+    #         if not os.path.exists(new_folder):
+    #             os.makedirs("database/"+new_folder)
+    #         for folder in folders:
+    #             dest_dir = os.path.join("database/"+new_folder, os.path.basename(folder))
+    #             if not os.path.exists(dest_dir):
+    #                 shutil.copytree("database/"+new_folder,dest_dir)
 
-            # Delete all files inside folders
-            for folder in folders:
-                for file in os.listdir(folder):
-                    os.remove(folder+"\\"+file)
+    #         # Delete all files inside folders
+    #         for folder in folders:
+    #             for file in os.listdir(folder):
+    #                 os.remove(folder+"\\"+file)
 
-        except Exception as e: print(f"[ERROR Empty Folder] {e}")
+    #     except Exception as e: print(f"[ERROR Empty Folder] {e}")
 
-    def start_channel_scraping(self):
+    # def start_channel_scraping(self):
 
-        print(self.url)    
-        print(self.yt_name)    
+    #     print(self.url)    
+    #     print(self.yt_name)    
         # ---------------------- #
         # Start Channel Scraping
         # _______________________#
@@ -171,24 +170,24 @@ thread_allow = True
 CLUSTER = 1   # form 1 to 3
 POWER = 7 # n of threads
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    start_time = time.time()
+#     start_time = time.time()
 
-    url ="https://www.youtube.com/c/GiovanniFois/videos"
-    yt_name = url.split("/")[4] 
+#     url ="https://www.youtube.com/c/GiovanniFois/videos"
+#     yt_name = url.split("/")[4] 
 
-    main = main(url, yt_name)
+#     main = main(url, yt_name)
 
-    # ---------------------------------- #
+#     # ---------------------------------- #
 
-    # main.folder_cleaning()
-    main.start_channel_scraping()
-    # main.start_threads_links_scraping()
-    main.pandas_cleaning_data()
-    main.database_data_send_check()
+#     # main.folder_cleaning()
+#     main.start_channel_scraping()
+#     # main.start_threads_links_scraping()
+#     main.pandas_cleaning_data()
+#     main.database_data_send_check()
 
-    # ---------------------------------- #
+#     # ---------------------------------- #
 
 
-    print("RUN 1--- %s seconds ---" % (time.time() - start_time))
+#     print("RUN 1--- %s seconds ---" % (time.time() - start_time))

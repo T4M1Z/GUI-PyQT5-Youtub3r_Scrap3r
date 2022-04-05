@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'second_gui_styleVeVaEI.ui'
+## Form generated from reading UI file 'second_gui_styleVYqGwo.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1223, 817)
+        MainWindow.resize(1223, 759)
         MainWindow.setMinimumSize(QSize(0, 708))
         font = QFont()
         font.setFamily(u"Oswald ExtraLight")
@@ -1393,245 +1393,16 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_13.addWidget(self.frame_30)
 
-        self.horizontalLayout_20 = QHBoxLayout()
-        self.horizontalLayout_20.setSpacing(0)
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.horizontalLayout_20.setContentsMargins(-1, 0, -1, -1)
-        self.frame_14 = QFrame(self.frame_center)
-        self.frame_14.setObjectName(u"frame_14")
-        self.frame_14.setStyleSheet(u"border:none;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
-        self.frame_14.setFrameShape(QFrame.StyledPanel)
-        self.frame_14.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_18 = QHBoxLayout(self.frame_14)
-        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
-        self.horizontalLayout_18.setContentsMargins(-1, 0, -1, -1)
-        self.frame_5 = QFrame(self.frame_14)
-        self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setStyleSheet(u"background-color: rgb(49, 49, 49);\n"
-"border-radius:3px;\n"
-"\n"
-"border:0px;")
-        self.frame_5.setFrameShape(QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_14 = QHBoxLayout(self.frame_5)
-        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.horizontalLayout_14.setContentsMargins(4, 4, 4, 4)
-        self.frame_2 = QFrame(self.frame_5)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
-"border:2px solid rgb(90, 90, 90);")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_11 = QHBoxLayout(self.frame_2)
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.horizontalLayout_11.setContentsMargins(9, 9, -1, -1)
-        self.selenium_layout = QVBoxLayout()
-        self.selenium_layout.setObjectName(u"selenium_layout")
+        self.central_panel_layout = QHBoxLayout()
+        self.central_panel_layout.setObjectName(u"central_panel_layout")
 
-        self.horizontalLayout_11.addLayout(self.selenium_layout)
-
-
-        self.horizontalLayout_14.addWidget(self.frame_2)
-
-
-        self.horizontalLayout_18.addWidget(self.frame_5)
-
-        self.horizontalLayout_18.setStretch(0, 5)
-
-        self.horizontalLayout_20.addWidget(self.frame_14)
-
-
-        self.verticalLayout_13.addLayout(self.horizontalLayout_20)
-
-        self.scraping_monitoring_frame = QFrame(self.frame_center)
-        self.scraping_monitoring_frame.setObjectName(u"scraping_monitoring_frame")
-        self.scraping_monitoring_frame.setMaximumSize(QSize(16777215, 16777215))
-        self.scraping_monitoring_frame.setStyleSheet(u"border:none;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
-        self.scraping_monitoring_frame.setFrameShape(QFrame.StyledPanel)
-        self.scraping_monitoring_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_28 = QHBoxLayout(self.scraping_monitoring_frame)
-        self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
-        self.horizontalLayout_28.setContentsMargins(-1, 0, -1, 0)
-        self.frame_20 = QFrame(self.scraping_monitoring_frame)
-        self.frame_20.setObjectName(u"frame_20")
-        self.frame_20.setStyleSheet(u"background-color: rgb(49, 49, 49);\n"
-"border-radius:3px;\n"
-"\n"
-"border:0px;")
-        self.frame_20.setFrameShape(QFrame.StyledPanel)
-        self.frame_20.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_24 = QHBoxLayout(self.frame_20)
-        self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
-        self.horizontalLayout_24.setContentsMargins(4, 4, 4, 4)
-        self.frame_23 = QFrame(self.frame_20)
-        self.frame_23.setObjectName(u"frame_23")
-        self.frame_23.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
-"border:2px solid rgb(90, 90, 90);")
-        self.frame_23.setFrameShape(QFrame.StyledPanel)
-        self.frame_23.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_25 = QHBoxLayout(self.frame_23)
-        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
-        self.horizontalLayout_25.setContentsMargins(0, 0, 0, 0)
-        self.textBrowser = QTextBrowser(self.frame_23)
-        self.textBrowser.setObjectName(u"textBrowser")
-        self.textBrowser.setStyleSheet(u"QTextBrowser{\n"
-"	border:none;\n"
-"		color: rgb(181, 181, 181);\n"
-"	border-radius:8px;\n"
-"	background-color: rgb(77, 77, 77);\n"
-"	padding-left:10px;\n"
-"	padding-top:5px;\n"
-"	padding-bottom:5px;\n"
-"	padding-right:10px;\n"
-"}")
-
-        self.horizontalLayout_25.addWidget(self.textBrowser)
-
-
-        self.horizontalLayout_24.addWidget(self.frame_23)
-
-
-        self.horizontalLayout_28.addWidget(self.frame_20)
-
-        self.frame_26 = QFrame(self.scraping_monitoring_frame)
-        self.frame_26.setObjectName(u"frame_26")
-        self.frame_26.setFrameShape(QFrame.StyledPanel)
-        self.frame_26.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_31 = QHBoxLayout(self.frame_26)
-        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
-        self.horizontalLayout_31.setContentsMargins(0, 0, 0, 0)
-        self.frame_27 = QFrame(self.frame_26)
-        self.frame_27.setObjectName(u"frame_27")
-        self.frame_27.setStyleSheet(u"background-color: rgb(49, 49, 49);\n"
-"border-radius:3px;\n"
-"\n"
-"border:0px;")
-        self.frame_27.setFrameShape(QFrame.StyledPanel)
-        self.frame_27.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_29 = QHBoxLayout(self.frame_27)
-        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
-        self.horizontalLayout_29.setContentsMargins(4, 4, 4, 4)
-        self.frame_28 = QFrame(self.frame_27)
-        self.frame_28.setObjectName(u"frame_28")
-        self.frame_28.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
-"border:2px solid rgb(90, 90, 90);")
-        self.frame_28.setFrameShape(QFrame.StyledPanel)
-        self.frame_28.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_30 = QHBoxLayout(self.frame_28)
-        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
-        self.horizontalLayout_30.setContentsMargins(0, 0, 0, 0)
-        self.tableWidget = QTableWidget(self.frame_28)
-        if (self.tableWidget.columnCount() < 4):
-            self.tableWidget.setColumnCount(4)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        if (self.tableWidget.rowCount() < 1):
-            self.tableWidget.setRowCount(1)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setFont(font4)
-        self.tableWidget.setStyleSheet(u"QTableWidget{\n"
-"	border-radius:8px;\n"
-"	border: none;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QTableWidget, QHeaderView::section, QTableWidget QTableCornerButton:section\n"
-"{\n"
-"	background-color: rgb(77, 77, 77);\n"
-"    color: #fff;\n"
-"    gridline-color:  rgb(48, 48, 48);\n"
-"\n"
-"}\n"
-"\n"
-"QTableWidget::item:selected\n"
-"{\n"
-"	background-color: rgb(56, 56, 56);\n"
-"}\n"
-"\n"
-"\n"
-"QTableWidget QTableCornerButton::section {\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));\n"
-"}\n"
-"\n"
-"QHeaderView{\n"
-"font: 13px ;\n"
-"color:rgb(240, 240, 240);\n"
-"background-color: rgb(80, 80, 80);\n"
-"}\n"
-"QHeaderView::section:horizontal{\n"
-"min-height:30px;\n"
-"border:0;\n"
-"border-bottom:1px solid rgb(195, 75, 75);\n"
-"background-color: rgb(60,60,60);\n"
-"}\n"
-"\n"
-"QHeaderView::section{\n"
-"font: 13px ;\n"
-"text-align:center;\n"
-"}\n"
-"QHeaderView::section:hover{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(75, 75, 75);\n"
-"}\n"
-"QHeaderView::section:"
-                        "checked{/*\u4e0d\u53d6\u6d88\u9ad8\u4eae*/\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(75, 75, 75);\n"
-"}\n"
-"QHeaderView::section:selected{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(75, 75, 75);\n"
-"}\n"
-"QHeaderView::section:checked:hover{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(75, 75, 75);\n"
-"}\n"
-"")
-        self.tableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.tableWidget.setAlternatingRowColors(False)
-        self.tableWidget.setShowGrid(True)
-        self.tableWidget.setSortingEnabled(False)
-        self.tableWidget.setRowCount(1)
-        self.tableWidget.setColumnCount(4)
-        self.tableWidget.horizontalHeader().setHighlightSections(True)
-        self.tableWidget.horizontalHeader().setProperty("showSortIndicator", False)
-        self.tableWidget.horizontalHeader().setStretchLastSection(False)
-        self.tableWidget.verticalHeader().setVisible(False)
-        self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
-        self.tableWidget.verticalHeader().setHighlightSections(False)
-        self.tableWidget.verticalHeader().setProperty("showSortIndicator", False)
-
-        self.horizontalLayout_30.addWidget(self.tableWidget)
-
-
-        self.horizontalLayout_29.addWidget(self.frame_28)
-
-
-        self.horizontalLayout_31.addWidget(self.frame_27)
-
-
-        self.horizontalLayout_28.addWidget(self.frame_26)
-
-        self.horizontalLayout_28.setStretch(0, 10)
-        self.horizontalLayout_28.setStretch(1, 7)
-
-        self.verticalLayout_13.addWidget(self.scraping_monitoring_frame)
+        self.verticalLayout_13.addLayout(self.central_panel_layout)
 
         self.verticalSpacer_4 = QSpacerItem(20, 2, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_13.addItem(self.verticalSpacer_4)
 
-        self.verticalLayout_13.setStretch(2, 15)
-        self.verticalLayout_13.setStretch(3, 6)
+        self.verticalLayout_13.setStretch(2, 10)
 
         self.horizontalLayout_6.addWidget(self.frame_center)
 
@@ -1734,41 +1505,6 @@ class Ui_MainWindow(object):
         self.status_db_connection.setText(QCoreApplication.translate("MainWindow", u"OFFLINE", None))
         self.stop_scraping_btn.setText(QCoreApplication.translate("MainWindow", u"Stop Scraping", None))
         self.start_scraping_btn.setText(QCoreApplication.translate("MainWindow", u"Start scraping", None))
-        self.textBrowser.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:"
-                        "0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-"
-                        "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p "
-                        "style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p></body></html>", None))
-        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Link url", None));
-        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Title", None));
-        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Views", None));
         self.drag_btn.setText("")
     # retranslateUi
 

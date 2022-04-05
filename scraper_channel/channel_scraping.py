@@ -22,10 +22,11 @@ width,height = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 class Channel_Scraping(QThread):
     receivedPacketSignal = pyqtSignal(dict)
 
-    def __init__(self, ui):
+    def __init__(self, ui, c_panel):
         super(Channel_Scraping, self).__init__()
 
         self.ui = ui
+        self.c_panel_ui = c_panel 
         self.url = self.ui.url_Input.text()
         self.threads = self.ui.threads_spinBox.value()
         self.cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False
@@ -65,7 +66,7 @@ class Channel_Scraping(QThread):
                 win32gui.EnumWindows(self.hwnd_method, None)
                 self.embed_window = QtGui.QWindow.fromWinId(self.hwnd)
                 self.embed_widget = QtWidgets.QWidget.createWindowContainer(self.embed_window)
-                self.ui.selenium_layout.addWidget(self.embed_widget)
+                self.c_panel_ui.selenium_layout.addWidget(self.embed_widget)
                 self.tries+= 1
                 break
             except Exception as e:
@@ -147,7 +148,8 @@ class Channel_Scraping(QThread):
             WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//div[@id='publisher-container']//div//yt-formatted-string//span[3]")))
             n_all_video = self.driver.find_element(By.XPATH, "//div[@id='publisher-container']//div//yt-formatted-string//span[3]")
             print("Numero video: ",n_all_video.text)
-            scroll = int(str(n_all_video.text).replace(",",""))//23
+            scroll = int(str(n_all_video.text).replace(",",""))//20
+            scroll = 1 if scroll == 0 else scroll 
             self.driver.get(self.url)
         except Exception as e:
             try:
@@ -158,7 +160,8 @@ class Channel_Scraping(QThread):
                 input.send_keys(Keys.ENTER)
                 WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//span[@id='video-count']")))
                 n_all_video = self.driver.find_element(By.XPATH, "//span[@id='video-count']")
-                scroll = int(str(n_all_video.text).replace(",","").split(" ")[0])//27
+                scroll = int(str(n_all_video.text).replace(",","").split(" ")[0])//20
+                scroll = 1 if scroll == 0 else scroll 
                 time.sleep(2)
                 self.driver.execute_script("window.history.go(-1)")
             except:
@@ -169,9 +172,10 @@ class Channel_Scraping(QThread):
         # Scroll the page and load more videos
         time.sleep(1)
 
+        print(f"Questo è lo scroll: {scroll}")
         # Dict for qt signals
         video_info = {"links":[], "title":[], "visual":[], "index":[]}
-        index = 1
+        index = 0
         for n in range(scroll):
             try:
                 WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(
@@ -187,7 +191,8 @@ class Channel_Scraping(QThread):
                     video_info["title"].append(t.text)
                     video_info["visual"].append(v.text)
                     video_info["index"].append(index)
-                    index+=1
+                    index+=1            
+                    print(index)
 
                 div = self.driver.find_elements(By.XPATH, "//div[@id='items']//ytd-grid-video-renderer")
                 for element in div:

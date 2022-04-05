@@ -1,11 +1,5 @@
 from pymongo import MongoClient
-from PyQt5.QtCore import QObject, QThread, pyqtSignal
-import json
-import os
-import csv
-import time
-import sys
-import natsort 
+from PyQt5.QtCore import QThread, pyqtSignal
 
 class MongoDB(QThread): 
     receivedPacketSignal = pyqtSignal(str)

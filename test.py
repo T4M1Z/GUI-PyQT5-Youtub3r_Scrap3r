@@ -1,86 +1,107 @@
-# pip install selenium
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
-import os
-import win32gui
-from PyQt5 import QtGui, QtWidgets
-from PyQt5.QtCore import QThread, pyqtSignal
-import ctypes
+import sys, random
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+
+class IndicSelectWindow(QDialog):
+
+    def __init__(self, parent=None):
+        super(IndicSelectWindow, self).__init__(parent=parent)
+        self.resize(1000, 800)
+
+        self.target = None
+        self.setAcceptDrops(True)
+        self.layout = QHBoxLayout(self)
+        self.scrollArea = QScrollArea(self)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.gridLayout = QGridLayout(self.scrollAreaWidgetContents)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.layout.addWidget(self.scrollArea)
+
+        for i in range(3):
+            for j in range(3):
+                self.Frame = QFrame(self)
+                self.Frame.setStyleSheet("background-color: white;")
+                self.Frame.setFrameStyle(QFrame.Panel | QFrame.Raised)
+                self.Frame.setLineWidth(2)
+                self.layout = QHBoxLayout(self.Frame)
+
+                self.figure = Figure()  # a figure to plot on
+                self.canvas = FigureCanvas(self.figure)
+                self.ax = self.figure.add_subplot(111)  # create an axis
+                data = [random.random() for i in range(10)]
+                self.ax.plot(data, '*-')  # plot data
+                self.canvas.draw()  # refresh canvas
+                self.canvas.installEventFilter(self)
+
+                self.layout.addWidget(self.canvas)
+
+                Box = QVBoxLayout()
+
+                Box.addWidget(self.Frame)
+
+                self.gridLayout.addLayout(Box, i, j)
+                self.gridLayout.setColumnStretch(i % 3, 1)
+                self.gridLayout.setRowStretch(j, 1)
+
+    def eventFilter(self, watched, event):
+        if event.type() == QEvent.MouseButtonPress:
+            self.mousePressEvent(event)
+        elif event.type() == QEvent.MouseMove:
+            self.mouseMoveEvent(event)
+        elif event.type() == QEvent.MouseButtonRelease:
+            self.mouseReleaseEvent(event)
+        return super().eventFilter(watched, event)
+
+    def get_index(self, pos):
+        for i in range(self.gridLayout.count()):
+            if self.gridLayout.itemAt(i).geometry().contains(pos) and i != self.target:
+                return i
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.target = self.get_index(event.windowPos().toPoint())
+        else:
+            self.target = None
+
+    def mouseMoveEvent(self, event):
+        if event.buttons() & Qt.LeftButton and self.target is not None:
+            drag = QDrag(self.gridLayout.itemAt(self.target))
+            pix = self.gridLayout.itemAt(self.target).itemAt(0).widget().grab()
+            mimedata = QMimeData()
+            mimedata.setImageData(pix)
+            drag.setMimeData(mimedata)
+            drag.setPixmap(pix)
+            drag.setHotSpot(event.pos())
+            drag.exec_()
+
+    def mouseReleaseEvent(self, event):
+        self.target = None
+
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasImage():
+            event.accept()
+        else:
+            event.ignore()
+
+    def dropEvent(self, event):
+        if not event.source().geometry().contains(event.pos()):
+            source = self.get_index(event.pos())
+            if source is None:
+                return
+
+            i, j = max(self.target, source), min(self.target, source)
+            p1, p2 = self.gridLayout.getItemPosition(i), self.gridLayout.getItemPosition(j)
+
+            self.gridLayout.addItem(self.gridLayout.takeAt(i), *p2)
+            self.gridLayout.addItem(self.gridLayout.takeAt(j), *p1)
 
 
-
-# --- * Selenium Settings * --- #
-PATH = os.getcwd()+"/scraper_channel/webdriver/chromedriver.exe"
-options = Options()
-# options.add_argument("--headless")
-# options.add_argument("start-maximized")
-options.add_experimental_option("excludeSwitches", ["enable-automation"])
-options.add_experimental_option('useAutomationExtension', False)
-options.add_argument('log-level=3')
-options.add_argument("--lang=en")
-options.add_argument('--disable-notifications')
-options.add_argument('--mute-audio')
-# options.add_argument("--kiosk")
-
-
-
-
-
-driver = webdriver.Chrome(PATH, options=options)
-
-
-driver.get("https://www.youtube.com/user/DeUanUIs/videos")
-
-try:
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH,"//div[@class='VfPpkd-dgl2Hf-ppHlrf-sM5MNb']//button"))).click()
-    time.sleep(3)
-    confirm_btn = driver.find_elements(By.XPATH,"//div[@class='uScs5d']//div/button")
-except Exception as e:
-    print("== STEP_1 ===")
-
-try:
-    confirm_btn[0].click() # 1btn
-    time.sleep(0.3)
-    confirm_btn[2].click() # 2btn
-    time.sleep(0.3)
-    confirm_btn[4].click() # 3btn
-    time.sleep(0.3)
-except Exception as e:
-    print("== STEP_2 ===")
-
-try:
-    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//form[@class='bBXLMd']//div/button"))).click()
-except Exception as e:
-    print("== STEP_2 ===")
-
-time.sleep(2)
-# Reload
-link_list = []
-
-for i in range(20):
-    WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")))
-    links = driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")
-
-    for i in links:
-        link_list.append(i.get_attribute("href"))
-
-    div = driver.find_elements(By.XPATH, "//div[@id='items']//ytd-grid-video-renderer")
-    for i in div:
-        try:
-            driver.execute_script("""var element = arguments[0]; 
-            element.parentNode.removeChild(element);""", i)
-        except Exception:
-            print("err")
-
-    html = driver.find_element(By.TAG_NAME,'html')
-    html.send_keys(Keys.END)
-    time.sleep(0.5)
-    print(len(link_list))
-
-print(len(set(link_list)))
-time.sleep(1000)
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    w = IndicSelectWindow()
+    w.show()
+    sys.exit(app.exec_())

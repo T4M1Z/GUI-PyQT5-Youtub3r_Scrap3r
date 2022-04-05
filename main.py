@@ -10,11 +10,13 @@
 ##                                                                               ##
 ###################################################################################
 
+from msilib.schema import Control
 import os
 import sys
 from grpc import Channel
 import requests
 from matplotlib import style
+from scipy.misc import central_diff_weights
 from modules import *
 # from PyQt5.QtChart import QCandlestickSeries, QCandlestickSet, QChart, QChartView, QLineSeries
 from PyQt5.QtWidgets import QFileDialog, QFrame, QGraphicsOpacityEffect, QHBoxLayout, QLabel, QMainWindow, QPushButton
@@ -27,7 +29,7 @@ from PyQt5 import QtWebEngineWidgets
 from PyQt5.QtCore import QObject, QThread, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QGraphicsOpacityEffect
 from PyQt5.QtCore import QPropertyAnimation, QParallelAnimationGroup, QPoint
-from scraper_channel.test_db import MongoDB
+
 
 
 
@@ -38,6 +40,9 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        # ----- WIDGET ------- #
+        self.c_panel = CenterPanel()
 
         # ----- MOVE WINDOW ----- #
         def moveWindow(event):
@@ -60,15 +65,21 @@ class MainWindow(QMainWindow):
         # ------ Settings ------ #
         self.door = False
         self.ui.stop_scraping_btn.hide()
-        self.ui.scraping_monitoring_frame.setMaximumHeight(0)
+        # self.ui.scraping_monitoring_frame.setMaximumHeight(0)
+        self.ui.central_panel_layout.addWidget(self.c_panel)
         self.ui.frame.setContentsMargins(2, 2, 10, 10)
         self.ui.label_gif.hide()
-
-        header = self.ui.tableWidget.horizontalHeader()
+        
+        # Hide monitoring panel
+        self.c_panel.ui.scraping_monitoring_frame.setMaximumHeight(0)
+        
+        # Width of columns in QTable monitoring
+        header = self.c_panel.ui.tableWidget.horizontalHeader()
         header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
         header.setSectionResizeMode(1, QHeaderView.Stretch)
         header.setSectionResizeMode(2, QHeaderView.Stretch)
         header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
+
 
 
         # ------ Actions ------ #
@@ -77,10 +88,13 @@ class MainWindow(QMainWindow):
         self.ui.start_scraping_btn.pressed.connect(self.start_scraping)
         self.ui.stop_scraping_btn.pressed.connect(self.stop_scraping)
         self.ui.test_db_btn.pressed.connect(self.test_connection_db)
+        
         # Loading the GIF
         self.movie = QMovie("ui/icons/loading/loading_circle.gif")
         self.ui.label_gif.setMovie(self.movie)
 
+
+        self.lista = []
         self.show()
         # ------------------------ #
         
@@ -186,7 +200,7 @@ class MainWindow(QMainWindow):
             self.ui.start_scraping_btn.hide()
             self.ui.stop_scraping_btn.show()
             ### - Starting QTrhead - ###
-            self.serialReaderChannelScraping = Channel_Scraping(self.ui)
+            self.serialReaderChannelScraping = Channel_Scraping(self.ui, self.c_panel.ui)
             self.serialReaderChannelScraping.receivedPacketSignal.connect(self.return_data_scraping)
             self.serialReaderChannelScraping.finished.connect(self.insert_data_channel)
             self.serialReaderChannelScraping.start()
@@ -195,16 +209,19 @@ class MainWindow(QMainWindow):
     def return_data_scraping(self, packet):
         if "message" in packet.keys():
             print(packet["message"])
-
+        
         elif "links" in packet.keys():
-            print("funziona?")
+            
+            self.c_panel.ui.tableWidget.selectedItems()
             for l,t,v,idx in zip(packet["links"], packet["title"], packet["visual"], packet["index"]):
-                self.ui.tableWidget.insertRow(idx)
-                self.ui.tableWidget.setItem( idx, 0, QTableWidgetItem(str(idx)))
-                self.ui.tableWidget.setItem( idx, 1, QTableWidgetItem(l))
-                self.ui.tableWidget.setItem( idx, 2, QTableWidgetItem(t))
-                self.ui.tableWidget.setItem( idx, 3, QTableWidgetItem(v))
-
+                if t not in set(self.lista):
+                    self.c_panel.ui.tableWidget.insertRow(idx)
+                    self.c_panel.ui.tableWidget.setItem(idx, 0, QTableWidgetItem(str(idx)))
+                    self.c_panel.ui.tableWidget.setItem(idx, 1, QTableWidgetItem(l))
+                    self.c_panel.ui.tableWidget.setItem(idx, 2, QTableWidgetItem(t))
+                    self.c_panel.ui.tableWidget.setItem(idx, 3, QTableWidgetItem(v))
+                self.lista.append(t)
+        
         elif "channel_data" in packet.keys():
             self.ui.stop_scraping_btn.hide()
             self.ui.start_scraping_btn.show()
@@ -216,8 +233,8 @@ class MainWindow(QMainWindow):
         self.animation_scraping_settings()
 
         # Deleting previuous selenium widget in the layout
-        for i in reversed(range(self.ui.selenium_layout.count())): 
-            self.ui.selenium_layout.itemAt(i).widget().setParent(None)
+        for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
+            self.c_panel.ui.selenium_layout.itemAt(i).widget().setParent(None)
 
         
         self.ui.stop_scraping_btn.hide()
@@ -257,8 +274,8 @@ class MainWindow(QMainWindow):
         self.ui.start_scraping_btn.show()
         self.ui.stop_scraping_btn.hide()
         
-        for i in reversed(range(self.ui.selenium_layout.count())): 
-            self.ui.selenium_layout.itemAt(i).widget().setParent(None)
+        for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
+            self.c_panel.ui.selenium_layout.itemAt(i).widget().setParent(None)
         
         self.animation_scraping_settings()
 
@@ -300,11 +317,11 @@ class MainWindow(QMainWindow):
 
     def animation_scraping_settings(self):
         self.top_panel = QtCore.QPropertyAnimation(self.ui.scraping_setting_frame, b"maximumHeight")
-        self.bottom_panel = QtCore.QPropertyAnimation(self.ui.scraping_monitoring_frame, b"maximumHeight")
+        self.bottom_panel = QtCore.QPropertyAnimation(self.c_panel.ui.scraping_monitoring_frame, b"maximumHeight")
         group_animation = QParallelAnimationGroup(self)
         
         animation = {self.top_panel:[self.ui.scraping_setting_frame,130,0],
-                    self.bottom_panel:[self.ui.scraping_monitoring_frame,300,0]}
+                    self.bottom_panel:[self.c_panel.ui.scraping_monitoring_frame,300,0]}
         
         for k,v in animation.items():
             if v[0].height() > 0:
