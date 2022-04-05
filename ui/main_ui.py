@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'second_gui_styleOJmajv.ui'
+## Form generated from reading UI file 'second_gui_styleVeVaEI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,8 +21,107 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1119, 709)
+        MainWindow.resize(1223, 817)
         MainWindow.setMinimumSize(QSize(0, 708))
+        font = QFont()
+        font.setFamily(u"Oswald ExtraLight")
+        MainWindow.setFont(font)
+        MainWindow.setStyleSheet(u"QScrollBar:horizontal {\n"
+"	border: none;\n"
+"    background: rgb(45, 45, 68);\n"
+"	border-radius: 0px;\n"
+" }\n"
+"\n"
+"/*  HANDLE BAR horiz:horizontal */\n"
+"QScrollBar::handle:horizontal {	\n"
+"	background-color: rgb(49, 49, 49);\n"
+"	border-radius: 4px;\n"
+"\n"
+"}\n"
+"QScrollBar::handle:horizontal:hover{	\n"
+"	background-color: rgb(54, 54, 54);\n"
+"}\n"
+"QScrollBar::handle:horizontal:pressed {	\n"
+"	background-color: rgb(50, 50, 50);\n"
+"}\n"
+"\n"
+"/* BTN TOP - SCROLLBAR */\n"
+"QScrollBar::sub-line:horizontal {\n"
+"	border: none;\n"
+"	background-color: rgb(60, 60, 60);\n"
+"border-radius: 3px;\n"
+"width:0px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"/* BTN BOTTOM - SCROLLBAR */\n"
+"QScrollBar::add-line:horizontal {\n"
+"	border: none;\n"
+"		background-color: rgb(60, 60, 60);\n"
+"border-radius: 3px;\n"
+"width:0px;\n"
+"}\n"
+"\n"
+"\n"
+"/* RESET ARROW */\n"
+"QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {\n"
+"	background: none;\n"
+"}\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+""
+                        "	background: none;\n"
+"}\n"
+"\n"
+"QScrollBar:vertical {\n"
+"	border: none;\n"
+"    background: rgb(45, 45, 68);\n"
+"	border-radius: 0px;\n"
+" }\n"
+"\n"
+"/*  HANDLE BAR horiz:vertical */\n"
+"QScrollBar::handle:vertical {	\n"
+"	background-color: rgb(49, 49, 49);\n"
+"	border-radius: 7px;\n"
+"\n"
+"border-radius: 4px;\n"
+"\n"
+"}\n"
+"QScrollBar::handle:vertical:hover{	\n"
+"	background-color: rgb(54, 54, 54);\n"
+"}\n"
+"QScrollBar::handle:vertical:pressed {	\n"
+"	background-color: rgb(50, 50, 50);\n"
+"}\n"
+"\n"
+"/* BTN TOP - SCROLLBAR */\n"
+"QScrollBar::sub-line:vertical {\n"
+"	border: none;\n"
+"	background-color: rgb(60, 60, 60);\n"
+"border-radius: 3px;\n"
+"width:0px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"/* BTN BOTTOM - SCROLLBAR */\n"
+"QScrollBar::add-line:vertical {\n"
+"	border: none;\n"
+"		background-color: rgb(60, 60, 60);\n"
+"border-radius: 3px;\n"
+"width:0px;\n"
+"}\n"
+"\n"
+"\n"
+"/* RESET ARROW */\n"
+"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
+"	background: none;\n"
+"}\n"
+"QScrollBar::add-page:verti"
+                        "cal, QScrollBar::sub-page:vertical {\n"
+"	background: none;\n"
+"}\n"
+"")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setMinimumSize(QSize(0, 0))
@@ -98,12 +197,12 @@ class Ui_MainWindow(object):
 
         self.label_11 = QLabel(self.frame_16)
         self.label_11.setObjectName(u"label_11")
-        font = QFont()
-        font.setFamily(u"Roboto")
-        font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_11.setFont(font)
+        font1 = QFont()
+        font1.setFamily(u"Roboto")
+        font1.setPointSize(9)
+        font1.setBold(True)
+        font1.setWeight(75)
+        self.label_11.setFont(font1)
         self.label_11.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label_11.setAlignment(Qt.AlignCenter)
 
@@ -246,6 +345,9 @@ class Ui_MainWindow(object):
 
         self.frame_3 = QFrame(self.frame)
         self.frame_3.setObjectName(u"frame_3")
+        font2 = QFont()
+        font2.setFamily(u"Noto Sans")
+        self.frame_3.setFont(font2)
         self.frame_3.setStyleSheet(u"background-color: rgb(59, 59, 59);")
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
@@ -340,11 +442,11 @@ class Ui_MainWindow(object):
         self.username_channel = QLineEdit(self.frame_7)
         self.username_channel.setObjectName(u"username_channel")
         self.username_channel.setMinimumSize(QSize(0, 28))
-        font1 = QFont()
-        font1.setFamily(u"Roboto")
-        font1.setBold(False)
-        font1.setWeight(50)
-        self.username_channel.setFont(font1)
+        font3 = QFont()
+        font3.setFamily(u"Roboto")
+        font3.setBold(False)
+        font3.setWeight(50)
+        self.username_channel.setFont(font3)
         self.username_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -403,7 +505,7 @@ class Ui_MainWindow(object):
         self.country_channel.setObjectName(u"country_channel")
         self.country_channel.setMinimumSize(QSize(48, 0))
         self.country_channel.setMaximumSize(QSize(52, 24))
-        self.country_channel.setFont(font1)
+        self.country_channel.setFont(font3)
         self.country_channel.setStyleSheet(u"\n"
 "	color: rgb(181, 181, 181);\n"
 "\n"
@@ -429,7 +531,7 @@ class Ui_MainWindow(object):
         self.totVideo_channel = QLineEdit(self.frame_7)
         self.totVideo_channel.setObjectName(u"totVideo_channel")
         self.totVideo_channel.setMinimumSize(QSize(0, 28))
-        self.totVideo_channel.setFont(font1)
+        self.totVideo_channel.setFont(font3)
         self.totVideo_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -459,7 +561,7 @@ class Ui_MainWindow(object):
         self.totViews_channel = QLineEdit(self.frame_7)
         self.totViews_channel.setObjectName(u"totViews_channel")
         self.totViews_channel.setMinimumSize(QSize(0, 28))
-        self.totViews_channel.setFont(font1)
+        self.totViews_channel.setFont(font3)
         self.totViews_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -489,7 +591,7 @@ class Ui_MainWindow(object):
         self.totSubs_channel = QLineEdit(self.frame_7)
         self.totSubs_channel.setObjectName(u"totSubs_channel")
         self.totSubs_channel.setMinimumSize(QSize(0, 28))
-        self.totSubs_channel.setFont(font1)
+        self.totSubs_channel.setFont(font3)
         self.totSubs_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -519,7 +621,7 @@ class Ui_MainWindow(object):
         self.joinedDate_channel = QLineEdit(self.frame_7)
         self.joinedDate_channel.setObjectName(u"joinedDate_channel")
         self.joinedDate_channel.setMinimumSize(QSize(0, 28))
-        self.joinedDate_channel.setFont(font1)
+        self.joinedDate_channel.setFont(font3)
         self.joinedDate_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -551,7 +653,7 @@ class Ui_MainWindow(object):
         self.social_comboBox.setObjectName(u"social_comboBox")
         self.social_comboBox.setMinimumSize(QSize(0, 28))
         self.social_comboBox.setMaximumSize(QSize(16777215, 28))
-        self.social_comboBox.setFont(font1)
+        self.social_comboBox.setFont(font3)
         self.social_comboBox.setStyleSheet(u"QComboBox{\n"
 "	border: 1px solid  rgb(91, 91, 91);\n"
 "	background-color: rgb(55, 55, 55);\n"
@@ -590,9 +692,9 @@ class Ui_MainWindow(object):
         self.description_channel.setObjectName(u"description_channel")
         self.description_channel.setMinimumSize(QSize(0, 95))
         self.description_channel.setMaximumSize(QSize(16777215, 110))
-        font2 = QFont()
-        font2.setFamily(u"Roboto")
-        self.description_channel.setFont(font2)
+        font4 = QFont()
+        font4.setFamily(u"Roboto")
+        self.description_channel.setFont(font4)
         self.description_channel.setStyleSheet(u"QTextEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -654,19 +756,19 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(-1, 15, -1, 9)
-        self.frame_31 = QFrame(self.frame_center)
-        self.frame_31.setObjectName(u"frame_31")
-        self.frame_31.setMinimumSize(QSize(0, 130))
-        self.frame_31.setMaximumSize(QSize(16777215, 130))
-        self.frame_31.setStyleSheet(u"border:none;\n"
+        self.scraping_setting_frame = QFrame(self.frame_center)
+        self.scraping_setting_frame.setObjectName(u"scraping_setting_frame")
+        self.scraping_setting_frame.setMinimumSize(QSize(0, 0))
+        self.scraping_setting_frame.setMaximumSize(QSize(16777215, 130))
+        self.scraping_setting_frame.setStyleSheet(u"border:none;\n"
 "background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 59, 69, 0), stop:1 rgba(91, 99, 115, 0));")
-        self.frame_31.setFrameShape(QFrame.StyledPanel)
-        self.frame_31.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_15 = QHBoxLayout(self.frame_31)
+        self.scraping_setting_frame.setFrameShape(QFrame.StyledPanel)
+        self.scraping_setting_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_15 = QHBoxLayout(self.scraping_setting_frame)
         self.horizontalLayout_15.setSpacing(0)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.horizontalLayout_15.setContentsMargins(-1, 0, -1, 0)
-        self.section_1 = QFrame(self.frame_31)
+        self.section_1 = QFrame(self.scraping_setting_frame)
         self.section_1.setObjectName(u"section_1")
         self.section_1.setMinimumSize(QSize(800, 130))
         self.section_1.setMaximumSize(QSize(16777215, 130))
@@ -694,9 +796,9 @@ class Ui_MainWindow(object):
         self.frame_11.setMinimumSize(QSize(0, 0))
         self.frame_11.setMaximumSize(QSize(16777215, 430))
         self.frame_11.setSizeIncrement(QSize(0, 0))
-        font3 = QFont()
-        font3.setPointSize(8)
-        self.frame_11.setFont(font3)
+        font5 = QFont()
+        font5.setPointSize(8)
+        self.frame_11.setFont(font5)
         self.frame_11.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
 "border:0px solid rgb(90, 90, 90);")
         self.frame_11.setFrameShape(QFrame.StyledPanel)
@@ -718,9 +820,9 @@ class Ui_MainWindow(object):
         self.frame_13 = QFrame(self.frame_12)
         self.frame_13.setObjectName(u"frame_13")
         self.frame_13.setMaximumSize(QSize(16777215, 16777215))
-        font4 = QFont()
-        font4.setPointSize(10)
-        self.frame_13.setFont(font4)
+        font6 = QFont()
+        font6.setPointSize(10)
+        self.frame_13.setFont(font6)
         self.frame_13.setStyleSheet(u"border:none")
         self.frame_13.setFrameShape(QFrame.StyledPanel)
         self.frame_13.setFrameShadow(QFrame.Raised)
@@ -731,12 +833,12 @@ class Ui_MainWindow(object):
         self.channel_radioBtn = QRadioButton(self.frame_13)
         self.channel_radioBtn.setObjectName(u"channel_radioBtn")
         self.channel_radioBtn.setMaximumSize(QSize(100, 16777215))
-        font5 = QFont()
-        font5.setFamily(u"Roboto Black")
-        font5.setPointSize(9)
-        font5.setBold(False)
-        font5.setWeight(50)
-        self.channel_radioBtn.setFont(font5)
+        font7 = QFont()
+        font7.setFamily(u"Roboto Black")
+        font7.setPointSize(9)
+        font7.setBold(False)
+        font7.setWeight(50)
+        self.channel_radioBtn.setFont(font7)
         self.channel_radioBtn.setStyleSheet(u"\n"
 "QRadioButton{background-color: rgb(55, 55, 55);\n"
 "color: rgb(255, 255, 255);\n"
@@ -761,7 +863,7 @@ class Ui_MainWindow(object):
         self.video_radioBtn = QRadioButton(self.frame_13)
         self.video_radioBtn.setObjectName(u"video_radioBtn")
         self.video_radioBtn.setMaximumSize(QSize(95, 16777215))
-        self.video_radioBtn.setFont(font5)
+        self.video_radioBtn.setFont(font7)
         self.video_radioBtn.setStyleSheet(u"\n"
 "QRadioButton{background-color: rgb(55, 55, 55);\n"
 "color: rgb(255, 255, 255);\n"
@@ -786,10 +888,10 @@ class Ui_MainWindow(object):
         self.url_Input = QLineEdit(self.frame_13)
         self.url_Input.setObjectName(u"url_Input")
         self.url_Input.setMaximumSize(QSize(16777215, 39))
-        font6 = QFont()
-        font6.setFamily(u"Roboto")
-        font6.setPointSize(9)
-        self.url_Input.setFont(font6)
+        font8 = QFont()
+        font8.setFamily(u"Roboto")
+        font8.setPointSize(9)
+        self.url_Input.setFont(font8)
         self.url_Input.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "color: rgb(255, 255, 255);\n"
@@ -847,7 +949,7 @@ class Ui_MainWindow(object):
         self.label_3 = QLabel(self.frame_18)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setEnabled(True)
-        self.label_3.setFont(font5)
+        self.label_3.setFont(font7)
         self.label_3.setStyleSheet(u"color:white;\n"
 "border:none;\n"
 "")
@@ -947,7 +1049,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_16.setContentsMargins(-1, 5, -1, 5)
         self.label_2 = QLabel(self.frame_17)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font5)
+        self.label_2.setFont(font7)
         self.label_2.setStyleSheet(u"color:white;\n"
 "border:none;\n"
 "")
@@ -1040,7 +1142,7 @@ class Ui_MainWindow(object):
         self.username_db.setObjectName(u"username_db")
         self.username_db.setEnabled(True)
         self.username_db.setMinimumSize(QSize(0, 28))
-        self.username_db.setFont(font6)
+        self.username_db.setFont(font8)
         self.username_db.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "color: rgb(255, 255, 255);\n"
@@ -1065,7 +1167,7 @@ class Ui_MainWindow(object):
         self.password_db.setObjectName(u"password_db")
         self.password_db.setEnabled(True)
         self.password_db.setMinimumSize(QSize(0, 28))
-        self.password_db.setFont(font6)
+        self.password_db.setFont(font8)
         self.password_db.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "color: rgb(255, 255, 255);\n"
@@ -1105,7 +1207,7 @@ class Ui_MainWindow(object):
         self.test_db_btn.setSizePolicy(sizePolicy)
         self.test_db_btn.setMinimumSize(QSize(62, 28))
         self.test_db_btn.setMaximumSize(QSize(16777215, 28))
-        self.test_db_btn.setFont(font5)
+        self.test_db_btn.setFont(font7)
         self.test_db_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.test_db_btn.setStyleSheet(u"\n"
 "QPushButton{\n"
@@ -1149,12 +1251,12 @@ class Ui_MainWindow(object):
         self.status_db_connection.setObjectName(u"status_db_connection")
         self.status_db_connection.setMinimumSize(QSize(80, 28))
         self.status_db_connection.setMaximumSize(QSize(80, 28))
-        font7 = QFont()
-        font7.setFamily(u"Roboto Black")
-        font7.setPointSize(8)
-        font7.setBold(False)
-        font7.setWeight(50)
-        self.status_db_connection.setFont(font7)
+        font9 = QFont()
+        font9.setFamily(u"Roboto Black")
+        font9.setPointSize(8)
+        font9.setBold(False)
+        font9.setWeight(50)
+        self.status_db_connection.setFont(font9)
         self.status_db_connection.setStyleSheet(u"QLabel{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(227, 87, 87);\n"
@@ -1193,7 +1295,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.addWidget(self.section_1)
 
 
-        self.verticalLayout_13.addWidget(self.frame_31)
+        self.verticalLayout_13.addWidget(self.scraping_setting_frame)
 
         self.frame_30 = QFrame(self.frame_center)
         self.frame_30.setObjectName(u"frame_30")
@@ -1227,17 +1329,15 @@ class Ui_MainWindow(object):
         self.stop_scraping_btn.setObjectName(u"stop_scraping_btn")
         self.stop_scraping_btn.setMinimumSize(QSize(200, 40))
         self.stop_scraping_btn.setMaximumSize(QSize(200, 40))
-        font8 = QFont()
-        font8.setFamily(u"Roboto Black")
-        font8.setPointSize(10)
-        self.stop_scraping_btn.setFont(font8)
+        font10 = QFont()
+        font10.setFamily(u"Roboto Black")
+        font10.setPointSize(10)
+        self.stop_scraping_btn.setFont(font10)
         self.stop_scraping_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.stop_scraping_btn.setStyleSheet(u"QPushButton{ \n"
 "	border: 4px solid rgb(49, 49, 49);\n"
-"	border-top:0px;\n"
 "	background-color: rgb(66, 66, 66);\n"
-"	border-bottom-left-radius:5px;\n"
-"	border-bottom-right-radius:5px;\n"
+"	border-radius:5px;\n"
 "	color: rgb(201, 201, 201);\n"
 "}\n"
 "\n"
@@ -1257,7 +1357,7 @@ class Ui_MainWindow(object):
         self.start_scraping_btn.setObjectName(u"start_scraping_btn")
         self.start_scraping_btn.setMinimumSize(QSize(200, 40))
         self.start_scraping_btn.setMaximumSize(QSize(200, 40))
-        self.start_scraping_btn.setFont(font8)
+        self.start_scraping_btn.setFont(font10)
         self.start_scraping_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.start_scraping_btn.setStyleSheet(u"QPushButton{ \n"
 "	border: 4px solid rgb(49, 49, 49);\n"
@@ -1344,11 +1444,194 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_13.addLayout(self.horizontalLayout_20)
 
+        self.scraping_monitoring_frame = QFrame(self.frame_center)
+        self.scraping_monitoring_frame.setObjectName(u"scraping_monitoring_frame")
+        self.scraping_monitoring_frame.setMaximumSize(QSize(16777215, 16777215))
+        self.scraping_monitoring_frame.setStyleSheet(u"border:none;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
+        self.scraping_monitoring_frame.setFrameShape(QFrame.StyledPanel)
+        self.scraping_monitoring_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_28 = QHBoxLayout(self.scraping_monitoring_frame)
+        self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
+        self.horizontalLayout_28.setContentsMargins(-1, 0, -1, 0)
+        self.frame_20 = QFrame(self.scraping_monitoring_frame)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setStyleSheet(u"background-color: rgb(49, 49, 49);\n"
+"border-radius:3px;\n"
+"\n"
+"border:0px;")
+        self.frame_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_24 = QHBoxLayout(self.frame_20)
+        self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
+        self.horizontalLayout_24.setContentsMargins(4, 4, 4, 4)
+        self.frame_23 = QFrame(self.frame_20)
+        self.frame_23.setObjectName(u"frame_23")
+        self.frame_23.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
+"border:2px solid rgb(90, 90, 90);")
+        self.frame_23.setFrameShape(QFrame.StyledPanel)
+        self.frame_23.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_25 = QHBoxLayout(self.frame_23)
+        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
+        self.horizontalLayout_25.setContentsMargins(0, 0, 0, 0)
+        self.textBrowser = QTextBrowser(self.frame_23)
+        self.textBrowser.setObjectName(u"textBrowser")
+        self.textBrowser.setStyleSheet(u"QTextBrowser{\n"
+"	border:none;\n"
+"		color: rgb(181, 181, 181);\n"
+"	border-radius:8px;\n"
+"	background-color: rgb(77, 77, 77);\n"
+"	padding-left:10px;\n"
+"	padding-top:5px;\n"
+"	padding-bottom:5px;\n"
+"	padding-right:10px;\n"
+"}")
+
+        self.horizontalLayout_25.addWidget(self.textBrowser)
+
+
+        self.horizontalLayout_24.addWidget(self.frame_23)
+
+
+        self.horizontalLayout_28.addWidget(self.frame_20)
+
+        self.frame_26 = QFrame(self.scraping_monitoring_frame)
+        self.frame_26.setObjectName(u"frame_26")
+        self.frame_26.setFrameShape(QFrame.StyledPanel)
+        self.frame_26.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_31 = QHBoxLayout(self.frame_26)
+        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
+        self.horizontalLayout_31.setContentsMargins(0, 0, 0, 0)
+        self.frame_27 = QFrame(self.frame_26)
+        self.frame_27.setObjectName(u"frame_27")
+        self.frame_27.setStyleSheet(u"background-color: rgb(49, 49, 49);\n"
+"border-radius:3px;\n"
+"\n"
+"border:0px;")
+        self.frame_27.setFrameShape(QFrame.StyledPanel)
+        self.frame_27.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_29 = QHBoxLayout(self.frame_27)
+        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
+        self.horizontalLayout_29.setContentsMargins(4, 4, 4, 4)
+        self.frame_28 = QFrame(self.frame_27)
+        self.frame_28.setObjectName(u"frame_28")
+        self.frame_28.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
+"border:2px solid rgb(90, 90, 90);")
+        self.frame_28.setFrameShape(QFrame.StyledPanel)
+        self.frame_28.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_30 = QHBoxLayout(self.frame_28)
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+        self.horizontalLayout_30.setContentsMargins(0, 0, 0, 0)
+        self.tableWidget = QTableWidget(self.frame_28)
+        if (self.tableWidget.columnCount() < 4):
+            self.tableWidget.setColumnCount(4)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        if (self.tableWidget.rowCount() < 1):
+            self.tableWidget.setRowCount(1)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setFont(font4)
+        self.tableWidget.setStyleSheet(u"QTableWidget{\n"
+"	border-radius:8px;\n"
+"	border: none;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QTableWidget, QHeaderView::section, QTableWidget QTableCornerButton:section\n"
+"{\n"
+"	background-color: rgb(77, 77, 77);\n"
+"    color: #fff;\n"
+"    gridline-color:  rgb(48, 48, 48);\n"
+"\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected\n"
+"{\n"
+"	background-color: rgb(56, 56, 56);\n"
+"}\n"
+"\n"
+"\n"
+"QTableWidget QTableCornerButton::section {\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));\n"
+"}\n"
+"\n"
+"QHeaderView{\n"
+"font: 13px ;\n"
+"color:rgb(240, 240, 240);\n"
+"background-color: rgb(80, 80, 80);\n"
+"}\n"
+"QHeaderView::section:horizontal{\n"
+"min-height:30px;\n"
+"border:0;\n"
+"border-bottom:1px solid rgb(195, 75, 75);\n"
+"background-color: rgb(60,60,60);\n"
+"}\n"
+"\n"
+"QHeaderView::section{\n"
+"font: 13px ;\n"
+"text-align:center;\n"
+"}\n"
+"QHeaderView::section:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(75, 75, 75);\n"
+"}\n"
+"QHeaderView::section:"
+                        "checked{/*\u4e0d\u53d6\u6d88\u9ad8\u4eae*/\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(75, 75, 75);\n"
+"}\n"
+"QHeaderView::section:selected{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(75, 75, 75);\n"
+"}\n"
+"QHeaderView::section:checked:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(75, 75, 75);\n"
+"}\n"
+"")
+        self.tableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.tableWidget.setAlternatingRowColors(False)
+        self.tableWidget.setShowGrid(True)
+        self.tableWidget.setSortingEnabled(False)
+        self.tableWidget.setRowCount(1)
+        self.tableWidget.setColumnCount(4)
+        self.tableWidget.horizontalHeader().setHighlightSections(True)
+        self.tableWidget.horizontalHeader().setProperty("showSortIndicator", False)
+        self.tableWidget.horizontalHeader().setStretchLastSection(False)
+        self.tableWidget.verticalHeader().setVisible(False)
+        self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
+        self.tableWidget.verticalHeader().setHighlightSections(False)
+        self.tableWidget.verticalHeader().setProperty("showSortIndicator", False)
+
+        self.horizontalLayout_30.addWidget(self.tableWidget)
+
+
+        self.horizontalLayout_29.addWidget(self.frame_28)
+
+
+        self.horizontalLayout_31.addWidget(self.frame_27)
+
+
+        self.horizontalLayout_28.addWidget(self.frame_26)
+
+        self.horizontalLayout_28.setStretch(0, 10)
+        self.horizontalLayout_28.setStretch(1, 7)
+
+        self.verticalLayout_13.addWidget(self.scraping_monitoring_frame)
+
         self.verticalSpacer_4 = QSpacerItem(20, 2, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_13.addItem(self.verticalSpacer_4)
 
         self.verticalLayout_13.setStretch(2, 15)
+        self.verticalLayout_13.setStretch(3, 6)
 
         self.horizontalLayout_6.addWidget(self.frame_center)
 
@@ -1451,6 +1734,41 @@ class Ui_MainWindow(object):
         self.status_db_connection.setText(QCoreApplication.translate("MainWindow", u"OFFLINE", None))
         self.stop_scraping_btn.setText(QCoreApplication.translate("MainWindow", u"Stop Scraping", None))
         self.start_scraping_btn.setText(QCoreApplication.translate("MainWindow", u"Start scraping", None))
+        self.textBrowser.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:"
+                        "0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-"
+                        "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p "
+                        "style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p></body></html>", None))
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Link url", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(2)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Title", None));
+        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(3)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Views", None));
         self.drag_btn.setText("")
     # retranslateUi
 

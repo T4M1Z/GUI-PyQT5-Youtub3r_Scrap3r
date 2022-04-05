@@ -60,10 +60,15 @@ class MainWindow(QMainWindow):
         # ------ Settings ------ #
         self.door = False
         self.ui.stop_scraping_btn.hide()
+        self.ui.scraping_monitoring_frame.setMaximumHeight(0)
         self.ui.frame.setContentsMargins(2, 2, 10, 10)
         self.ui.label_gif.hide()
 
-
+        header = self.ui.tableWidget.horizontalHeader()
+        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.Stretch)
+        header.setSectionResizeMode(2, QHeaderView.Stretch)
+        header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
 
 
         # ------ Actions ------ #
@@ -176,9 +181,10 @@ class MainWindow(QMainWindow):
 
         # Final controll
         if self.ui.status_db_connection.text() == "ONLINE" and self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
+
+            self.animation_scraping_settings()
             self.ui.start_scraping_btn.hide()
             self.ui.stop_scraping_btn.show()
-
             ### - Starting QTrhead - ###
             self.serialReaderChannelScraping = Channel_Scraping(self.ui)
             self.serialReaderChannelScraping.receivedPacketSignal.connect(self.return_data_scraping)
@@ -190,41 +196,57 @@ class MainWindow(QMainWindow):
         if "message" in packet.keys():
             print(packet["message"])
 
-        if "channel_data" in packet.keys():
+        elif "links" in packet.keys():
+            print("funziona?")
+            for l,t,v,idx in zip(packet["links"], packet["title"], packet["visual"], packet["index"]):
+                self.ui.tableWidget.insertRow(idx)
+                self.ui.tableWidget.setItem( idx, 0, QTableWidgetItem(str(idx)))
+                self.ui.tableWidget.setItem( idx, 1, QTableWidgetItem(l))
+                self.ui.tableWidget.setItem( idx, 2, QTableWidgetItem(t))
+                self.ui.tableWidget.setItem( idx, 3, QTableWidgetItem(v))
+
+        elif "channel_data" in packet.keys():
             self.ui.stop_scraping_btn.hide()
             self.ui.start_scraping_btn.show()
             self.packet_data = packet["channel_data"]
 
 
-    def insert_data_channel(self):
+
+    def insert_data_channel(self):  
+        self.animation_scraping_settings()
+
         # Deleting previuous selenium widget in the layout
         for i in reversed(range(self.ui.selenium_layout.count())): 
             self.ui.selenium_layout.itemAt(i).widget().setParent(None)
 
-
+        
         self.ui.stop_scraping_btn.hide()
         self.ui.start_scraping_btn.show()
-        self.download_image(self.packet_data["profile_img"])
-        # Username
-        self.ui.username_channel.setText(self.packet_data["username"])
-        # Flag Country
-        if self.packet_data["location"] != "":
-            self.ui.flag_label.setStyleSheet(stylesheet.flag(str(self.packet_data["location"][:2]).lower())) 
-        else: self.ui.flag_label.setStyleSheet(stylesheet.no_flag)
-        # Total Video
-        self.ui.totVideo_channel.setText(str(self.packet_data["tot_video"])+" Video")
-        # Total Views
-        self.ui.totViews_channel.setText(self.packet_data["tot_visual"])
-        # Subscriber
-        self.ui.totSubs_channel.setText(self.packet_data["subs"])
-        # Joined Date
-        self.ui.joinedDate_channel.setText("Joined on "+self.packet_data["joined_date"])
-        # Social
-        print(self.packet_data["social"])
-        self.ui.social_comboBox.addItems(self.packet_data["social"])
-        # Channel Description
-        self.ui.description_channel.clear()
-        self.ui.description_channel.setText(self.packet_data["channel_desc"])
+        
+        try:
+            self.download_image(self.packet_data["profile_img"])
+            # Username
+            self.ui.username_channel.setText(self.packet_data["username"])
+            # Flag Country
+            if self.packet_data["location"] != "":
+                self.ui.flag_label.setStyleSheet(stylesheet.flag(str(self.packet_data["location"][:2]).lower())) 
+            else: self.ui.flag_label.setStyleSheet(stylesheet.no_flag)
+            # Total Video
+            self.ui.totVideo_channel.setText(str(self.packet_data["tot_video"])+" Video")
+            # Total Views
+            self.ui.totViews_channel.setText(self.packet_data["tot_visual"])
+            # Subscriber
+            self.ui.totSubs_channel.setText(self.packet_data["subs"])
+            # Joined Date
+            self.ui.joinedDate_channel.setText("Joined on "+self.packet_data["joined_date"])
+            # Social
+            print(self.packet_data["social"])
+            self.ui.social_comboBox.addItems(self.packet_data["social"])
+            # Channel Description
+            self.ui.description_channel.clear()
+            self.ui.description_channel.setText(self.packet_data["channel_desc"])
+        except:
+            print("Programm stopped without data input")
         
 
 
@@ -237,6 +259,8 @@ class MainWindow(QMainWindow):
         
         for i in reversed(range(self.ui.selenium_layout.count())): 
             self.ui.selenium_layout.itemAt(i).widget().setParent(None)
+        
+        self.animation_scraping_settings()
 
 
 
@@ -272,17 +296,29 @@ class MainWindow(QMainWindow):
         self.ui.description_channel.setText("Channel description")
 
 
-    def animation_left_panel(self):
-        self.effect = QGraphicsOpacityEffect()
-        self.ui.left_panel.setGraphicsEffect(self.effect)
-        self.animation = QtCore.QPropertyAnimation(self.effect, b"opacity")
-        self.animation.setDuration(1400)
-        self.animation.setStartValue(0)
-        self.animation.setEndValue(1)
-        self.ui.left_panel.show()
-        self.animation.start()
 
 
+    def animation_scraping_settings(self):
+        self.top_panel = QtCore.QPropertyAnimation(self.ui.scraping_setting_frame, b"maximumHeight")
+        self.bottom_panel = QtCore.QPropertyAnimation(self.ui.scraping_monitoring_frame, b"maximumHeight")
+        group_animation = QParallelAnimationGroup(self)
+        
+        animation = {self.top_panel:[self.ui.scraping_setting_frame,130,0],
+                    self.bottom_panel:[self.ui.scraping_monitoring_frame,300,0]}
+        
+        for k,v in animation.items():
+            if v[0].height() > 0:
+                h1, h2 = v[1],v[2]
+            else:
+                h1, h2 = v[2],v[1]
+
+            k.setDuration(400)
+            k.setStartValue(h1)
+            k.setEndValue(h2)
+            k.start()
+            group_animation.addAnimation(k)
+
+        group_animation.start()
 
 
 if __name__ == "__main__":

@@ -27,15 +27,14 @@ class Channel_Scraping(QThread):
 
         self.ui = ui
         self.url = self.ui.url_Input.text()
-        print("fffffffffff",self.url)
         self.threads = self.ui.threads_spinBox.value()
-        self.cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False 
-        self.yt_name = self.url.split("/")[4] 
-
+        self.cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False
+        self.yt_name = self.url.split("/")[4]
+        
 
         # --- * Selenium Settings * --- #
         PATH = os.getcwd()+"/scraper_channel/webdriver/chromedriver.exe"
-        options = Options() 
+        options = Options()
         # options.add_argument("--headless")
         # options.add_argument("start-maximized")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
@@ -44,19 +43,17 @@ class Channel_Scraping(QThread):
         options.add_argument("--lang=en")
         options.add_argument('--disable-notifications')
         options.add_argument('--mute-audio')
+        # options.add_argument("--kiosk")
+        options.add_argument("--window-position=-3500,-3500")
         options.add_argument("disable-infobars")
         options.add_argument("--kiosk")
-        options.add_argument("--window-size="+str(int(2*width))+","+str(int(2*height)))
-        options.add_argument("--window-position=-10,-10")
-        options.add_argument("disable-infobars")
-        options.add_argument("--kiosk")
-        options.add_argument("--window-position=-3500,-3500") 
+        options.add_argument(f"--app={self.url}")
 
         self.driver = webdriver.Chrome(PATH, options=options)
         print(f"Canale YouTube: {self.yt_name}")
         self.driver.set_window_size(1,1)
 
-        
+
         self.driver.get(self.url)
         time.sleep(0.5)
         # ------------------------------------------ #
@@ -68,7 +65,7 @@ class Channel_Scraping(QThread):
                 win32gui.EnumWindows(self.hwnd_method, None)
                 self.embed_window = QtGui.QWindow.fromWinId(self.hwnd)
                 self.embed_widget = QtWidgets.QWidget.createWindowContainer(self.embed_window)
-                self.ui.selenium_layout.addWidget(self.embed_widget)        
+                self.ui.selenium_layout.addWidget(self.embed_widget)
                 self.tries+= 1
                 break
             except Exception as e:
@@ -76,12 +73,12 @@ class Channel_Scraping(QThread):
                 self.tries += 1
         # ------------------------------------------ #
         # self.driver.set_window_size(1,1)
-        
+
         # --- * ----------------- * --- #
 
 
-    
-        
+
+
         # XPATH Elements location
         self.location_path = "//div[@id='details-container']//table//tbody//tr[2]//td[2]"
         self.joined_date_path = "//div[@id='right-column']//yt-formatted-string[2]//span[2]"
@@ -93,13 +90,13 @@ class Channel_Scraping(QThread):
         self.social_secondary = "//div[@id='secondary-links']"
         self.social_path = "//div[@id='links-holder']"
         self.channel_desc_path = "//div[@id='description-container']"
-        
+
 
     def hwnd_method(self, hwnd, ctx):
         window_title = win32gui.GetWindowText(hwnd)
         if "before you continue to youtube" in window_title.lower():
             self.hwnd = hwnd
-            '''        
+            '''
             old_style = win32gui.GetWindowLong(hwnd, -16)
             # building the new style(old style AND NOT Maximize AND NOT Minimize)
             new_style = old_style & ~win32con.WS_MAXIMIZEBOX & ~win32con.WS_MINIMIZEBOX
@@ -115,20 +112,20 @@ class Channel_Scraping(QThread):
     def run(self):
         # self.driver.set_window_size(1,1)
 
-        try: 
+        try:
             WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH,"//div[@class='VfPpkd-dgl2Hf-ppHlrf-sM5MNb']//button"))).click()
             time.sleep(3)
             confirm_btn = self.driver.find_elements(By.XPATH,"//div[@class='uScs5d']//div/button")
         except Exception as e:
             print("== STEP_1 ===")
-        
-        try: 
+
+        try:
             confirm_btn[0].click() # 1btn
-            time.sleep(1)
+            time.sleep(0.3)
             confirm_btn[2].click() # 2btn
-            time.sleep(1)
+            time.sleep(0.3)
             confirm_btn[4].click() # 3btn
-            time.sleep(1)
+            time.sleep(0.3)
         except Exception as e:
             print("== STEP_2 ===")
 
@@ -140,7 +137,7 @@ class Channel_Scraping(QThread):
 
         username = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//ytd-channel-name[@id='channel-name']"))).text
         # 1scroll = 30video
-        
+
         try:
             WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//div[@id='primary-items']//yt-dropdown-menu//tp-yt-paper-menu-button//div"))).click()
             WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//div[@id='contentWrapper']//div//tp-yt-paper-listbox//a[1]//tp-yt-paper-item//tp-yt-paper-item-body"))).click()
@@ -171,30 +168,54 @@ class Channel_Scraping(QThread):
 
         # Scroll the page and load more videos
         time.sleep(1)
-        for i in range(scroll):
+
+        # Dict for qt signals
+        video_info = {"links":[], "title":[], "visual":[], "index":[]}
+        index = 1
+        for n in range(scroll):
+            try:
+                WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(
+                    (By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")))
+                links_video = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")
+                title = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='video-title']")
+                visual = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='metadata-line']//span[1]")
+                # date = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='metadata-line']//span[2]")
+                # duration = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='overlays']//span[@id='text']")
+
+                for l,t,v in zip(links_video,title,visual):
+                    video_info["links"].append(l.get_attribute("href"))
+                    video_info["title"].append(t.text)
+                    video_info["visual"].append(v.text)
+                    video_info["index"].append(index)
+                    index+=1
+
+                div = self.driver.find_elements(By.XPATH, "//div[@id='items']//ytd-grid-video-renderer")
+                for element in div:
+                    try: self.driver.execute_script("""var element = arguments[0]; 
+                    element.parentNode.removeChild(element);""", element)
+                    except Exception: print("err")
+            except:
+                print("End")
+
             html = self.driver.find_element(By.TAG_NAME,'html')
             html.send_keys(Keys.END)
-            print(f"scrolling [{i+1}/{scroll}]")
             time.sleep(0.5)
 
+            self.receivedPacketSignal.emit(video_info)
 
-        # Reload
-        links = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")
-
-        #codice va lento su canale con molti iscritti
-        links = [i.get_attribute("href") for i in links]
+            print(f"scrolling [{n+1}/{scroll}] ")
 
 
         with open(f'links.txt', 'w', encoding='UTF8') as f:
-            for link in links:
+            for link in video_info["links"]:
                 f.writelines(link)
                 f.writelines("\n")
         f.close()
-        
+
 
         # __ INFO CHANNEL __
         self.driver.get(self.url[:-6]+"/about")
-        
+
         try:location = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.location_path ))).text
         except: location = ""
         try:joined_date = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.joined_date_path))).text
@@ -208,7 +229,7 @@ class Channel_Scraping(QThread):
         try:channel_desc = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.channel_desc_path))).text
         except: channel_desc = ""
 
-        
+
         # Cover img
         try:
             cover_img = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.cover_img_path))).get_attribute("style")
@@ -216,10 +237,10 @@ class Channel_Scraping(QThread):
             b = b[1:].split("\\")[0]
             cover_img = "https://yt3.ggpht.com"+b
         except Exception as e: print(f"[CHANNEL][COVER IMG] Error: {e}")
-        
-        
+
+
         # Links social
-        socials_lst = []         
+        socials_lst = []
         try:
             WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.social_path)))
             socials = self.driver.find_elements(By.XPATH, self.social_path + "//a")
@@ -228,18 +249,18 @@ class Channel_Scraping(QThread):
                     a, sep, b = i.get_attribute("href").partition("https%3A%2F%2F")
                 elif "http%3A%2F%2F" in i.get_attribute("href"):
                     a, sep, b = i.get_attribute("href").partition("http%3A%2F%2F")
-                    
+
                 print(i.get_attribute("href"))
                 b = b.replace(r"%2F", "/")
                 b = b.replace(r"%3F", "?")
                 b = b.replace(r"%3D", "=")
                 socials_lst.append(b)
-        except: 
+        except:
             print(f"[CHANNEL][SOCIAL] Error: No social?")
-        
+
         self.driver.quit()
 
-        self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date,"tot_video":len(links), "tot_visual": tot_visual, 
+        self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date,"tot_video":len(video_info["links"]), "tot_visual": tot_visual,
                         "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})
 
 

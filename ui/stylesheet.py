@@ -96,3 +96,4 @@ new_photo_profile ="""
         background-color: rgb(89, 89, 89);
         border-image: url(:/channel/icons/channel/profile_new.jpg);
     }"""
+
