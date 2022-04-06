@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'second_gui_styleVYqGwo.ui'
+## Form generated from reading UI file 'second_gui_styleBknWsm.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1223, 759)
+        MainWindow.resize(1119, 708)
         MainWindow.setMinimumSize(QSize(0, 708))
         font = QFont()
         font.setFamily(u"Oswald ExtraLight")
@@ -473,60 +473,31 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.username_channel)
 
-        self.frame_21 = QFrame(self.frame_7)
-        self.frame_21.setObjectName(u"frame_21")
-        self.frame_21.setMinimumSize(QSize(0, 25))
-        self.frame_21.setMaximumSize(QSize(16777215, 35))
-        self.frame_21.setStyleSheet(u"QFrame{\n"
-"	border: 1px solid  rgb(91, 91, 91);\n"
-"	background-color: rgb(55, 55, 55);\n"
-"	border-bottom-left-radius:0px;\n"
-"	border-top-left-radius:2px;\n"
-"	border-bottom-right-radius:0px;\n"
-"	border-top-right-radius:2px;\n"
-"	padding:5px;\n"
-"\n"
+        self.country_channel = QLineEdit(self.frame_7)
+        self.country_channel.setObjectName(u"country_channel")
+        self.country_channel.setMinimumSize(QSize(0, 28))
+        self.country_channel.setStyleSheet(u"QLineEdit{\n"
+"background-color: rgb(55, 55, 55);\n"
+"	color: rgb(181, 181, 181);\n"
+"border: 1px solid  rgb(91, 91, 91);\n"
+"border-bottom-left-radius:0px;\n"
+"border-top-left-radius:2px;\n"
+"border-bottom-right-radius:0px;\n"
+"border-top-right-radius:2px;\n"
+"padding:5px;\n"
 "}\n"
 "\n"
-"\n"
-"QFrame::hover{background-color: rgb(59, 59, 59);}\n"
+"QLineEdit::hover{background-color: rgb(59, 59, 59);}\n"
 "\n"
 "\n"
 "QLineEdit::focus{\n"
 "	border:1px solid  rgb(121,121, 121);\n"
-"}")
-        self.frame_21.setFrameShape(QFrame.StyledPanel)
-        self.frame_21.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_26 = QHBoxLayout(self.frame_21)
-        self.horizontalLayout_26.setSpacing(0)
-        self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
-        self.horizontalLayout_26.setContentsMargins(28, 0, 37, 0)
-        self.country_channel = QLabel(self.frame_21)
-        self.country_channel.setObjectName(u"country_channel")
-        self.country_channel.setMinimumSize(QSize(48, 0))
-        self.country_channel.setMaximumSize(QSize(52, 24))
-        self.country_channel.setFont(font3)
-        self.country_channel.setStyleSheet(u"\n"
-"	color: rgb(181, 181, 181);\n"
+"}\n"
 "\n"
-"border:none;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));\n"
 "")
+        self.country_channel.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_26.addWidget(self.country_channel)
-
-        self.flag_label = QLabel(self.frame_21)
-        self.flag_label.setObjectName(u"flag_label")
-        self.flag_label.setMinimumSize(QSize(0, 0))
-        self.flag_label.setMaximumSize(QSize(27, 27))
-        self.flag_label.setStyleSheet(u"image: url(:/flags/icons/flags/none.svg);\n"
-"border:none;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
-
-        self.horizontalLayout_26.addWidget(self.flag_label)
-
-
-        self.verticalLayout_4.addWidget(self.frame_21)
+        self.verticalLayout_4.addWidget(self.country_channel)
 
         self.totVideo_channel = QLineEdit(self.frame_7)
         self.totVideo_channel.setObjectName(u"totVideo_channel")
@@ -691,7 +662,7 @@ class Ui_MainWindow(object):
         self.description_channel = QTextEdit(self.frame_7)
         self.description_channel.setObjectName(u"description_channel")
         self.description_channel.setMinimumSize(QSize(0, 95))
-        self.description_channel.setMaximumSize(QSize(16777215, 110))
+        self.description_channel.setMaximumSize(QSize(16777215, 190))
         font4 = QFont()
         font4.setFamily(u"Roboto")
         self.description_channel.setFont(font4)
@@ -1476,7 +1447,6 @@ class Ui_MainWindow(object):
         self.username_channel.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.username_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.country_channel.setText(QCoreApplication.translate("MainWindow", u"Country", None))
-        self.flag_label.setText("")
         self.totVideo_channel.setInputMask("")
         self.totVideo_channel.setText(QCoreApplication.translate("MainWindow", u"Total videos", None))
         self.totVideo_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Joined date", None))

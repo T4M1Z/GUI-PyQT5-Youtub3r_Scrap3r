@@ -234,7 +234,6 @@ class Channel_Scraping(QThread):
         try:channel_desc = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.channel_desc_path))).text
         except: channel_desc = ""
 
-
         # Cover img
         try:
             cover_img = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.cover_img_path))).get_attribute("style")

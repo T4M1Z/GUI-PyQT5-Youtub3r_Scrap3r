@@ -13,7 +13,6 @@
 from msilib.schema import Control
 import os
 import sys
-from grpc import Channel
 import requests
 from matplotlib import style
 from scipy.misc import central_diff_weights
@@ -163,7 +162,7 @@ class MainWindow(QMainWindow):
             if "error" in return_status:
                 self.ui.username_db.setStyleSheet(stylesheet.input_style_error)
                 self.ui.password_db.setStyleSheet(stylesheet.input_style_error)
-            self.ui.status_db_connection.setText("Offline")
+            self.ui.status_db_connection.setText("OFFLINE")
             self.ui.status_db_connection.setStyleSheet(stylesheet.db_offline)
             self.serialReaderDatabase.stop()
 
@@ -194,11 +193,11 @@ class MainWindow(QMainWindow):
             self.ui.password_db.setStyleSheet(stylesheet.input_style)
 
         # Final controll
-        if self.ui.status_db_connection.text() == "ONLINE" and self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
-
+        if self.ui.status_db_connection.text() == "OFFLINE" and self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
             self.animation_scraping_settings()
             self.ui.start_scraping_btn.hide()
             self.ui.stop_scraping_btn.show()
+
             ### - Starting QTrhead - ###
             self.serialReaderChannelScraping = Channel_Scraping(self.ui, self.c_panel.ui)
             self.serialReaderChannelScraping.receivedPacketSignal.connect(self.return_data_scraping)
@@ -207,25 +206,28 @@ class MainWindow(QMainWindow):
 
 
     def return_data_scraping(self, packet):
-        if "message" in packet.keys():
-            print(packet["message"])
-        
-        elif "links" in packet.keys():
+        try:
+            if "message" in packet.keys():
+                print(packet["message"])
             
-            self.c_panel.ui.tableWidget.selectedItems()
-            for l,t,v,idx in zip(packet["links"], packet["title"], packet["visual"], packet["index"]):
-                if t not in set(self.lista):
-                    self.c_panel.ui.tableWidget.insertRow(idx)
-                    self.c_panel.ui.tableWidget.setItem(idx, 0, QTableWidgetItem(str(idx)))
-                    self.c_panel.ui.tableWidget.setItem(idx, 1, QTableWidgetItem(l))
-                    self.c_panel.ui.tableWidget.setItem(idx, 2, QTableWidgetItem(t))
-                    self.c_panel.ui.tableWidget.setItem(idx, 3, QTableWidgetItem(v))
-                self.lista.append(t)
-        
-        elif "channel_data" in packet.keys():
-            self.ui.stop_scraping_btn.hide()
-            self.ui.start_scraping_btn.show()
-            self.packet_data = packet["channel_data"]
+            elif "links" in packet.keys():
+                self.c_panel.ui.tableWidget.selectedItems()
+                for l,t,v,idx in zip(packet["links"], packet["title"], packet["visual"], packet["index"]):
+                    if t not in set(self.lista):
+                        self.c_panel.ui.tableWidget.insertRow(idx)
+                        self.c_panel.ui.tableWidget.setItem(idx, 0, QTableWidgetItem(str(idx)))
+                        self.c_panel.ui.tableWidget.setItem(idx, 1, QTableWidgetItem(l))
+                        self.c_panel.ui.tableWidget.setItem(idx, 2, QTableWidgetItem(t))
+                        self.c_panel.ui.tableWidget.setItem(idx, 3, QTableWidgetItem(v))
+                    self.lista.append(t)
+            
+            elif "channel_data" in packet.keys():
+                self.ui.stop_scraping_btn.hide()
+                self.ui.start_scraping_btn.show()
+                self.packet_data = packet["channel_data"]
+
+        except Exception as e:
+            print(f"Programm stopped without signals pakcet: ERROR {e}")
 
 
 
@@ -236,18 +238,19 @@ class MainWindow(QMainWindow):
         for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
             self.c_panel.ui.selenium_layout.itemAt(i).widget().setParent(None)
 
-        
         self.ui.stop_scraping_btn.hide()
         self.ui.start_scraping_btn.show()
-        
+
         try:
             self.download_image(self.packet_data["profile_img"])
             # Username
             self.ui.username_channel.setText(self.packet_data["username"])
             # Flag Country
             if self.packet_data["location"] != "":
-                self.ui.flag_label.setStyleSheet(stylesheet.flag(str(self.packet_data["location"][:2]).lower())) 
-            else: self.ui.flag_label.setStyleSheet(stylesheet.no_flag)
+                # self.ui.flag_label.setStyleSheet(stylesheet.flag(str(self.packet_data["location"][:2]).lower())) 
+                self.ui.country_channel.setText(self.packet_data["location"]) 
+            else: self.ui.country_channel.setText("Country not found")
+                # self.ui.flag_label.setStyleSheet(stylesheet.no_flag)
             # Total Video
             self.ui.totVideo_channel.setText(str(self.packet_data["tot_video"])+" Video")
             # Total Views
@@ -257,13 +260,12 @@ class MainWindow(QMainWindow):
             # Joined Date
             self.ui.joinedDate_channel.setText("Joined on "+self.packet_data["joined_date"])
             # Social
-            print(self.packet_data["social"])
             self.ui.social_comboBox.addItems(self.packet_data["social"])
             # Channel Description
             self.ui.description_channel.clear()
             self.ui.description_channel.setText(self.packet_data["channel_desc"])
-        except:
-            print("Programm stopped without data input")
+        except Exception as e:
+            print(f"Programm stopped without data input: ERROR {e}")
         
 
 
@@ -302,7 +304,7 @@ class MainWindow(QMainWindow):
         ### CLEAR ###
         self.ui.profile_image.clear()
         self.ui.username_channel.setText("Username")
-        self.ui.flag_label.setStyleSheet(stylesheet.no_flag)
+        # self.ui.flag_label.setStyleSheet(stylesheet.no_flag)
         self.ui.totVideo_channel.setText("Total videos")
         self.ui.totViews_channel.setText("Total views")
         self.ui.totSubs_channel.setText("Subscribers")
@@ -321,7 +323,7 @@ class MainWindow(QMainWindow):
         group_animation = QParallelAnimationGroup(self)
         
         animation = {self.top_panel:[self.ui.scraping_setting_frame,130,0],
-                    self.bottom_panel:[self.c_panel.ui.scraping_monitoring_frame,300,0]}
+                    self.bottom_panel:[self.c_panel.ui.scraping_monitoring_frame,800,0]}
         
         for k,v in animation.items():
             if v[0].height() > 0:
