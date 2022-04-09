@@ -57,8 +57,6 @@ class Channel_Scraping(QThread):
         self.driver.set_window_size(1,1)
 
 
-        self.driver.get(self.url)
-        time.sleep(0.5)
         # ------------------------------------------ #
         self.hwnd = 0
         self.tries = 30
@@ -114,13 +112,15 @@ class Channel_Scraping(QThread):
 
     def run(self):
         # self.driver.set_window_size(1,1)
+        self.driver.get(self.url)
+        time.sleep(0.5)
 
         try:
             WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH,"//div[@class='VfPpkd-dgl2Hf-ppHlrf-sM5MNb']//button"))).click()
             time.sleep(3)
             confirm_btn = self.driver.find_elements(By.XPATH,"//div[@class='uScs5d']//div/button")
         except Exception as e:
-            self.driver.refresh()
+            print("cookie error")
 
         try:
             confirm_btn[0].click() # 1btn
@@ -131,13 +131,13 @@ class Channel_Scraping(QThread):
             time.sleep(0.3)
         except Exception as e:
             self.driver.refresh()
-            print("== STEP_2 ===")
+            print("== cookie error 2 ===")
 
 
         try:
             WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//form[@class='bBXLMd']//div/button"))).click()
         except Exception as e:
-            print("== STEP_2 ===")
+            print("== cookie error 3 ===")
 
         username = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//ytd-channel-name[@id='channel-name']"))).text
         # 1scroll = 30video
@@ -273,11 +273,10 @@ class Channel_Scraping(QThread):
         except:
             print(f"[CHANNEL][SOCIAL] Error: No social?")
 
-        self.driver.quit()
-
 
         self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date,"tot_video":len(video_info["links"]), "tot_visual": tot_visual,
                         "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})
 
+        self.driver.quit()
 
 

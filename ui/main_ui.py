@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'second_gui_stylenXglqn.ui'
+## Form generated from reading UI file 'second_gui_styleMPWXmI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1395,6 +1395,7 @@ class Ui_MainWindow(object):
 
         self.central_panel_layout = QHBoxLayout()
         self.central_panel_layout.setObjectName(u"central_panel_layout")
+        self.central_panel_layout.setSizeConstraint(QLayout.SetMaximumSize)
 
         self.verticalLayout_13.addLayout(self.central_panel_layout)
 

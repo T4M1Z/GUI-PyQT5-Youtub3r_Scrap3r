@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'central_panelkCFOMu.ui'
+## Form generated from reading UI file 'central_panelVgXvKl.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -71,6 +71,7 @@ class Ui_Form(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.selenium_layout = QHBoxLayout()
         self.selenium_layout.setObjectName(u"selenium_layout")
+        self.selenium_layout.setSizeConstraint(QLayout.SetMaximumSize)
         self.selenium_layout.setContentsMargins(-1, 4, -1, -1)
 
         self.horizontalLayout_11.addLayout(self.selenium_layout)

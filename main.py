@@ -198,7 +198,15 @@ class MainWindow(QMainWindow):
         # Final controll
         if self.ui.status_db_connection.text() == "OFFLINE" and self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
             self.animation_top_panel()
-            self.animation_bottom_panel()
+            print(self.c_panel.ui.central_panel_frame.height())
+
+            if self.c_panel.ui.central_panel_frame.height() == 0:
+                self.animation_central_panel("resize")
+                self.animation_bottom_left_panel("resize")
+                self.animation_bottom_panel("resize")
+            else:
+                self.animation_bottom_panel()
+
             self.ui.start_scraping_btn.hide()
             self.ui.stop_scraping_btn.show()
 
@@ -229,8 +237,14 @@ class MainWindow(QMainWindow):
                     self.lista.append(t)
             
             elif "channel_data" in packet.keys():
+                # Hide_Selenium_Layout , Full_Size_Table , Resize_Top_Panel
+                self.animation_top_panel()  
+                self.animation_central_panel()
+                self.animation_bottom_left_panel()
+                # Btn start and stop
                 self.ui.stop_scraping_btn.hide()
                 self.ui.start_scraping_btn.show()
+                # Save data variable
                 self.packet_data = packet["channel_data"]
 
         except Exception as e:
@@ -239,12 +253,6 @@ class MainWindow(QMainWindow):
 
 
     def insert_data_channel(self):  
-        self.animation_top_panel()  
-        self.animation_central_panel()
-        self.animation_bottom_left_panel()
-        # self.animation_bottom_right_panel()
-        self.c_panel.ui.gridLayout_3
-
         # Deleting previuous selenium widget in the layout
         for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
             self.c_panel.ui.selenium_layout.itemAt(i).widget().setParent(None)
@@ -340,42 +348,48 @@ class MainWindow(QMainWindow):
         self.top_panel.setEndValue(h2)
         self.top_panel.start()
 
-    def animation_bottom_panel(self):
+    def animation_bottom_panel(self, param = None):
         self.bottom_panel = QtCore.QPropertyAnimation(self.c_panel.ui.scraping_monitoring_frame, b"maximumHeight")
-        if self.c_panel.ui.scraping_monitoring_frame.height() > 0:
-            h1, h2 = 800,0
+        if param: pass
         else:
-            h1, h2 = 0,800
-        self.bottom_panel.setDuration(400)
-        self.bottom_panel.setStartValue(h1)
-        self.bottom_panel.setEndValue(h2)
-        self.bottom_panel.start()
+            if self.c_panel.ui.scraping_monitoring_frame.height() > 0:
+                h1, h2 = 800,0
+            else:
+                h1, h2 = 0,800
+            self.bottom_panel.setDuration(400)
+            self.bottom_panel.setStartValue(h1)
+            self.bottom_panel.setEndValue(h2)
+            self.bottom_panel.start()
 
-    def animation_central_panel(self):
+    def animation_central_panel(self, param = None):
         self.central_panel = QtCore.QPropertyAnimation(self.c_panel.ui.central_panel_frame, b"maximumHeight")
-        if self.c_panel.ui.central_panel_frame.height() > 0:
+        if param:
+            self.c_panel.ui.central_panel_frame.setMinimumHeight(300)
+            h1, h2 = 0,10000
+        else:
             self.c_panel.ui.central_panel_frame.setMinimumHeight(0)
             h1, h2 = self.c_panel.ui.central_panel_frame.height(),0
-        else:
-            self.c_panel.ui.central_panel_frame.setMinimumHeight(300)
-            h1, h2 = 0,800
+
         self.central_panel.setDuration(400)
         self.central_panel.setStartValue(h1)
         self.central_panel.setEndValue(h2)
         self.central_panel.start()
 
-    def animation_bottom_left_panel(self):
+    def animation_bottom_left_panel(self, param = None):
         print(self.c_panel.ui.splitter_2.height())
         print(self.c_panel.ui.splitter_2.width())
         self.bottom_left_panel = QtCore.QPropertyAnimation(self.c_panel.ui.left_bottom_frame, b"maximumWidth")
-        if self.c_panel.ui.left_bottom_frame.width() > 0:
-            self.c_panel.ui.left_bottom_frame.setMinimumWidth(0)
-            h1, h2 = self.c_panel.ui.left_bottom_frame.width(),0
-
-        else:
+        
+        if param:
             self.c_panel.ui.left_bottom_frame.setMinimumWidth(400)
-            self.c_panel.ui.horizontalLayout_18.show()
-            h1, h2 = 0,800
+            h1, h2 = 0,10000
+        else:
+            if self.c_panel.ui.left_bottom_frame.width() > 0:
+                self.c_panel.ui.left_bottom_frame.setMinimumWidth(0)
+                h1, h2 = self.c_panel.ui.left_bottom_frame.width(),0
+            else:
+                self.c_panel.ui.left_bottom_frame.setMinimumWidth(400)
+                h1, h2 = 0,800
         self.bottom_left_panel.setStartValue(h1)
         self.bottom_left_panel.setEndValue(h2)
         self.bottom_left_panel.start()
