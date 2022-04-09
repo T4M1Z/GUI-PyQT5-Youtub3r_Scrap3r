@@ -78,7 +78,10 @@ class MainWindow(QMainWindow):
         header.setSectionResizeMode(1, QHeaderView.Stretch)
         header.setSectionResizeMode(2, QHeaderView.Stretch)
         header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
-
+        item1 = self.c_panel.ui.tableWidget.horizontalHeaderItem(0)
+        item1.setForeground(QtGui.QColor(255, 0, 0))
+        item1.setBackground(QtGui.QColor(0, 0, 0))  # Black background! does not work!!
+        self.c_panel.ui.tableWidget.setHorizontalHeaderItem(0, item1)
 
 
         # ------ Actions ------ #
@@ -194,9 +197,13 @@ class MainWindow(QMainWindow):
 
         # Final controll
         if self.ui.status_db_connection.text() == "OFFLINE" and self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
-            self.animation_scraping_settings()
+            self.animation_top_panel()
+            self.animation_bottom_panel()
             self.ui.start_scraping_btn.hide()
             self.ui.stop_scraping_btn.show()
+
+            # Clear links in the QWidget Tabel
+            self.c_panel.ui.tableWidget.clear()
 
             ### - Starting QTrhead - ###
             self.serialReaderChannelScraping = Channel_Scraping(self.ui, self.c_panel.ui)
@@ -232,7 +239,11 @@ class MainWindow(QMainWindow):
 
 
     def insert_data_channel(self):  
-        self.animation_scraping_settings()
+        self.animation_top_panel()  
+        self.animation_central_panel()
+        self.animation_bottom_left_panel()
+        # self.animation_bottom_right_panel()
+        self.c_panel.ui.gridLayout_3
 
         # Deleting previuous selenium widget in the layout
         for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
@@ -279,7 +290,8 @@ class MainWindow(QMainWindow):
         for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
             self.c_panel.ui.selenium_layout.itemAt(i).widget().setParent(None)
         
-        self.animation_scraping_settings()
+        self.animation_top_panel()
+        self.animation_bottom_panel()
 
 
 
@@ -317,28 +329,73 @@ class MainWindow(QMainWindow):
 
 
 
-    def animation_scraping_settings(self):
-        self.top_panel = QtCore.QPropertyAnimation(self.ui.scraping_setting_frame, b"maximumHeight")
+    def animation_top_panel(self):
+        self.top_panel = QtCore.QPropertyAnimation(self.ui.scraping_setting_frame, b"maximumHeight")                
+        if self.ui.scraping_setting_frame.height() > 0:
+            h1, h2 = 130,0
+        else:
+            h1, h2 = 0,130
+        self.top_panel.setDuration(400)
+        self.top_panel.setStartValue(h1)
+        self.top_panel.setEndValue(h2)
+        self.top_panel.start()
+
+    def animation_bottom_panel(self):
         self.bottom_panel = QtCore.QPropertyAnimation(self.c_panel.ui.scraping_monitoring_frame, b"maximumHeight")
-        group_animation = QParallelAnimationGroup(self)
-        
-        animation = {self.top_panel:[self.ui.scraping_setting_frame,130,0],
-                    self.bottom_panel:[self.c_panel.ui.scraping_monitoring_frame,800,0]}
-        
-        for k,v in animation.items():
-            if v[0].height() > 0:
-                h1, h2 = v[1],v[2]
-            else:
-                h1, h2 = v[2],v[1]
+        if self.c_panel.ui.scraping_monitoring_frame.height() > 0:
+            h1, h2 = 800,0
+        else:
+            h1, h2 = 0,800
+        self.bottom_panel.setDuration(400)
+        self.bottom_panel.setStartValue(h1)
+        self.bottom_panel.setEndValue(h2)
+        self.bottom_panel.start()
 
-            k.setDuration(400)
-            k.setStartValue(h1)
-            k.setEndValue(h2)
-            k.start()
-            group_animation.addAnimation(k)
+    def animation_central_panel(self):
+        self.central_panel = QtCore.QPropertyAnimation(self.c_panel.ui.central_panel_frame, b"maximumHeight")
+        if self.c_panel.ui.central_panel_frame.height() > 0:
+            self.c_panel.ui.central_panel_frame.setMinimumHeight(0)
+            h1, h2 = self.c_panel.ui.central_panel_frame.height(),0
+        else:
+            self.c_panel.ui.central_panel_frame.setMinimumHeight(300)
+            h1, h2 = 0,800
+        self.central_panel.setDuration(400)
+        self.central_panel.setStartValue(h1)
+        self.central_panel.setEndValue(h2)
+        self.central_panel.start()
 
-        group_animation.start()
+    def animation_bottom_left_panel(self):
+        print(self.c_panel.ui.splitter_2.height())
+        print(self.c_panel.ui.splitter_2.width())
+        self.bottom_left_panel = QtCore.QPropertyAnimation(self.c_panel.ui.left_bottom_frame, b"maximumWidth")
+        if self.c_panel.ui.left_bottom_frame.width() > 0:
+            self.c_panel.ui.left_bottom_frame.setMinimumWidth(0)
+            h1, h2 = self.c_panel.ui.left_bottom_frame.width(),0
 
+        else:
+            self.c_panel.ui.left_bottom_frame.setMinimumWidth(400)
+            self.c_panel.ui.horizontalLayout_18.show()
+            h1, h2 = 0,800
+        self.bottom_left_panel.setStartValue(h1)
+        self.bottom_left_panel.setEndValue(h2)
+        self.bottom_left_panel.start()
+
+    # def animation_bottom_right_panel(self):
+    #     group_animation = QParallelAnimationGroup(self)
+
+    #     self.right_panel_width = QtCore.QPropertyAnimation(self.c_panel.ui.right_bottom_frame, b"minimumWidth")
+    #     h1, h2 = self.c_panel.ui.right_bottom_frame.width(),self.c_panel.ui.splitter_2.width()
+    #     self.right_panel_width.setStartValue(h1)
+    #     self.right_panel_width.setEndValue(h2)
+    #     group_animation.addAnimation(self.right_panel_width)
+
+    #     self.right_panel_height = QtCore.QPropertyAnimation(self.c_panel.ui.right_bottom_frame, b"minimumHeight")
+    #     h1, h2 = self.c_panel.ui.right_bottom_frame.height(),self.c_panel.ui.splitter_2.height()
+    #     self.right_panel_height.setStartValue(h1)
+    #     self.right_panel_height.setEndValue(h2)
+    #     group_animation.addAnimation(self.right_panel_height)
+
+    #     group_animation.start()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

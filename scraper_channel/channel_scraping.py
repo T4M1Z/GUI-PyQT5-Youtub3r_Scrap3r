@@ -9,7 +9,9 @@ import time
 import os
 import win32gui
 from PyQt5 import QtGui, QtWidgets
+from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtGui import QMovie
 import ctypes
 import win32gui
 import win32con
@@ -45,7 +47,7 @@ class Channel_Scraping(QThread):
         options.add_argument('--disable-notifications')
         options.add_argument('--mute-audio')
         # options.add_argument("--kiosk")
-        options.add_argument("--window-position=-3500,-3500")
+        options.add_argument("--window-position=6500,6500")
         options.add_argument("disable-infobars")
         options.add_argument("--kiosk")
         options.add_argument(f"--app={self.url}")
@@ -118,7 +120,7 @@ class Channel_Scraping(QThread):
             time.sleep(3)
             confirm_btn = self.driver.find_elements(By.XPATH,"//div[@class='uScs5d']//div/button")
         except Exception as e:
-            print("== STEP_1 ===")
+            self.driver.refresh()
 
         try:
             confirm_btn[0].click() # 1btn
@@ -128,6 +130,7 @@ class Channel_Scraping(QThread):
             confirm_btn[4].click() # 3btn
             time.sleep(0.3)
         except Exception as e:
+            self.driver.refresh()
             print("== STEP_2 ===")
 
 
@@ -176,7 +179,11 @@ class Channel_Scraping(QThread):
         # Dict for qt signals
         video_info = {"links":[], "title":[], "visual":[], "index":[]}
         index = 0
+        err = 0
         for n in range(scroll):
+            if err >=2:
+                break
+
             try:
                 WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(
                     (By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")))
@@ -200,6 +207,7 @@ class Channel_Scraping(QThread):
                     element.parentNode.removeChild(element);""", element)
                     except Exception: print("err")
             except:
+                err += 1
                 print("End")
 
             html = self.driver.find_element(By.TAG_NAME,'html')
@@ -211,11 +219,14 @@ class Channel_Scraping(QThread):
             print(f"scrolling [{n+1}/{scroll}] ")
 
 
-        with open(f'links.txt', 'w', encoding='UTF8') as f:
-            for link in video_info["links"]:
-                f.writelines(link)
-                f.writelines("\n")
-        f.close()
+
+
+        # with open(f'links.txt', 'w', encoding='UTF8') as f:
+        #     for link in video_info["links"]:
+
+        #         f.writelines(link)
+        #         f.writelines("\n")
+        # f.close()
 
 
         # __ INFO CHANNEL __
@@ -236,7 +247,7 @@ class Channel_Scraping(QThread):
 
         # Cover img
         try:
-            cover_img = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.cover_img_path))).get_attribute("style")
+            cover_img = WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.XPATH, self.cover_img_path))).get_attribute("style")
             a, sep, b = str(cover_img).partition(".com")
             b = b[1:].split("\\")[0]
             cover_img = "https://yt3.ggpht.com"+b
@@ -246,7 +257,7 @@ class Channel_Scraping(QThread):
         # Links social
         socials_lst = []
         try:
-            WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.social_path)))
+            WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.XPATH, self.social_path)))
             socials = self.driver.find_elements(By.XPATH, self.social_path + "//a")
             for i in socials:
                 if "https%3A%2F%2F" in i.get_attribute("href"):
@@ -263,6 +274,7 @@ class Channel_Scraping(QThread):
             print(f"[CHANNEL][SOCIAL] Error: No social?")
 
         self.driver.quit()
+
 
         self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date,"tot_video":len(video_info["links"]), "tot_visual": tot_visual,
                         "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})
