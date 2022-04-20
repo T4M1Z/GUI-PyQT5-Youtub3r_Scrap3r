@@ -97,3 +97,79 @@ new_photo_profile ="""
         border-image: url(:/channel/icons/channel/profile_new.jpg);
     }"""
 
+def left_panel_btn(status):
+    return """
+    QPushButton{
+        background-color: rgb(81, 81, 81);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+        image: url(:/16x16/icons/16x16/cil-caret-"""+status+""".png);
+    }
+
+    QPushButton:hover{
+    background-color: rgb(71, 71, 71);
+    }
+
+    QPushButton:pressed{
+    background-color: rgb(75, 75, 75);
+    }
+    """
+
+
+def radius_maximize(n):
+    close_btn_rad = """QPushButton{
+        background-color: rgb(59, 59, 59);
+        image: url(:/16x16/icons/16x16/cil-x.png);
+        border:0px;
+    background-color: rgb(44, 44, 44);
+    border-radius:0px;
+    border-top-right-radius: """+n+"""px;
+    }
+
+    QPushButton::hover{
+        background-color: rgb(195, 92, 92);
+        image: url(:/16x16/icons/16x16/cil-x.png);
+    }
+
+    QPushButton::pressed{
+        background-color: rgb(29, 29, 29);
+        image: url(:/16x16/icons/16x16/cil-x.png);
+    }"""
+
+
+    frame_btn_rad = """
+    background-color: rgb(44, 44, 44);
+    border:0px;
+    border-top-right-radius:3px;
+    border-top-left-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:3px;
+    border-top-right-radius: """+n+"""px;
+    """
+
+    window_btn_rad = """
+    background-color: rgb(59, 59, 59);
+    border:0px;
+    border-top-right-radius: """+n+"""px;
+    """
+
+    frame_top_rad = """
+        background-color: rgb(44, 44, 44);
+        border:0px;
+        border-top-left-radius: """+n+"""px;
+        border-top-right-radius: """+n+"""px;
+    """
+
+    page_title_rad = """
+    background-color: rgb(195, 75, 75);
+    border-bottom-right-radius:26px;
+    border:0px;
+    border-top-left-radius: """+n+"""px;
+    """
+
+    title_frame_rad = """
+    background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 59, 69, 0), stop:1 rgba(91, 99, 115, 0));
+    border-top-left-radius: """+n+"""px;
+    """
+
+    return close_btn_rad, frame_btn_rad, window_btn_rad, frame_top_rad, page_title_rad, title_frame_rad

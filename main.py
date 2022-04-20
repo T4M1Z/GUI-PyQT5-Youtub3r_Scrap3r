@@ -12,6 +12,7 @@
 
 import os
 import sys
+from tkinter import SUNKEN
 import requests
 from matplotlib import style
 from scipy.misc import central_diff_weights
@@ -38,7 +39,6 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
         # ----- WIDGET ------- #
         self.c_panel = CenterPanel()
 
@@ -65,7 +65,6 @@ class MainWindow(QMainWindow):
         self.ui.stop_scraping_btn.hide()
         # self.ui.scraping_monitoring_frame.setMaximumHeight(0)
         self.ui.central_panel_layout.addWidget(self.c_panel)
-        self.ui.frame.setContentsMargins(2, 2, 10, 10)
         # self.ui.label_gif.hide()
         
         # Hide monitoring panel
@@ -88,12 +87,15 @@ class MainWindow(QMainWindow):
         self.ui.cluster_checkBox.toggled.connect(self.enable_cluster)
         self.ui.start_scraping_btn.pressed.connect(self.start_scraping)
         self.ui.stop_scraping_btn.pressed.connect(self.stop_scraping)
+        self.ui.left_panel_btn.pressed.connect(self.show_left_panel)
         # self.ui.test_db_btn.pressed.connect(self.test_connection_db)
         
         # Loading the GIF
         self.movie = QMovie("ui/icons/loading/loading_circle.gif")
         # self.ui.label_gif.setMovie(self.movie)
-
+        
+        # Set left panel Closed
+        self.ui.left_panel.setMaximumWidth(0)
 
         self.lista = []
         self.show()
@@ -128,9 +130,10 @@ class MainWindow(QMainWindow):
     def enable_cluster(self):
         # If you want to use cluster
         if self.ui.cluster_checkBox.isChecked():
-            self.ui.cluster_spinBox.setEnabled(True)
+            print("add cluster option")
         else: 
-            self.ui.cluster_spinBox.setEnabled(False)
+            print("remove cluster option")
+            self.ui.cluster_checkBox.setEnabled(False)
 
 
     def test_connection_db(self):
@@ -177,8 +180,8 @@ class MainWindow(QMainWindow):
         self.reset_user()
 
         # Cluster state
-        cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False 
-        
+        # cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False 
+        print("ciao")
         # Input URL 
         if not self.ui.url_Input.text():
         # if "https://www.youtube.com/channel" not in self.ui.url_Input.text():
@@ -187,15 +190,16 @@ class MainWindow(QMainWindow):
             self.ui.url_Input.setStyleSheet(stylesheet.input_style)
 
         # Database Status
-        if self.ui.status_db_connection.text() == "OFFLINE":
-            self.ui.username_db.setStyleSheet(stylesheet.input_style_error)
-            self.ui.password_db.setStyleSheet(stylesheet.input_style_error)
-        else:
-            self.ui.username_db.setStyleSheet(stylesheet.input_style)
-            self.ui.password_db.setStyleSheet(stylesheet.input_style)
+        # if self.ui.status_db_connection.text() == "OFFLINE":
+        #     self.ui.username_db.setStyleSheet(stylesheet.input_style_error)
+        #     self.ui.password_db.setStyleSheet(stylesheet.input_style_error)
+        # else:
+        #     self.ui.username_db.setStyleSheet(stylesheet.input_style)
+        #     self.ui.password_db.setStyleSheet(stylesheet.input_style)
 
         # Final controll
-        if self.ui.status_db_connection.text() == "OFFLINE" and self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
+        # if self.ui.status_db_connection.text() == "OFFLINE" and self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
+        if self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
             self.animation_top_panel()
             print(self.c_panel.ui.central_panel_frame.height())
 
@@ -335,15 +339,13 @@ class MainWindow(QMainWindow):
         self.ui.description_channel.setText("Channel description")
 
 
-
-
     def animation_top_panel(self):
         self.top_panel = QtCore.QPropertyAnimation(self.ui.scraping_setting_frame, b"maximumHeight")                
         if self.ui.scraping_setting_frame.height() > 0:
-            h1, h2 = 130,0
+            h1, h2 = 80,0
         else:
-            h1, h2 = 0,130
-        self.top_panel.setDuration(400)
+            h1, h2 = 0,80
+        self.top_panel.setDuration(500)
         self.top_panel.setStartValue(h1)
         self.top_panel.setEndValue(h2)
         self.top_panel.start()
@@ -394,22 +396,23 @@ class MainWindow(QMainWindow):
         self.bottom_left_panel.setEndValue(h2)
         self.bottom_left_panel.start()
 
-    # def animation_bottom_right_panel(self):
-    #     group_animation = QParallelAnimationGroup(self)
-
-    #     self.right_panel_width = QtCore.QPropertyAnimation(self.c_panel.ui.right_bottom_frame, b"minimumWidth")
-    #     h1, h2 = self.c_panel.ui.right_bottom_frame.width(),self.c_panel.ui.splitter_2.width()
-    #     self.right_panel_width.setStartValue(h1)
-    #     self.right_panel_width.setEndValue(h2)
-    #     group_animation.addAnimation(self.right_panel_width)
-
-    #     self.right_panel_height = QtCore.QPropertyAnimation(self.c_panel.ui.right_bottom_frame, b"minimumHeight")
-    #     h1, h2 = self.c_panel.ui.right_bottom_frame.height(),self.c_panel.ui.splitter_2.height()
-    #     self.right_panel_height.setStartValue(h1)
-    #     self.right_panel_height.setEndValue(h2)
-    #     group_animation.addAnimation(self.right_panel_height)
-
-    #     group_animation.start()
+    def show_left_panel(self):
+        if self.ui.left_panel.width() > 0:
+            self.left_panel_animation = QtCore.QPropertyAnimation(self.ui.left_panel, b"maximumWidth")
+            self.ui.left_panel_btn.setStyleSheet(stylesheet.left_panel_btn("right"))
+            h1, h2 = 360,0
+            self.left_panel_animation.setDuration(300)
+            self.left_panel_animation.setStartValue(h1)
+            self.left_panel_animation.setEndValue(h2)
+            self.left_panel_animation.start()
+        else:
+            self.left_panel_animation = QtCore.QPropertyAnimation(self.ui.left_panel, b"maximumWidth")
+            h1, h2 = 0,360
+            self.ui.left_panel_btn.setStyleSheet(stylesheet.left_panel_btn("left"))
+            self.left_panel_animation.setDuration(350)
+            self.left_panel_animation.setStartValue(h1)
+            self.left_panel_animation.setEndValue(h2)
+            self.left_panel_animation.start()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -268,4 +268,7 @@
     <file>icons/connection/connection-on-24.png</file>
     <file>icons/connection/connection-off-24.png</file>
   </qresource>
+  <qresource prefix="database">
+    <file>icons/db/db_s.svg</file>
+  </qresource>
 </RCC>

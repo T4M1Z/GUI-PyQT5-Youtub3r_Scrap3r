@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'central_panelVgXvKl.ui'
+## Form generated from reading UI file 'central_panelXSROyq.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -20,7 +20,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(1184, 840)
+        Form.resize(1184, 1042)
         Form.setStyleSheet(u"border:none;\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
         self.horizontalLayout_2 = QHBoxLayout(Form)
@@ -42,7 +42,7 @@ class Ui_Form(object):
         self.central_panel_frame.setMinimumSize(QSize(0, 300))
         self.central_panel_frame.setMaximumSize(QSize(16777215, 16777215))
         self.central_panel_frame.setStyleSheet(u"border:none;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
+"")
         self.central_panel_frame.setFrameShape(QFrame.StyledPanel)
         self.central_panel_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.central_panel_frame)
@@ -51,8 +51,7 @@ class Ui_Form(object):
         self.frame_5 = QFrame(self.central_panel_frame)
         self.frame_5.setObjectName(u"frame_5")
         self.frame_5.setMaximumSize(QSize(16777215, 16777215))
-        self.frame_5.setStyleSheet(u"background-color: rgb(49, 49, 49);\n"
-"border-radius:2px;\n"
+        self.frame_5.setStyleSheet(u"\n"
 "\n"
 "border:0px;")
         self.frame_5.setFrameShape(QFrame.StyledPanel)
@@ -62,8 +61,9 @@ class Ui_Form(object):
         self.horizontalLayout_14.setContentsMargins(2, 2, 2, 2)
         self.frame_2 = QFrame(self.frame_5)
         self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
-"border:2px solid rgb(90, 90, 90);")
+        self.frame_2.setStyleSheet(u"background-color: #4A4A4A;\n"
+"border:2px solid #7E7E7E;\n"
+"border-radius:4px;")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_11 = QHBoxLayout(self.frame_2)
@@ -71,7 +71,6 @@ class Ui_Form(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.selenium_layout = QHBoxLayout()
         self.selenium_layout.setObjectName(u"selenium_layout")
-        self.selenium_layout.setSizeConstraint(QLayout.SetMaximumSize)
         self.selenium_layout.setContentsMargins(-1, 4, -1, -1)
 
         self.horizontalLayout_11.addLayout(self.selenium_layout)
@@ -129,9 +128,7 @@ class Ui_Form(object):
         self.left_bottom_frame = QFrame(self.layoutWidget1)
         self.left_bottom_frame.setObjectName(u"left_bottom_frame")
         self.left_bottom_frame.setMinimumSize(QSize(230, 0))
-        self.left_bottom_frame.setStyleSheet(u"background-color: rgb(49, 49, 49);\n"
-"border-radius:2px;\n"
-"\n"
+        self.left_bottom_frame.setStyleSheet(u"\n"
 "border:0px;")
         self.left_bottom_frame.setFrameShape(QFrame.StyledPanel)
         self.left_bottom_frame.setFrameShadow(QFrame.Raised)
@@ -140,8 +137,9 @@ class Ui_Form(object):
         self.horizontalLayout_24.setContentsMargins(2, 2, 2, 2)
         self.frame_23 = QFrame(self.left_bottom_frame)
         self.frame_23.setObjectName(u"frame_23")
-        self.frame_23.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
-"border:2px solid rgb(90, 90, 90);")
+        self.frame_23.setStyleSheet(u"background-color: #4A4A4A;\n"
+"border:2px solid #7E7E7E;\n"
+"border-radius:4px;")
         self.frame_23.setFrameShape(QFrame.StyledPanel)
         self.frame_23.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_25 = QHBoxLayout(self.frame_23)
@@ -179,9 +177,7 @@ class Ui_Form(object):
         sizePolicy1.setHeightForWidth(self.right_bottom_frame.sizePolicy().hasHeightForWidth())
         self.right_bottom_frame.setSizePolicy(sizePolicy1)
         self.right_bottom_frame.setMinimumSize(QSize(230, 0))
-        self.right_bottom_frame.setStyleSheet(u"background-color: rgb(49, 49, 49);\n"
-"border-radius:2px;\n"
-"\n"
+        self.right_bottom_frame.setStyleSheet(u"\n"
 "border:0px;")
         self.right_bottom_frame.setFrameShape(QFrame.StyledPanel)
         self.right_bottom_frame.setFrameShadow(QFrame.Raised)
@@ -190,8 +186,11 @@ class Ui_Form(object):
         self.horizontalLayout_29.setContentsMargins(2, 2, 2, 2)
         self.frame_28 = QFrame(self.right_bottom_frame)
         self.frame_28.setObjectName(u"frame_28")
-        self.frame_28.setStyleSheet(u"background-color: rgb(66, 66, 66);\n"
-"border:2px solid rgb(90, 90, 90);")
+        self.frame_28.setStyleSheet(u"QFrame #frame_28{\n"
+"background-color: #4A4A4A;\n"
+"border:2px solid #7E7E7E;\n"
+"border-radius:4px;\n"
+"}")
         self.frame_28.setFrameShape(QFrame.StyledPanel)
         self.frame_28.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_30 = QHBoxLayout(self.frame_28)

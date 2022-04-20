@@ -31,7 +31,7 @@ class Channel_Scraping(QThread):
         self.c_panel_ui = c_panel 
         self.url = self.ui.url_Input.text()
         self.threads = self.ui.threads_spinBox.value()
-        self.cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False
+        # self.cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False
         self.yt_name = self.url.split("/")[4]
         
 

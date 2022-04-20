@@ -4,6 +4,7 @@ from PyQt5.QtCore import QLocale, QPointF, QRandomGenerator
 from PyQt5.QtGui import QGradient, QImage, QPaintEngine, QPainter, QPen
 import matplotlib
 from main import *
+from ui import stylesheet   
 import random
 import math
 
@@ -24,20 +25,19 @@ class UIFunctions(MainWindow):
         if GLOBAL_TITLE_BAR:
             self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
             self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        else:
-            self.ui.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-            self.ui.frame.setContentsMargins(8, 0, 0, 5)
+        # else:
+        #     self.ui.horizontalLayout.setContentsMargins(0, 0, 0, 0)
             # self.ui.frame.setMinimumHeight(42)
 
         ## SHOW ==> DROP SHADOW
-        self.shadow = QGraphicsDropShadowEffect(self)
-        self.shadow.setOffset(5.0)
-        self.shadow.setColor(QColor(0, 0, 0, 100))
-        self.shadow.setBlurRadius(5.0)
-        self.setGraphicsEffect(self.shadow)
+        # self.shadow = QGraphicsDropShadowEffect(self)
+        # self.shadow.setOffset(5.0)
+        # self.shadow.setColor(QColor(0, 0, 0, 100))
+        # self.shadow.setBlurRadius(5.0)
+        # self.setGraphicsEffect(self.shadow)
 
         ## SHOW ==> DROP SHADOW
-        self.shadow = QGraphicsDropShadowEffect(self.ui.frame_center)
+        self.shadow = QGraphicsDropShadowEffect(self.ui.frame)
         self.shadow.setOffset(5.0)
         self.shadow.setColor(QColor(0, 0, 0, 100))
         self.shadow.setBlurRadius(5.0)
@@ -61,14 +61,29 @@ class UIFunctions(MainWindow):
         global GLOBAL_STATE
         status = GLOBAL_STATE
         if status == 0:
-            self.ui.frame.setContentsMargins(0, 0, 0, 0)
-            self.ui.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+            self.ui.frame.layout().setContentsMargins(0,0,0,0)
+            self.ui.drag_btn.setDisabled(True)
             self.showMaximized()
+            a,b,c,d,e,f = stylesheet.radius_maximize("0")
+            self.ui.btn_close.setStyleSheet(a)
+            self.ui.frame_btn.setStyleSheet(b)
+            self.ui.window_btn.setStyleSheet(c)
+            self.ui.frame_top.setStyleSheet(d)
+            self.ui.page_1_title.setStyleSheet(e)
+            self.ui.title_frame.setStyleSheet(f)
             GLOBAL_STATE = 1
         else:
             GLOBAL_STATE = 0
+            self.ui.frame.layout().setContentsMargins(0,0,9,9)
+            self.ui.drag_btn.setDisabled(False)
             self.showNormal()
-            self.ui.frame.setContentsMargins(8, 5, 8, 5)
+            a,b,c,d,e,f = stylesheet.radius_maximize("10")
+            self.ui.btn_close.setStyleSheet(a)
+            self.ui.frame_btn.setStyleSheet(b)
+            self.ui.window_btn.setStyleSheet(c)
+            self.ui.frame_top.setStyleSheet(d)
+            self.ui.page_1_title.setStyleSheet(e)
+            self.ui.title_frame.setStyleSheet(f)
             self.resize(self.width(), self.height())
             self.move(x-500,y)
 
