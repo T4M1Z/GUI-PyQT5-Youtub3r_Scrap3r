@@ -10,3 +10,6 @@ This is a 2days work, this time I wanted to start from the design of the applica
 
 ## Version 0.3
 <img src="https://user-images.githubusercontent.com/97179746/160888332-0b43fa11-411c-43a5-84cd-25a7a6cc6ce4.png" width="600" height="370" />
+
+## Version 0.4
+<img src="https://user-images.githubusercontent.com/97179746/164888714-cb6fe3ac-33cc-4970-81b0-0fa3c8082fa4.png" width="700" height="370" />
