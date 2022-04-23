@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'third_gui_style_upheytGl.ui'
+## Form generated from reading UI file 'third_gui_style_upHFyPsV.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,13 +21,13 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1200, 810)
+        MainWindow.resize(1200, 820)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QSize(1200, 810))
+        MainWindow.setMinimumSize(QSize(1200, 820))
         MainWindow.setMaximumSize(QSize(16777215, 16777215))
         font = QFont()
         font.setFamily(u"Oswald ExtraLight")
@@ -384,6 +384,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setContentsMargins(0, 15, 15, 15)
         self.frame_25 = QFrame(self.frame_3)
         self.frame_25.setObjectName(u"frame_25")
+        self.frame_25.setMinimumSize(QSize(0, 740))
         self.frame_25.setFrameShape(QFrame.StyledPanel)
         self.frame_25.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_24 = QHBoxLayout(self.frame_25)
@@ -392,7 +393,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24.setContentsMargins(0, -1, 0, -1)
         self.frame_23 = QFrame(self.frame_25)
         self.frame_23.setObjectName(u"frame_23")
-        self.frame_23.setMinimumSize(QSize(0, 670))
+        self.frame_23.setMinimumSize(QSize(0, 725))
         self.frame_23.setStyleSheet(u"QFrame #frame_23{\n"
 "border-right: 4px solid black;\n"
 "border-bottom: 10px solid black;\n"
@@ -426,8 +427,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setContentsMargins(15, 15, 15, 15)
         self.frame_4 = QFrame(self.left_panel)
         self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setMinimumSize(QSize(0, 225))
-        self.frame_4.setMaximumSize(QSize(330, 220))
+        self.frame_4.setMinimumSize(QSize(0, 230))
+        self.frame_4.setMaximumSize(QSize(330, 230))
         self.frame_4.setStyleSheet(u"QFrame #frame_4{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
@@ -436,9 +437,9 @@ class Ui_MainWindow(object):
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.frame_4)
-        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setSpacing(7)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 11)
+        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 4)
         self.frame_7 = QFrame(self.frame_4)
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setFrameShape(QFrame.StyledPanel)
@@ -512,11 +513,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setContentsMargins(-1, 2, -1, -1)
         self.start_scraping_btn_2 = QPushButton(self.frame_11)
         self.start_scraping_btn_2.setObjectName(u"start_scraping_btn_2")
-        self.start_scraping_btn_2.setMinimumSize(QSize(140, 35))
-        self.start_scraping_btn_2.setMaximumSize(QSize(140, 35))
+        self.start_scraping_btn_2.setMinimumSize(QSize(170, 38))
+        self.start_scraping_btn_2.setMaximumSize(QSize(170, 38))
         font6 = QFont()
         font6.setFamily(u"Segoe UI Semibold")
-        font6.setPointSize(10)
+        font6.setPointSize(11)
         font6.setBold(True)
         font6.setWeight(75)
         self.start_scraping_btn_2.setFont(font6)
@@ -552,7 +553,7 @@ class Ui_MainWindow(object):
         self.frame_5 = QFrame(self.left_panel)
         self.frame_5.setObjectName(u"frame_5")
         self.frame_5.setMinimumSize(QSize(0, 0))
-        self.frame_5.setMaximumSize(QSize(330, 191))
+        self.frame_5.setMaximumSize(QSize(330, 200))
         self.frame_5.setStyleSheet(u"QFrame #frame_5{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
@@ -723,7 +724,12 @@ class Ui_MainWindow(object):
         self.start_scraping_btn_3.setObjectName(u"start_scraping_btn_3")
         self.start_scraping_btn_3.setMinimumSize(QSize(110, 35))
         self.start_scraping_btn_3.setMaximumSize(QSize(110, 35))
-        self.start_scraping_btn_3.setFont(font6)
+        font11 = QFont()
+        font11.setFamily(u"Segoe UI Semibold")
+        font11.setPointSize(10)
+        font11.setBold(True)
+        font11.setWeight(75)
+        self.start_scraping_btn_3.setFont(font11)
         self.start_scraping_btn_3.setCursor(QCursor(Qt.PointingHandCursor))
         self.start_scraping_btn_3.setStyleSheet(u"QPushButton{ \n"
 "border:2px solid #7E7E7E;\n"
@@ -758,7 +764,7 @@ class Ui_MainWindow(object):
 
         self.frame_6 = QFrame(self.left_panel)
         self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setMinimumSize(QSize(0, 0))
+        self.frame_6.setMinimumSize(QSize(0, 242))
         self.frame_6.setStyleSheet(u"QFrame #frame_6{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
@@ -810,10 +816,10 @@ class Ui_MainWindow(object):
         self.label_12 = QLabel(self.frame_2)
         self.label_12.setObjectName(u"label_12")
         self.label_12.setMinimumSize(QSize(260, 0))
-        font11 = QFont()
-        font11.setFamily(u"Segoe UI Semibold")
-        font11.setPointSize(12)
-        self.label_12.setFont(font11)
+        font12 = QFont()
+        font12.setFamily(u"Segoe UI Semibold")
+        font12.setPointSize(12)
+        self.label_12.setFont(font12)
         self.label_12.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label_12.setAlignment(Qt.AlignCenter)
 
@@ -824,11 +830,11 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.label_13.sizePolicy().hasHeightForWidth())
         self.label_13.setSizePolicy(sizePolicy5)
         self.label_13.setMinimumSize(QSize(260, 0))
-        font12 = QFont()
-        font12.setFamily(u"Segoe UI Semibold")
-        font12.setBold(False)
-        font12.setWeight(50)
-        self.label_13.setFont(font12)
+        font13 = QFont()
+        font13.setFamily(u"Segoe UI Semibold")
+        font13.setBold(False)
+        font13.setWeight(50)
+        self.label_13.setFont(font13)
         self.label_13.setStyleSheet(u"color: rgb(207, 207, 207);")
         self.label_13.setAlignment(Qt.AlignCenter)
 
@@ -847,8 +853,8 @@ class Ui_MainWindow(object):
         self.left_panel_btn.setObjectName(u"left_panel_btn")
         sizePolicy.setHeightForWidth(self.left_panel_btn.sizePolicy().hasHeightForWidth())
         self.left_panel_btn.setSizePolicy(sizePolicy)
-        self.left_panel_btn.setMinimumSize(QSize(15, 0))
-        self.left_panel_btn.setMaximumSize(QSize(15, 16777215))
+        self.left_panel_btn.setMinimumSize(QSize(20, 0))
+        self.left_panel_btn.setMaximumSize(QSize(20, 16777215))
         self.left_panel_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.left_panel_btn.setStyleSheet(u"QPushButton{\n"
 "	background-color: rgb(81, 81, 81);\n"
@@ -910,9 +916,9 @@ class Ui_MainWindow(object):
         self.frame_13 = QFrame(self.border_scrap_setting)
         self.frame_13.setObjectName(u"frame_13")
         self.frame_13.setMaximumSize(QSize(16777215, 16777215))
-        font13 = QFont()
-        font13.setPointSize(10)
-        self.frame_13.setFont(font13)
+        font14 = QFont()
+        font14.setPointSize(10)
+        self.frame_13.setFont(font14)
         self.frame_13.setStyleSheet(u"border:none;\n"
 "background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 59, 69, 0), stop:1 rgba(91, 99, 115, 0));")
         self.frame_13.setFrameShape(QFrame.StyledPanel)
@@ -924,13 +930,13 @@ class Ui_MainWindow(object):
         self.channel_radioBtn = QRadioButton(self.frame_13)
         self.channel_radioBtn.setObjectName(u"channel_radioBtn")
         self.channel_radioBtn.setMinimumSize(QSize(0, 35))
-        self.channel_radioBtn.setMaximumSize(QSize(95, 35))
-        font14 = QFont()
-        font14.setFamily(u"Segoe UI Semibold")
-        font14.setPointSize(9)
-        font14.setBold(False)
-        font14.setWeight(50)
-        self.channel_radioBtn.setFont(font14)
+        self.channel_radioBtn.setMaximumSize(QSize(100, 35))
+        font15 = QFont()
+        font15.setFamily(u"Segoe UI Semibold")
+        font15.setPointSize(9)
+        font15.setBold(False)
+        font15.setWeight(50)
+        self.channel_radioBtn.setFont(font15)
         self.channel_radioBtn.setStyleSheet(u"\n"
 "QRadioButton{background-color:  rgb(214, 214, 214);\n"
 "color: #545454;\n"
@@ -955,8 +961,8 @@ class Ui_MainWindow(object):
         self.video_radioBtn = QRadioButton(self.frame_13)
         self.video_radioBtn.setObjectName(u"video_radioBtn")
         self.video_radioBtn.setMinimumSize(QSize(0, 35))
-        self.video_radioBtn.setMaximumSize(QSize(95, 35))
-        self.video_radioBtn.setFont(font14)
+        self.video_radioBtn.setMaximumSize(QSize(100, 35))
+        self.video_radioBtn.setFont(font15)
         self.video_radioBtn.setStyleSheet(u"\n"
 "QRadioButton{background-color:  rgb(214, 214, 214);\n"
 "color: #545454;\n"
@@ -1039,7 +1045,7 @@ class Ui_MainWindow(object):
         self.label_3.setObjectName(u"label_3")
         self.label_3.setEnabled(True)
         self.label_3.setMinimumSize(QSize(55, 0))
-        self.label_3.setFont(font14)
+        self.label_3.setFont(font15)
         self.label_3.setStyleSheet(u"color: #545454;\n"
 "border:none;\n"
 "")
@@ -1066,7 +1072,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_16.setContentsMargins(-1, 5, -1, 5)
         self.label_2 = QLabel(self.frame_17)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font14)
+        self.label_2.setMinimumSize(QSize(65, 0))
+        self.label_2.setMaximumSize(QSize(16777215, 16777215))
+        self.label_2.setFont(font15)
         self.label_2.setStyleSheet(u"color: #545454;\n"
 "border:none;\n"
 "")
@@ -1189,7 +1197,7 @@ class Ui_MainWindow(object):
         self.stop_scraping_btn.setObjectName(u"stop_scraping_btn")
         self.stop_scraping_btn.setMinimumSize(QSize(180, 35))
         self.stop_scraping_btn.setMaximumSize(QSize(180, 35))
-        self.stop_scraping_btn.setFont(font6)
+        self.stop_scraping_btn.setFont(font11)
         self.stop_scraping_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.stop_scraping_btn.setStyleSheet(u"QPushButton{ \n"
 "border:2px solid #7E7E7E;\n"
@@ -1216,7 +1224,7 @@ class Ui_MainWindow(object):
         self.start_scraping_btn.setObjectName(u"start_scraping_btn")
         self.start_scraping_btn.setMinimumSize(QSize(180, 35))
         self.start_scraping_btn.setMaximumSize(QSize(180, 35))
-        self.start_scraping_btn.setFont(font6)
+        self.start_scraping_btn.setFont(font11)
         self.start_scraping_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.start_scraping_btn.setStyleSheet(u"QPushButton{ \n"
 "border:2px solid #7E7E7E;\n"
@@ -1346,11 +1354,11 @@ class Ui_MainWindow(object):
         self.username_channel = QLineEdit(self.frame_31)
         self.username_channel.setObjectName(u"username_channel")
         self.username_channel.setMinimumSize(QSize(0, 28))
-        font15 = QFont()
-        font15.setFamily(u"Roboto")
-        font15.setBold(False)
-        font15.setWeight(50)
-        self.username_channel.setFont(font15)
+        font16 = QFont()
+        font16.setFamily(u"Roboto")
+        font16.setBold(False)
+        font16.setWeight(50)
+        self.username_channel.setFont(font16)
         self.username_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1409,7 +1417,7 @@ class Ui_MainWindow(object):
         self.country_channel.setObjectName(u"country_channel")
         self.country_channel.setMinimumSize(QSize(48, 0))
         self.country_channel.setMaximumSize(QSize(52, 24))
-        self.country_channel.setFont(font15)
+        self.country_channel.setFont(font16)
         self.country_channel.setStyleSheet(u"\n"
 "	color: rgb(181, 181, 181);\n"
 "\n"
@@ -1435,7 +1443,7 @@ class Ui_MainWindow(object):
         self.totVideo_channel = QLineEdit(self.frame_31)
         self.totVideo_channel.setObjectName(u"totVideo_channel")
         self.totVideo_channel.setMinimumSize(QSize(0, 28))
-        self.totVideo_channel.setFont(font15)
+        self.totVideo_channel.setFont(font16)
         self.totVideo_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1465,7 +1473,7 @@ class Ui_MainWindow(object):
         self.totViews_channel = QLineEdit(self.frame_31)
         self.totViews_channel.setObjectName(u"totViews_channel")
         self.totViews_channel.setMinimumSize(QSize(0, 28))
-        self.totViews_channel.setFont(font15)
+        self.totViews_channel.setFont(font16)
         self.totViews_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1495,7 +1503,7 @@ class Ui_MainWindow(object):
         self.totSubs_channel = QLineEdit(self.frame_31)
         self.totSubs_channel.setObjectName(u"totSubs_channel")
         self.totSubs_channel.setMinimumSize(QSize(0, 28))
-        self.totSubs_channel.setFont(font15)
+        self.totSubs_channel.setFont(font16)
         self.totSubs_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1525,7 +1533,7 @@ class Ui_MainWindow(object):
         self.joinedDate_channel = QLineEdit(self.frame_31)
         self.joinedDate_channel.setObjectName(u"joinedDate_channel")
         self.joinedDate_channel.setMinimumSize(QSize(0, 28))
-        self.joinedDate_channel.setFont(font15)
+        self.joinedDate_channel.setFont(font16)
         self.joinedDate_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1557,7 +1565,7 @@ class Ui_MainWindow(object):
         self.social_comboBox.setObjectName(u"social_comboBox")
         self.social_comboBox.setMinimumSize(QSize(0, 28))
         self.social_comboBox.setMaximumSize(QSize(16777215, 28))
-        self.social_comboBox.setFont(font15)
+        self.social_comboBox.setFont(font16)
         self.social_comboBox.setStyleSheet(u"QComboBox{\n"
 "	border: 1px solid  rgb(91, 91, 91);\n"
 "	background-color: rgb(55, 55, 55);\n"
@@ -1596,9 +1604,9 @@ class Ui_MainWindow(object):
         self.description_channel.setObjectName(u"description_channel")
         self.description_channel.setMinimumSize(QSize(0, 105))
         self.description_channel.setMaximumSize(QSize(16777215, 105))
-        font16 = QFont()
-        font16.setFamily(u"Roboto")
-        self.description_channel.setFont(font16)
+        font17 = QFont()
+        font17.setFamily(u"Roboto")
+        self.description_channel.setFont(font17)
         self.description_channel.setStyleSheet(u"QTextEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1722,7 +1730,7 @@ class Ui_MainWindow(object):
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Create new cluster", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"New to Scr4p3rTube and don\u2019t have a \n"
 "database to collect data?", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><br/>If you don't already have a place where to store<br/>data, you can create one for free using <br><span style=\" text-decoration: underline; color:#fd7676;\">MongoDB Atlas</span> or login with your account.<br/></body></html>", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body>If you don't already have a place where to store<br/>data, you can create one for free using <br><span style=\" text-decoration: underline; color:#fd7676;\">MongoDB Atlas</span> or login with your account.<br/></body></html>", None))
         self.start_scraping_btn_2.setText(QCoreApplication.translate("MainWindow", u"Create Database", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"New connection", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Paster your connection string</p></body></html>", None))

@@ -181,6 +181,7 @@ class Channel_Scraping(QThread):
         index = 0
         err = 0
         for n in range(scroll):
+        
             if err >=1:
                 break
 
@@ -276,7 +277,7 @@ class Channel_Scraping(QThread):
 
         # self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date,"tot_video":len(video_info["links"]), "tot_visual": tot_visual,
         #                 "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})
-        self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date, "tot_visual": tot_visual,
+        self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date, "tot_visual": tot_visual, "tot_video":len(video_info["links"]),
                         "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})
 
         self.driver.quit()

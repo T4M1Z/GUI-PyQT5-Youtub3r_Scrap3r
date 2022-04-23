@@ -12,10 +12,7 @@
 
 import os
 import sys
-from tkinter import SUNKEN
 import requests
-from matplotlib import style
-from scipy.misc import central_diff_weights
 from modules import *
 # from PyQt5.QtChart import QCandlestickSeries, QCandlestickSet, QChart, QChartView, QLineSeries
 from PyQt5.QtWidgets import QFileDialog, QFrame, QGraphicsOpacityEffect, QHBoxLayout, QLabel, QMainWindow, QPushButton
@@ -59,6 +56,7 @@ class MainWindow(QMainWindow):
         # ------ FUNCTIONS ------ #
         UIFunctions.uiDefinitions(self)
         # ----------------------- #
+
 
         # ------ Settings ------ #
         self.door = False
@@ -133,9 +131,10 @@ class MainWindow(QMainWindow):
             print("add cluster option")
         else: 
             print("remove cluster option")
-            self.ui.cluster_checkBox.setEnabled(False)
+            # self.ui.cluster_checkBox.setEnabled(False)
 
 
+    # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
     def test_connection_db(self):
         self.ui.username_db.setStyleSheet(stylesheet.input_style)
         self.ui.password_db.setStyleSheet(stylesheet.input_style) 
@@ -154,10 +153,10 @@ class MainWindow(QMainWindow):
             # Start loading GIF
             self.movie.start()
             self.ui.label_gif.show()
+    # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
 
 
-
-
+    # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
     def return_status_db(self, return_status):
         if return_status == "connected":
             self.ui.status_db_connection.setText("ONLINE")
@@ -174,6 +173,7 @@ class MainWindow(QMainWindow):
         # Stop loading GIF
         self.movie.stop()
         self.ui.label_gif.hide()
+    # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
 
 
     def start_scraping(self):
@@ -189,16 +189,8 @@ class MainWindow(QMainWindow):
         else: 
             self.ui.url_Input.setStyleSheet(stylesheet.input_style)
 
-        # Database Status
-        # if self.ui.status_db_connection.text() == "OFFLINE":
-        #     self.ui.username_db.setStyleSheet(stylesheet.input_style_error)
-        #     self.ui.password_db.setStyleSheet(stylesheet.input_style_error)
-        # else:
-        #     self.ui.username_db.setStyleSheet(stylesheet.input_style)
-        #     self.ui.password_db.setStyleSheet(stylesheet.input_style)
 
         # Final controll
-        # if self.ui.status_db_connection.text() == "OFFLINE" and self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
         if self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
             self.animation_top_panel()
             print(self.c_panel.ui.central_panel_frame.height())
@@ -219,10 +211,13 @@ class MainWindow(QMainWindow):
             ### - Starting QTrhead - ###
             self.serialReaderChannelScraping = Channel_Scraping(self.ui, self.c_panel.ui)
             self.serialReaderChannelScraping.receivedPacketSignal.connect(self.return_data_scraping)
+            # When signal finish, start inserting data
             self.serialReaderChannelScraping.finished.connect(self.insert_data_channel)
             self.serialReaderChannelScraping.start()
 
 
+    ############################################################
+    ##--- Signal() return data from: channeler_scraping.py ---##
     def return_data_scraping(self, packet):
         try:
             if "message" in packet.keys():
@@ -274,7 +269,7 @@ class MainWindow(QMainWindow):
             else: self.ui.country_channel.setText("Country not found")
                 # self.ui.flag_label.setStyleSheet(stylesheet.no_flag)
             # Total Video
-            # self.ui.totVideo_channel.setText(str(self.packet_data["tot_video"])+" Video")
+            self.ui.totVideo_channel.setText(str(self.packet_data["tot_video"])+" Video")
             # Total Views
             self.ui.totViews_channel.setText(self.packet_data["tot_visual"])
             # Subscriber
