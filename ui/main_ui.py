@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'third_gui_style_upHFyPsV.ui'
+## Form generated from reading UI file 'third_gui_style_upnJjGwQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -35,7 +35,7 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet(u"QScrollBar:horizontal {\n"
 "	border: none;\n"
 "    background: rgb(45, 45, 68);\n"
-"	border-radius: 0px;\n"
+"border-radius: 3px;\n"
 " }\n"
 "\n"
 "/*  HANDLE BAR horiz:horizontal */\n"
@@ -64,7 +64,7 @@ class Ui_MainWindow(object):
 "/* BTN BOTTOM - SCROLLBAR */\n"
 "QScrollBar::add-line:horizontal {\n"
 "	border: none;\n"
-"		background-color: rgb(60, 60, 60);\n"
+"	background: none;\n"
 "border-radius: 3px;\n"
 "width:0px;\n"
 "}\n"
@@ -75,23 +75,20 @@ class Ui_MainWindow(object):
 "	background: none;\n"
 "}\n"
 "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"	background: none;\n"
 ""
-                        "	background: none;\n"
-"}\n"
+                        "}\n"
 "\n"
 "QScrollBar:vertical {\n"
 "	border: none;\n"
-"    background: rgb(45, 45, 68);\n"
-"	border-radius: 0px;\n"
+"	background: rgb(77, 77, 77);\n"
+"\n"
 " }\n"
 "\n"
 "/*  HANDLE BAR horiz:vertical */\n"
 "QScrollBar::handle:vertical {	\n"
-"	background-color: rgb(49, 49, 49);\n"
-"	border-radius: 7px;\n"
-"\n"
-"border-radius: 4px;\n"
-"\n"
+"	background: rgb(49, 49, 49);\n"
+"	border-radius: 6px;\n"
 "}\n"
 "QScrollBar::handle:vertical:hover{	\n"
 "	background-color: rgb(54, 54, 54);\n"
@@ -103,7 +100,7 @@ class Ui_MainWindow(object):
 "/* BTN TOP - SCROLLBAR */\n"
 "QScrollBar::sub-line:vertical {\n"
 "	border: none;\n"
-"	background-color: rgb(60, 60, 60);\n"
+"	background: none;\n"
 "border-radius: 3px;\n"
 "width:0px;\n"
 "}\n"
@@ -113,7 +110,7 @@ class Ui_MainWindow(object):
 "/* BTN BOTTOM - SCROLLBAR */\n"
 "QScrollBar::add-line:vertical {\n"
 "	border: none;\n"
-"		background-color: rgb(60, 60, 60);\n"
+"	background: none;\n"
 "border-radius: 3px;\n"
 "width:0px;\n"
 "}\n"
@@ -123,8 +120,7 @@ class Ui_MainWindow(object):
 "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
 "	background: none;\n"
 "}\n"
-"QScrollBar::add-page:verti"
-                        "cal, QScrollBar::sub-page:vertical {\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
 "	background: none;\n"
 "}\n"
 "")
@@ -1416,7 +1412,7 @@ class Ui_MainWindow(object):
         self.country_channel = QLabel(self.frame_34)
         self.country_channel.setObjectName(u"country_channel")
         self.country_channel.setMinimumSize(QSize(48, 0))
-        self.country_channel.setMaximumSize(QSize(52, 24))
+        self.country_channel.setMaximumSize(QSize(16777215, 24))
         self.country_channel.setFont(font16)
         self.country_channel.setStyleSheet(u"\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1424,18 +1420,9 @@ class Ui_MainWindow(object):
 "border:none;\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));\n"
 "")
+        self.country_channel.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_28.addWidget(self.country_channel)
-
-        self.flag_label = QLabel(self.frame_34)
-        self.flag_label.setObjectName(u"flag_label")
-        self.flag_label.setMinimumSize(QSize(0, 0))
-        self.flag_label.setMaximumSize(QSize(27, 27))
-        self.flag_label.setStyleSheet(u"image: url(:/flags/icons/flags/none.svg);\n"
-"border:none;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
-
-        self.horizontalLayout_28.addWidget(self.flag_label)
 
 
         self.verticalLayout_17.addWidget(self.frame_34)
@@ -1756,7 +1743,6 @@ class Ui_MainWindow(object):
         self.username_channel.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.username_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.country_channel.setText(QCoreApplication.translate("MainWindow", u"Country", None))
-        self.flag_label.setText("")
         self.totVideo_channel.setInputMask("")
         self.totVideo_channel.setText(QCoreApplication.translate("MainWindow", u"Total videos", None))
         self.totVideo_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Joined date", None))
@@ -1771,6 +1757,11 @@ class Ui_MainWindow(object):
         self.joinedDate_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Subscribers", None))
         self.social_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Social", None))
 
+        self.description_channel.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Roboto'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Description</p></body></html>", None))
         self.description_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Channel description", None))
         self.drag_btn.setText("")
     # retranslateUi

@@ -173,3 +173,8 @@ def radius_maximize(n):
     """
 
     return close_btn_rad, frame_btn_rad, window_btn_rad, frame_top_rad, page_title_rad, title_frame_rad
+
+
+
+
+

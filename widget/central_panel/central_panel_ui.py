@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'central_panelXSROyq.ui'
+## Form generated from reading UI file 'central_panelZCWMBS.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -209,6 +209,12 @@ class Ui_Form(object):
         self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         if (self.tableWidget.rowCount() < 1):
             self.tableWidget.setRowCount(1)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        __qtablewidgetitem4.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.tableWidget.setItem(0, 1, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        __qtablewidgetitem5.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.tableWidget.setItem(0, 3, __qtablewidgetitem5)
         self.tableWidget.setObjectName(u"tableWidget")
         font = QFont()
         font.setFamily(u"Roboto")
@@ -342,11 +348,18 @@ class Ui_Form(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p></body></html>", None))
-        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"Link url", None));
-        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"Title", None));
-        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"Views", None));
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"ID", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"Link url", None));
+        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"Title", None));
+        ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("Form", u"Views", None));
+
+        __sortingEnabled = self.tableWidget.isSortingEnabled()
+        self.tableWidget.setSortingEnabled(False)
+        self.tableWidget.setSortingEnabled(__sortingEnabled)
+
     # retranslateUi
 

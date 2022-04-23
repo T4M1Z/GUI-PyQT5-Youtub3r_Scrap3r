@@ -40,7 +40,7 @@
    <string notr="true">QScrollBar:horizontal {
 	border: none;
     background: rgb(45, 45, 68);
-	border-radius: 0px;
+border-radius: 3px;
  }
 
 /*  HANDLE BAR horiz:horizontal */
@@ -69,7 +69,7 @@ width:0px;
 /* BTN BOTTOM - SCROLLBAR */
 QScrollBar::add-line:horizontal {
 	border: none;
-		background-color: rgb(60, 60, 60);
+	background: none;
 border-radius: 3px;
 width:0px;
 }
@@ -85,17 +85,14 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 
 QScrollBar:vertical {
 	border: none;
-    background: rgb(45, 45, 68);
-	border-radius: 0px;
+	background: rgb(77, 77, 77);
+
  }
 
 /*  HANDLE BAR horiz:vertical */
 QScrollBar::handle:vertical {	
-	background-color: rgb(49, 49, 49);
-	border-radius: 7px;
-
-border-radius: 4px;
-
+	background: rgb(49, 49, 49);
+	border-radius: 6px;
 }
 QScrollBar::handle:vertical:hover{	
 	background-color: rgb(54, 54, 54);
@@ -107,7 +104,7 @@ QScrollBar::handle:vertical:pressed {
 /* BTN TOP - SCROLLBAR */
 QScrollBar::sub-line:vertical {
 	border: none;
-	background-color: rgb(60, 60, 60);
+	background: none;
 border-radius: 3px;
 width:0px;
 }
@@ -117,7 +114,7 @@ width:0px;
 /* BTN BOTTOM - SCROLLBAR */
 QScrollBar::add-line:vertical {
 	border: none;
-		background-color: rgb(60, 60, 60);
+	background: none;
 border-radius: 3px;
 width:0px;
 }
@@ -2694,7 +2691,7 @@ QLineEdit::focus{
                              <property name="frameShadow">
                               <enum>QFrame::Raised</enum>
                              </property>
-                             <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="0,0">
+                             <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="0">
                               <property name="spacing">
                                <number>0</number>
                               </property>
@@ -2720,7 +2717,7 @@ QLineEdit::focus{
                                 </property>
                                 <property name="maximumSize">
                                  <size>
-                                  <width>52</width>
+                                  <width>16777215</width>
                                   <height>24</height>
                                  </size>
                                 </property>
@@ -2742,29 +2739,8 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, st
                                 <property name="text">
                                  <string>Country</string>
                                 </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QLabel" name="flag_label">
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>0</width>
-                                  <height>0</height>
-                                 </size>
-                                </property>
-                                <property name="maximumSize">
-                                 <size>
-                                  <width>27</width>
-                                  <height>27</height>
-                                 </size>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">image: url(:/flags/icons/flags/none.svg);
-border:none;
-background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));</string>
-                                </property>
-                                <property name="text">
-                                 <string/>
+                                <property name="alignment">
+                                 <set>Qt::AlignCenter</set>
                                 </property>
                                </widget>
                               </item>
@@ -3113,6 +3089,13 @@ QTextEdit::focus{
                              </property>
                              <property name="readOnly">
                               <bool>true</bool>
+                             </property>
+                             <property name="html">
+                              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Roboto'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Description&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                              </property>
                              <property name="acceptRichText">
                               <bool>true</bool>

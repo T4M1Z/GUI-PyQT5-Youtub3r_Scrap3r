@@ -523,7 +523,7 @@ QHeaderView::section:checked:hover{
                       <row/>
                       <column>
                        <property name="text">
-                        <string/>
+                        <string>ID</string>
                        </property>
                       </column>
                       <column>
@@ -541,6 +541,19 @@ QHeaderView::section:checked:hover{
                         <string>Views</string>
                        </property>
                       </column>
+                      <item row="0" column="1">
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="flags">
+                        <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+                       </property>
+                      </item>
+                      <item row="0" column="3">
+                       <property name="flags">
+                        <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+                       </property>
+                      </item>
                      </widget>
                     </item>
                    </layout>

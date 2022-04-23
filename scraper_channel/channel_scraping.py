@@ -122,16 +122,18 @@ class Channel_Scraping(QThread):
         except Exception as e:
             print("cookie error")
 
-        try:
-            confirm_btn[0].click() # 1btn
-            time.sleep(0.3)
-            confirm_btn[2].click() # 2btn
-            time.sleep(0.3)
-            confirm_btn[4].click() # 3btn
-            time.sleep(0.3)
-        except Exception as e:
-            self.driver.refresh()
-            print("== cookie error 2 ===")
+        while True:
+            try:
+                confirm_btn[0].click() # 1btn
+                time.sleep(0.3)
+                confirm_btn[2].click() # 2btn
+                time.sleep(0.3)
+                confirm_btn[4].click() # 3btn
+                time.sleep(0.3)
+                break
+            except Exception as e:
+                self.driver.refresh()
+                print("== cookie error 2 ===")
 
 
         try:
@@ -150,7 +152,11 @@ class Channel_Scraping(QThread):
             self.driver.get(link_all_video.get_attribute("href"))
             WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//div[@id='publisher-container']//div//yt-formatted-string//span[3]")))
             n_all_video = self.driver.find_element(By.XPATH, "//div[@id='publisher-container']//div//yt-formatted-string//span[3]")
+
+            # Settings Table row number based on total video
             print("Numero video: ",n_all_video.text)
+            self.c_panel_ui.tableWidget.setRowCount(int(n_all_video.text))   
+
             scroll = int(str(n_all_video.text).replace(",",""))//20
             scroll = 1 if scroll == 0 else scroll 
             self.driver.get(self.url)
@@ -171,6 +177,7 @@ class Channel_Scraping(QThread):
                 print("errore 2")
                 scroll = 30
                 self.driver.execute_script("window.history.go(-1)")
+                self.c_panel_ui.tableWidget.setRowCount(1000)   
 
         # Scroll the page and load more videos
         time.sleep(1)
@@ -194,12 +201,12 @@ class Channel_Scraping(QThread):
                 # date = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='metadata-line']//span[2]")
                 # duration = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='overlays']//span[@id='text']")
 
-                # for l,t,v in zip(links_video,title,visual):
-                #     video_info["links"].append(l.get_attribute("href"))
-                #     video_info["title"].append(t.text)
-                #     video_info["visual"].append(v.text)
-                #     video_info["index"].append(index)
-                #     index+=1            
+                for l,t,v in zip(links_video,title,visual):
+                    video_info["links"].append(l.get_attribute("href"))
+                    video_info["title"].append(t.text)
+                    video_info["visual"].append(v.text)
+                    video_info["index"].append(index)
+                    index+=1            
 
                 div = self.driver.find_elements(By.XPATH, "//div[@id='items']//ytd-grid-video-renderer")
                 for element in div:
@@ -213,7 +220,7 @@ class Channel_Scraping(QThread):
             html = self.driver.find_element(By.TAG_NAME,'html')
             html.send_keys(Keys.END)
 
-            # self.receivedPacketSignal.emit(video_info)
+            self.receivedPacketSignal.emit(video_info)
 
             print(f"scrolling [{n+1}/{scroll}] ")
 
@@ -274,6 +281,7 @@ class Channel_Scraping(QThread):
         except:
             print(f"[CHANNEL][SOCIAL] Error: No social?")
 
+        # self.c_panel_ui.right_bottom_frame.show()
 
         # self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date,"tot_video":len(video_info["links"]), "tot_visual": tot_visual,
         #                 "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})

@@ -61,6 +61,10 @@ class MainWindow(QMainWindow):
         # ------ Settings ------ #
         self.door = False
         self.ui.stop_scraping_btn.hide()
+
+        self.c_panel.ui.right_bottom_frame.hide()# Table widget hide
+
+
         # self.ui.scraping_monitoring_frame.setMaximumHeight(0)
         self.ui.central_panel_layout.addWidget(self.c_panel)
         # self.ui.label_gif.hide()
@@ -74,6 +78,7 @@ class MainWindow(QMainWindow):
         header.setSectionResizeMode(1, QHeaderView.Stretch)
         header.setSectionResizeMode(2, QHeaderView.Stretch)
         header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
+
         item1 = self.c_panel.ui.tableWidget.horizontalHeaderItem(0)
         item1.setForeground(QtGui.QColor(255, 0, 0))
         item1.setBackground(QtGui.QColor(0, 0, 0))  # Black background! does not work!!
@@ -206,7 +211,7 @@ class MainWindow(QMainWindow):
             self.ui.stop_scraping_btn.show()
 
             # Clear links in the QWidget Tabel
-            self.c_panel.ui.tableWidget.clear()
+            self.c_panel.ui.tableWidget.clearContents()
 
             ### - Starting QTrhead - ###
             self.serialReaderChannelScraping = Channel_Scraping(self.ui, self.c_panel.ui)
@@ -224,10 +229,9 @@ class MainWindow(QMainWindow):
                 print(packet["message"])
             
             elif "links" in packet.keys():
-                self.c_panel.ui.tableWidget.selectedItems()
                 for l,t,v,idx in zip(packet["links"], packet["title"], packet["visual"], packet["index"]):
                     if t not in set(self.lista):
-                        self.c_panel.ui.tableWidget.insertRow(idx)
+                        print(idx, l)
                         self.c_panel.ui.tableWidget.setItem(idx, 0, QTableWidgetItem(str(idx)))
                         self.c_panel.ui.tableWidget.setItem(idx, 1, QTableWidgetItem(l))
                         self.c_panel.ui.tableWidget.setItem(idx, 2, QTableWidgetItem(t))
@@ -251,13 +255,6 @@ class MainWindow(QMainWindow):
 
 
     def insert_data_channel(self):  
-        # Deleting previuous selenium widget in the layout
-        for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
-            self.c_panel.ui.selenium_layout.itemAt(i).widget().setParent(None)
-
-        self.ui.stop_scraping_btn.hide()
-        self.ui.start_scraping_btn.show()
-
         try:
             self.download_image(self.packet_data["profile_img"])
             # Username
@@ -284,6 +281,14 @@ class MainWindow(QMainWindow):
         except Exception as e:
             print(f"Programm stopped without data input: ERROR {e}")
         
+        
+        # Deleting previuous selenium widget in the layout
+        for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
+            self.c_panel.ui.selenium_layout.itemAt(i).widget().setParent(None)
+
+        self.ui.stop_scraping_btn.hide()
+        self.ui.start_scraping_btn.show()
+
 
 
     def stop_scraping(self):
@@ -321,6 +326,10 @@ class MainWindow(QMainWindow):
 
     def reset_user(self):
         ### CLEAR ###
+        self.lista = []
+
+        self.c_panel.ui.right_bottom_frame.hide() # tablewidget hide
+
         self.ui.profile_image.clear()
         self.ui.username_channel.setText("Username")
         # self.ui.flag_label.setStyleSheet(stylesheet.no_flag)
