@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'channel_history_uivJxQOR.ui'
+## Form generated from reading UI file 'channel_history_uianYIXJ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -33,7 +33,7 @@ class Ui_user(object):
         self.horizontalLayout_2 = QHBoxLayout(user)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 6, 0, 6)
+        self.horizontalLayout_2.setContentsMargins(0, 3, 0, 0)
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, -1, -1, -1)
