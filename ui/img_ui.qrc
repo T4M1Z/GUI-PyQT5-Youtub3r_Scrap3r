@@ -263,6 +263,8 @@
     <file>icons/channel/cover.png</file>
     <file>icons/channel/profile.jpg</file>
     <file>icons/channel/profile_new.jpg</file>
+    <file>icons/channel/chart_btn.svg</file>
+    <file>icons/channel/user_btn.svg</file>
   </qresource>
   <qresource prefix="connection">
     <file>icons/connection/connection-on-24.png</file>
@@ -270,5 +272,7 @@
   </qresource>
   <qresource prefix="database">
     <file>icons/db/db_s.svg</file>
+    <file>icons/db/db_s_white.svg</file>
+    <file>icons/db/reload_db.png</file>
   </qresource>
 </RCC>

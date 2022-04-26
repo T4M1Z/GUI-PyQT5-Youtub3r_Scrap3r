@@ -21,43 +21,73 @@ user32 = ctypes.windll.user32
 width,height = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
 
+test = False
+
+
 class Channel_Scraping(QThread):
     receivedPacketSignal = pyqtSignal(dict)
 
     def __init__(self, ui, c_panel):
         super(Channel_Scraping, self).__init__()
 
-        self.ui = ui
-        self.c_panel_ui = c_panel 
+
+        ################################
+        ## ======== SETTINGS ======== ##
+
+        self.ui = ui # Main ui
+        self.c_panel_ui = c_panel # Central panel ui 
+
+
         self.url = self.ui.url_Input.text()
         self.threads = self.ui.threads_spinBox.value()
-        # self.cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False
-        self.yt_name = self.url.split("/")[4]
-        
 
-        # --- * Selenium Settings * --- #
+        ## ======== END SETTINGS ======== ##
+        ####################################
+
+
+        #######################################
+        # ======== SELENIUM SETTINGS ======== #
+
         PATH = os.getcwd()+"/scraper_channel/webdriver/chromedriver.exe"
         options = Options()
-        # options.add_argument("--headless")
-        # options.add_argument("start-maximized")
+
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_argument('log-level=3')
         options.add_argument("--lang=en")
         options.add_argument('--disable-notifications')
         options.add_argument('--mute-audio')
-        # options.add_argument("--kiosk")
+        # options.add_argument("--headless")
         options.add_argument("--window-position=6500,6500")
         options.add_argument("disable-infobars")
         options.add_argument("--kiosk")
         options.add_argument(f"--app={self.url}")
-
         self.driver = webdriver.Chrome(PATH, options=options)
-        print(f"Canale YouTube: {self.yt_name}")
+
+        # ======== END SELENIUM SETTINGS ======== #
+        ###########################################
+
+
+
+        ## ----------------------- XPATH Elements location ----------------------- ##
+        self.location_path = "//div[@id='details-container']//table//tbody//tr[2]//td[2]"
+        self.joined_date_path = "//div[@id='right-column']//yt-formatted-string[2]//span[2]"
+        self.tot_visual_path = "//div[@id='right-column']//yt-formatted-string[3]"
+        self.subs_path = "//yt-formatted-string[@id='subscriber-count']"
+        self.profile_img_path = "//yt-img-shadow[@id='avatar']//img"
+        self.cover_img_path = "//div[@id='header']//ytd-c4-tabbed-header-renderer"
+        self.social_primary = "//div[@id='primary-links']"
+        self.social_secondary = "//div[@id='secondary-links']"
+        self.social_path = "//div[@id='links-holder']"
+        self.channel_desc_path = "//div[@id='description-container']"
+        ############################################################################
+
+
+        ################################################
+        # ======== EMBEDDING SELENIUM INTO UI ======== #
+
+
         self.driver.set_window_size(1,1)
-
-
-        # ------------------------------------------ #
         self.hwnd = 0
         self.tries = 30
         self.total_tries = 0
@@ -72,26 +102,8 @@ class Channel_Scraping(QThread):
             except Exception as e:
                 print(e)
                 self.tries += 1
+
         # ------------------------------------------ #
-        # self.driver.set_window_size(1,1)
-
-        # --- * ----------------- * --- #
-
-
-
-
-        # XPATH Elements location
-        self.location_path = "//div[@id='details-container']//table//tbody//tr[2]//td[2]"
-        self.joined_date_path = "//div[@id='right-column']//yt-formatted-string[2]//span[2]"
-        self.tot_visual_path = "//div[@id='right-column']//yt-formatted-string[3]"
-        self.subs_path = "//yt-formatted-string[@id='subscriber-count']"
-        self.profile_img_path = "//yt-img-shadow[@id='avatar']//img"
-        self.cover_img_path = "//div[@id='header']//ytd-c4-tabbed-header-renderer"
-        self.social_primary = "//div[@id='primary-links']"
-        self.social_secondary = "//div[@id='secondary-links']"
-        self.social_path = "//div[@id='links-holder']"
-        self.channel_desc_path = "//div[@id='description-container']"
-
 
     def hwnd_method(self, hwnd, ctx):
         window_title = win32gui.GetWindowText(hwnd)
@@ -108,19 +120,25 @@ class Channel_Scraping(QThread):
             win32gui.UpdateWindow(hwnd)
             '''
 
+        # ======== END EMBEDDING SELENIUM INTO UI ======== #
+        ####################################################
 
 
     def run(self):
-        # self.driver.set_window_size(1,1)
         self.driver.get(self.url)
         time.sleep(0.5)
 
+
+        ###########################################
+        ## ============ COOKIE ZONE ============ ## 
+
         try:
             WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH,"//div[@class='VfPpkd-dgl2Hf-ppHlrf-sM5MNb']//button"))).click()
-            time.sleep(3)
+            time.sleep(2)
             confirm_btn = self.driver.find_elements(By.XPATH,"//div[@class='uScs5d']//div/button")
         except Exception as e:
-            print("cookie error")
+            self.run()
+            print("== cookie error 1 ===")
 
         while True:
             try:
@@ -132,68 +150,73 @@ class Channel_Scraping(QThread):
                 time.sleep(0.3)
                 break
             except Exception as e:
-                self.driver.refresh()
+                self.run()
                 print("== cookie error 2 ===")
-
 
         try:
             WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//form[@class='bBXLMd']//div/button"))).click()
         except Exception as e:
-            print("== cookie error 3 ===")
+            self.run()
+            print(f"== cookie error 3 === ")
 
+        ## ============ END COOKIE ZONE ============ ##
+        ###############################################
+
+
+        # Find youtuber username
         username = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//ytd-channel-name[@id='channel-name']"))).text
-        # 1scroll = 30video
+        print(f"Canale YouTube: {username}")
 
-        try:
-            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//div[@id='primary-items']//yt-dropdown-menu//tp-yt-paper-menu-button//div"))).click()
-            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//div[@id='contentWrapper']//div//tp-yt-paper-listbox//a[1]//tp-yt-paper-item//tp-yt-paper-item-body"))).click()
-            WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//div[@id='play-button']//ytd-button-renderer//a")))
-            link_all_video = self.driver.find_element(By.XPATH, "//div[@id='play-button']//ytd-button-renderer//a")
-            self.driver.get(link_all_video.get_attribute("href"))
-            WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//div[@id='publisher-container']//div//yt-formatted-string//span[3]")))
-            n_all_video = self.driver.find_element(By.XPATH, "//div[@id='publisher-container']//div//yt-formatted-string//span[3]")
+        # try:
+        #     WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//div[@id='primary-items']//yt-dropdown-menu//tp-yt-paper-menu-button//div"))).click()
+        #     WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//div[@id='contentWrapper']//div//tp-yt-paper-listbox//a[1]//tp-yt-paper-item//tp-yt-paper-item-body"))).click()
+        #     WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//div[@id='play-button']//ytd-button-renderer//a")))
+        #     link_all_video = self.driver.find_element(By.XPATH, "//div[@id='play-button']//ytd-button-renderer//a")
+        #     self.driver.get(link_all_video.get_attribute("href"))
+        #     WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//div[@id='publisher-container']//div//yt-formatted-string//span[3]")))
+        #     n_all_video = self.driver.find_element(By.XPATH, "//div[@id='publisher-container']//div//yt-formatted-string//span[3]")
 
-            # Settings Table row number based on total video
-            print("Numero video: ",n_all_video.text)
-            self.c_panel_ui.tableWidget.setRowCount(int(n_all_video.text))   
+        #     # Settings Table row number based on total video
+        #     print("Numero video: ",n_all_video.text)
+        #     if not test:
+        #         self.c_panel_ui.tableWidget.setRowCount(int(n_all_video.text))   
 
-            scroll = int(str(n_all_video.text).replace(",",""))//20
-            scroll = 1 if scroll == 0 else scroll 
-            self.driver.get(self.url)
-        except Exception as e:
-            try:
-                print(f"errore 1 {e}")
-                input = self.driver.find_element(By.XPATH, "//input[@id='search']")
-                input.click()
-                input.send_keys(self.yt_name)
-                input.send_keys(Keys.ENTER)
-                WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//span[@id='video-count']")))
-                n_all_video = self.driver.find_element(By.XPATH, "//span[@id='video-count']")
-                scroll = int(str(n_all_video.text).replace(",","").split(" ")[0])//20
-                scroll = 1 if scroll == 0 else scroll 
-                time.sleep(2)
-                self.driver.execute_script("window.history.go(-1)")
-            except:
-                print("errore 2")
-                scroll = 30
-                self.driver.execute_script("window.history.go(-1)")
-                self.c_panel_ui.tableWidget.setRowCount(1000)   
+        #     scroll = int(str(n_all_video.text).replace(",",""))//20
+        #     scroll = 1 if scroll == 0 else scroll 
+        #     self.driver.get(self.url)
+
+        # except Exception as e:
+        #     try:
+        #         print(f"errore 1 {e}")
+        #         input = self.driver.find_element(By.XPATH, "//input[@id='search']")
+        #         input.click()
+        #         input.send_keys(username)
+        #         input.send_keys(Keys.ENTER)
+        #         WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//span[@id='video-count']")))
+        #         n_all_video = self.driver.find_element(By.XPATH, "//span[@id='video-count']")
+        #         scroll = int(str(n_all_video.text).replace(",","").split(" ")[0])//20
+        #         scroll = 1 if scroll == 0 else scroll 
+        #         time.sleep(2)
+        #         self.driver.execute_script("window.history.go(-1)")
+        #     except:
+        #         print("errore 2")
+        #         scroll = 30
+        #         self.driver.execute_script("window.history.go(-1)")
+        #         if not test:
+        #             self.c_panel_ui.tableWidget.setRowCount(1000)   
+
+        # scroll = 30
 
         # Scroll the page and load more videos
         time.sleep(1)
 
-        print(f"Questo è lo scroll: {scroll}")
+        # print(f"Questo è lo scroll: {scroll}")
         # Dict for qt signals
         video_info = {"links":[], "title":[], "visual":[], "index":[]}
         index = 0
-        err = 0
-        for n in range(scroll):
-        
-            if err >=1:
-                break
-
+        while True:
             try:
-                WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(
+                WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(
                     (By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")))
                 links_video = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")
                 title = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='video-title']")
@@ -202,27 +225,42 @@ class Channel_Scraping(QThread):
                 # duration = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='overlays']//span[@id='text']")
 
                 for l,t,v in zip(links_video,title,visual):
+                    self.c_panel_ui.tableWidget.setRowCount(index+1)   
                     video_info["links"].append(l.get_attribute("href"))
                     video_info["title"].append(t.text)
                     video_info["visual"].append(v.text)
                     video_info["index"].append(index)
+
                     index+=1            
 
+
+
+                # Deleting video-div during the scrolling 
                 div = self.driver.find_elements(By.XPATH, "//div[@id='items']//ytd-grid-video-renderer")
                 for element in div:
-                    try: self.driver.execute_script("""var element = arguments[0]; 
-                    element.parentNode.removeChild(element);""", element)
+                    try: 
+                        self.driver.execute_script("""var element = arguments[0]; 
+                        element.parentNode.removeChild(element);""", element)
                     except Exception: print("err")
+                try: 
+                    div = self.driver.find_element(By.XPATH, "//div[@id='items']//ytd-continuation-item-renderer")
+                    self.driver.execute_script("""var element = arguments[0]; 
+                    element.parentNode.removeChild(element);""", div)
+                except Exception: print("err")
+                    
+                
             except:
-                err += 1
-                print("End")
-
+                # Interrupt the script if doesn't find any div to delete
+                break
+            
+            # Find the page for scrolling
             html = self.driver.find_element(By.TAG_NAME,'html')
             html.send_keys(Keys.END)
 
-            self.receivedPacketSignal.emit(video_info)
+            if not test:
+                self.receivedPacketSignal.emit(video_info)
 
-            print(f"scrolling [{n+1}/{scroll}] ")
+            # print(f"scrolling [{n+1}/{scroll}] ")
 
 
 
@@ -238,19 +276,19 @@ class Channel_Scraping(QThread):
         # __ INFO CHANNEL __
         self.driver.get(self.url[:-6]+"/about")
 
-        try:location = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.location_path ))).text
+        try:location = WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.XPATH, self.location_path ))).text
         except: location = ""
-        try:joined_date = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.joined_date_path))).text
+        try:joined_date = WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.XPATH, self.joined_date_path))).text
         except: joined_date = ""
-        try:tot_visual = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.tot_visual_path))).text
+        try:tot_visual = WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.XPATH, self.tot_visual_path))).text
         except: tot_visual = ""
-        try:subs = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.subs_path))).text
+        try:subs = WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.XPATH, self.subs_path))).text
         except: subs = ""
-        try:profile_img = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.profile_img_path))).get_attribute("src")
+        try:profile_img = WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.XPATH, self.profile_img_path))).get_attribute("src")
         except Exception as e: 
             print(f"[Errore PROFILE IMAGE] {e}")
             profile_img = ""
-        try:channel_desc = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, self.channel_desc_path))).text
+        try:channel_desc = WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.XPATH, self.channel_desc_path))).text
         except: channel_desc = ""
 
         # Cover img
@@ -267,6 +305,13 @@ class Channel_Scraping(QThread):
         try:
             WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.XPATH, self.social_path)))
             socials = self.driver.find_elements(By.XPATH, self.social_path + "//a")
+
+            if socials:
+                self.ui.social_comboBox.removeItem(0)
+                self.ui.social_comboBox.setEnabled(True)
+                self.ui.btn_combo_box.show()
+                
+
             for i in socials:
                 if "https%3A%2F%2F" in i.get_attribute("href"):
                     a, sep, b = i.get_attribute("href").partition("https%3A%2F%2F")
@@ -281,13 +326,16 @@ class Channel_Scraping(QThread):
         except:
             print(f"[CHANNEL][SOCIAL] Error: No social?")
 
-        # self.c_panel_ui.right_bottom_frame.show()
 
-        # self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date,"tot_video":len(video_info["links"]), "tot_visual": tot_visual,
-        #                 "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})
-        self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date, "tot_visual": tot_visual, "tot_video":len(video_info["links"]),
+        if not test:
+            self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date, "tot_visual": tot_visual, "tot_video":len(video_info["links"]),
                         "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})
+
+        self.c_panel_ui.right_bottom_frame.show()
 
         self.driver.quit()
 
 
+# if __name__ == "__main__":
+#     a = Channel_Scraping()
+#     a.run()

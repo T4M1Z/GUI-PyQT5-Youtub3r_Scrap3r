@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'third_gui_style_upnJjGwQ.ui'
+## Form generated from reading UI file 'third_gui_style_upYSGKyH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,7 +21,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1200, 820)
+        MainWindow.setEnabled(True)
+        MainWindow.resize(1209, 820)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -82,7 +83,7 @@ class Ui_MainWindow(object):
 "QScrollBar:vertical {\n"
 "	border: none;\n"
 "	background: rgb(77, 77, 77);\n"
-"\n"
+"	width:10px;\n"
 " }\n"
 "\n"
 "/*  HANDLE BAR horiz:vertical */\n"
@@ -123,6 +124,30 @@ class Ui_MainWindow(object):
 "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
 "	background: none;\n"
 "}\n"
+"\n"
+"QMenu{\n"
+" background: blue;\n"
+""
+                        "                border: 2px solid red;\n"
+"                border-radius: 6px;\n"
+"}\n"
+"\n"
+"QMenu::separator {\n"
+"    height: 2px;\n"
+"    background: lightgray;\n"
+"\n"
+"}\n"
+"\n"
+"QMenu::item {\n"
+"	background-color: rgb(181, 181, 181);\n"
+"	color: rgb(71, 71, 71);\n"
+"}\n"
+"\n"
+" QMenu::item:selected{\n"
+"	background-color: rgb(81, 81, 81);\n"
+"	color: rgb(211, 211, 211);\n"
+" } \n"
+"\n"
 "")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -771,8 +796,114 @@ class Ui_MainWindow(object):
         self.verticalLayout_12 = QVBoxLayout(self.frame_6)
         self.verticalLayout_12.setSpacing(0)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.verticalLayout_12.setContentsMargins(-1, 8, -1, 8)
-        self.frame_2 = QFrame(self.frame_6)
+        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.db_channel_history = QFrame(self.frame_6)
+        self.db_channel_history.setObjectName(u"db_channel_history")
+        self.db_channel_history.setFrameShape(QFrame.StyledPanel)
+        self.db_channel_history.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_18 = QVBoxLayout(self.db_channel_history)
+        self.verticalLayout_18.setSpacing(0)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
+        self.frame_35 = QFrame(self.db_channel_history)
+        self.frame_35.setObjectName(u"frame_35")
+        self.frame_35.setMinimumSize(QSize(0, 41))
+        self.frame_35.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(55, 55, 55);\n"
+"border-top-left-radius:2px;\n"
+"border-top-right-radius:2px;\n"
+"}")
+        self.frame_35.setFrameShape(QFrame.StyledPanel)
+        self.frame_35.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.frame_35)
+        self.horizontalLayout.setSpacing(6)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(13, 9, 13, 9)
+        self.label_14 = QLabel(self.frame_35)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setMinimumSize(QSize(15, 0))
+        self.label_14.setStyleSheet(u"image: url(:/database/icons/db/db_s_white.svg);")
+
+        self.horizontalLayout.addWidget(self.label_14)
+
+        self.label_15 = QLabel(self.frame_35)
+        self.label_15.setObjectName(u"label_15")
+        font12 = QFont()
+        font12.setFamily(u"Segoe UI Semibold")
+        font12.setPointSize(12)
+        self.label_15.setFont(font12)
+        self.label_15.setStyleSheet(u"QLabel{\n"
+"	color:white;\n"
+"}")
+
+        self.horizontalLayout.addWidget(self.label_15)
+
+        self.refresh_db_btn = QPushButton(self.frame_35)
+        self.refresh_db_btn.setObjectName(u"refresh_db_btn")
+        self.refresh_db_btn.setMinimumSize(QSize(15, 15))
+        self.refresh_db_btn.setMaximumSize(QSize(15, 15))
+        self.refresh_db_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.refresh_db_btn.setStyleSheet(u"QPushButton{\n"
+"image: url(:/database/icons/db/reload_db.png);\n"
+"border-radius:4px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"	background-color: rgb(63, 63, 63);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"	background-color: rgb(43, 43, 43);\n"
+"}\n"
+"")
+
+        self.horizontalLayout.addWidget(self.refresh_db_btn)
+
+        self.horizontalLayout.setStretch(1, 1)
+        self.horizontalLayout.setStretch(2, 5)
+
+        self.verticalLayout_18.addWidget(self.frame_35)
+
+        self.scrollArea1 = QScrollArea(self.db_channel_history)
+        self.scrollArea1.setObjectName(u"scrollArea1")
+        self.scrollArea1.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
+        self.scrollArea1.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scrollArea1.setWidgetResizable(True)
+        self.scroll_widget = QWidget()
+        self.scroll_widget.setObjectName(u"scroll_widget")
+        self.scroll_widget.setGeometry(QRect(0, 0, 270, 38))
+        self.scroll_widget.setStyleSheet(u"\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));\n"
+"")
+        self.verticalLayout_19 = QVBoxLayout(self.scroll_widget)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalLayout_19.setContentsMargins(9, -1, -1, -1)
+        self.channel_list_widget = QVBoxLayout()
+        self.channel_list_widget.setSpacing(0)
+        self.channel_list_widget.setObjectName(u"channel_list_widget")
+        self.channel_list_widget.setContentsMargins(-1, 0, -1, 13)
+
+        self.verticalLayout_19.addLayout(self.channel_list_widget)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_19.addItem(self.verticalSpacer)
+
+        self.scrollArea1.setWidget(self.scroll_widget)
+
+        self.verticalLayout_18.addWidget(self.scrollArea1)
+
+
+        self.verticalLayout_12.addWidget(self.db_channel_history)
+
+        self.db_status_offline = QFrame(self.frame_6)
+        self.db_status_offline.setObjectName(u"db_status_offline")
+        self.db_status_offline.setFrameShape(QFrame.StyledPanel)
+        self.db_status_offline.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_15 = QVBoxLayout(self.db_status_offline)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.frame_2 = QFrame(self.db_status_offline)
         self.frame_2.setObjectName(u"frame_2")
         sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy5.setHorizontalStretch(0)
@@ -785,14 +916,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_14 = QVBoxLayout(self.frame_2)
         self.verticalLayout_14.setSpacing(5)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(-1, 8, -1, 9)
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.frame_26 = QFrame(self.frame_2)
         self.frame_26.setObjectName(u"frame_26")
         self.frame_26.setFrameShape(QFrame.StyledPanel)
         self.frame_26.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_20 = QHBoxLayout(self.frame_26)
         self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.horizontalLayout_20.setContentsMargins(-1, 3, -1, 10)
+        self.horizontalLayout_20.setContentsMargins(-1, 9, -1, 9)
         self.label_10 = QLabel(self.frame_26)
         self.label_10.setObjectName(u"label_10")
         sizePolicy.setHeightForWidth(self.label_10.sizePolicy().hasHeightForWidth())
@@ -812,9 +943,6 @@ class Ui_MainWindow(object):
         self.label_12 = QLabel(self.frame_2)
         self.label_12.setObjectName(u"label_12")
         self.label_12.setMinimumSize(QSize(260, 0))
-        font12 = QFont()
-        font12.setFamily(u"Segoe UI Semibold")
-        font12.setPointSize(12)
         self.label_12.setFont(font12)
         self.label_12.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label_12.setAlignment(Qt.AlignCenter)
@@ -837,7 +965,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.addWidget(self.label_13)
 
 
-        self.verticalLayout_12.addWidget(self.frame_2)
+        self.verticalLayout_15.addWidget(self.frame_2)
+
+
+        self.verticalLayout_12.addWidget(self.db_status_offline)
 
 
         self.verticalLayout_3.addWidget(self.frame_6)
@@ -923,6 +1054,24 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setSpacing(5)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.pushButton = QPushButton(self.frame_13)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setMinimumSize(QSize(45, 23))
+        self.pushButton.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(85, 255, 127);\n"
+" }\n"
+"\n"
+"QPushButton::hover{\n"
+"	background-color: rgb(150, 255, 134);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton::pressed{\n"
+"	background-color: rgb(68, 162, 74);\n"
+"}")
+
+        self.horizontalLayout_12.addWidget(self.pushButton)
+
         self.channel_radioBtn = QRadioButton(self.frame_13)
         self.channel_radioBtn.setObjectName(u"channel_radioBtn")
         self.channel_radioBtn.setMinimumSize(QSize(0, 35))
@@ -1148,7 +1297,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_12.addWidget(self.frame_17)
 
-        self.horizontalLayout_12.setStretch(1, 2)
+        self.horizontalLayout_12.setStretch(2, 2)
 
         self.verticalLayout_9.addWidget(self.frame_13)
 
@@ -1259,6 +1408,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.addWidget(self.frame_30)
 
         self.central_panel_layout = QHBoxLayout()
+        self.central_panel_layout.setSpacing(3)
         self.central_panel_layout.setObjectName(u"central_panel_layout")
         self.central_panel_layout.setContentsMargins(-1, 0, -1, -1)
         self.frame_12 = QFrame(self.frame_center)
@@ -1547,7 +1697,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_17.addWidget(self.joinedDate_channel)
 
-        self.social_comboBox = QComboBox(self.frame_31)
+        self.frame_28 = QFrame(self.frame_31)
+        self.frame_28.setObjectName(u"frame_28")
+        self.frame_28.setFrameShape(QFrame.StyledPanel)
+        self.frame_28.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_31 = QHBoxLayout(self.frame_28)
+        self.horizontalLayout_31.setSpacing(4)
+        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
+        self.horizontalLayout_31.setContentsMargins(0, 0, 0, 0)
+        self.social_comboBox = QComboBox(self.frame_28)
         self.social_comboBox.addItem("")
         self.social_comboBox.setObjectName(u"social_comboBox")
         self.social_comboBox.setMinimumSize(QSize(0, 28))
@@ -1585,15 +1743,49 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.verticalLayout_17.addWidget(self.social_comboBox)
+        self.horizontalLayout_31.addWidget(self.social_comboBox)
+
+        self.btn_combo_box = QPushButton(self.frame_28)
+        self.btn_combo_box.setObjectName(u"btn_combo_box")
+        self.btn_combo_box.setMinimumSize(QSize(28, 28))
+        self.btn_combo_box.setMaximumSize(QSize(28, 28))
+        font17 = QFont()
+        font17.setFamily(u"Segoe UI Semibold")
+        font17.setPointSize(9)
+        font17.setBold(True)
+        font17.setWeight(75)
+        self.btn_combo_box.setFont(font17)
+        self.btn_combo_box.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_combo_box.setStyleSheet(u"QPushButton{ \n"
+"	border: 1px solid  rgb(91, 91, 91);\n"
+"	background-color: rgb(58, 58, 58);\n"
+"	\n"
+"	image: url(:/16x16/icons/16x16/cil-hand-point-left.png);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton::hover{ \n"
+"	background-color: rgb(47, 47, 47);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"	background-color: rgb(50, 50, 50);\n"
+"border: 1px solid  rgb(121, 121, 121);\n"
+"}")
+
+        self.horizontalLayout_31.addWidget(self.btn_combo_box)
+
+
+        self.verticalLayout_17.addWidget(self.frame_28)
 
         self.description_channel = QTextEdit(self.frame_31)
         self.description_channel.setObjectName(u"description_channel")
         self.description_channel.setMinimumSize(QSize(0, 105))
         self.description_channel.setMaximumSize(QSize(16777215, 105))
-        font17 = QFont()
-        font17.setFamily(u"Roboto")
-        self.description_channel.setFont(font17)
+        font18 = QFont()
+        font18.setFamily(u"Roboto")
+        self.description_channel.setFont(font18)
         self.description_channel.setStyleSheet(u"QTextEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1635,15 +1827,6 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_13.addLayout(self.central_panel_layout)
-
-        self.frame_27 = QFrame(self.frame_center)
-        self.frame_27.setObjectName(u"frame_27")
-        self.frame_27.setFrameShape(QFrame.StyledPanel)
-        self.frame_27.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout = QHBoxLayout(self.frame_27)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-
-        self.verticalLayout_13.addWidget(self.frame_27)
 
 
         self.horizontalLayout_6.addWidget(self.frame_center)
@@ -1725,11 +1908,15 @@ class Ui_MainWindow(object):
         self.url_Input_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Connection string", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Ex. mongodb+srv://username:password@cluster.mongoDB...", None))
         self.start_scraping_btn_3.setText(QCoreApplication.translate("MainWindow", u"Connect", None))
+        self.label_14.setText("")
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" text-decoration: underline;\">Channels History</span></p></body></html>", None))
+        self.refresh_db_btn.setText("")
         self.label_10.setText("")
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" text-decoration: underline;\">MongoDB cluster is offline</span></p></body></html>", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"The data will not be saved after \n"
 "the scraping process", None))
         self.left_panel_btn.setText("")
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"clicca", None))
         self.channel_radioBtn.setText(QCoreApplication.translate("MainWindow", u"Channel", None))
         self.video_radioBtn.setText(QCoreApplication.translate("MainWindow", u"Video", None))
         self.url_Input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Link url", None))
@@ -1757,11 +1944,12 @@ class Ui_MainWindow(object):
         self.joinedDate_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Subscribers", None))
         self.social_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Social", None))
 
+        self.btn_combo_box.setText("")
         self.description_channel.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Roboto'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Description</p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Channel description</p></body></html>", None))
         self.description_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Channel description", None))
         self.drag_btn.setText("")
     # retranslateUi

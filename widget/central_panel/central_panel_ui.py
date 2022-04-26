@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'central_panelZCWMBS.ui'
+## Form generated from reading UI file 'central_panelxEqYYQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -39,6 +39,7 @@ class Ui_Form(object):
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
         self.central_panel_frame = QFrame(self.layoutWidget)
         self.central_panel_frame.setObjectName(u"central_panel_frame")
+        self.central_panel_frame.setEnabled(True)
         self.central_panel_frame.setMinimumSize(QSize(0, 300))
         self.central_panel_frame.setMaximumSize(QSize(16777215, 16777215))
         self.central_panel_frame.setStyleSheet(u"border:none;\n"
@@ -50,6 +51,7 @@ class Ui_Form(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.frame_5 = QFrame(self.central_panel_frame)
         self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setEnabled(True)
         self.frame_5.setMaximumSize(QSize(16777215, 16777215))
         self.frame_5.setStyleSheet(u"\n"
 "\n"
@@ -61,6 +63,7 @@ class Ui_Form(object):
         self.horizontalLayout_14.setContentsMargins(2, 2, 2, 2)
         self.frame_2 = QFrame(self.frame_5)
         self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setEnabled(True)
         self.frame_2.setStyleSheet(u"background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
 "border-radius:4px;")
@@ -92,6 +95,7 @@ class Ui_Form(object):
         self.layout_monitoring.setContentsMargins(0, 0, 0, 0)
         self.scraping_monitoring_frame = QFrame(self.horizontalLayoutWidget_2)
         self.scraping_monitoring_frame.setObjectName(u"scraping_monitoring_frame")
+        self.scraping_monitoring_frame.setEnabled(True)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -109,6 +113,7 @@ class Ui_Form(object):
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.splitter = QSplitter(self.scraping_monitoring_frame)
         self.splitter.setObjectName(u"splitter")
+        self.splitter.setEnabled(True)
         sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
@@ -127,6 +132,7 @@ class Ui_Form(object):
         self.horizontalLayout_18.setContentsMargins(0, 0, 0, 0)
         self.left_bottom_frame = QFrame(self.layoutWidget1)
         self.left_bottom_frame.setObjectName(u"left_bottom_frame")
+        self.left_bottom_frame.setEnabled(True)
         self.left_bottom_frame.setMinimumSize(QSize(230, 0))
         self.left_bottom_frame.setStyleSheet(u"\n"
 "border:0px;")
@@ -216,6 +222,7 @@ class Ui_Form(object):
         __qtablewidgetitem5.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
         self.tableWidget.setItem(0, 3, __qtablewidgetitem5)
         self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setEnabled(True)
         font = QFont()
         font.setFamily(u"Roboto")
         self.tableWidget.setFont(font)

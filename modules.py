@@ -5,3 +5,4 @@ from scraper_channel.channel_scraping import Channel_Scraping
 from scraper_channel.test_db import MongoDB
 
 from widget.central_panel.central_panel import CenterPanel
+from widget.channel_history.channel_history import ChannelHistory

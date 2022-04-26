@@ -13,6 +13,8 @@
 import os
 import sys
 import requests
+import webbrowser
+
 from modules import *
 # from PyQt5.QtChart import QCandlestickSeries, QCandlestickSet, QChart, QChartView, QLineSeries
 from PyQt5.QtWidgets import QFileDialog, QFrame, QGraphicsOpacityEffect, QHBoxLayout, QLabel, QMainWindow, QPushButton
@@ -38,6 +40,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         # ----- WIDGET ------- #
         self.c_panel = CenterPanel()
+    
 
         # ----- MOVE WINDOW ----- #
         def moveWindow(event):
@@ -57,12 +60,20 @@ class MainWindow(QMainWindow):
         UIFunctions.uiDefinitions(self)
         # ----------------------- #
 
-
         # ------ Settings ------ #
         self.door = False
         self.ui.stop_scraping_btn.hide()
+        
+        self.ui.btn_combo_box.hide()
+
+        # self.ui.db_channel_history.hide()
+        self.ui.db_status_offline.hide()
+
+        
+
 
         self.c_panel.ui.right_bottom_frame.hide()# Table widget hide
+        self.ui.social_comboBox.setEnabled(False)
 
 
         # self.ui.scraping_monitoring_frame.setMaximumHeight(0)
@@ -91,6 +102,9 @@ class MainWindow(QMainWindow):
         self.ui.start_scraping_btn.pressed.connect(self.start_scraping)
         self.ui.stop_scraping_btn.pressed.connect(self.stop_scraping)
         self.ui.left_panel_btn.pressed.connect(self.show_left_panel)
+        self.ui.btn_combo_box.pressed.connect(self.open_social_url)
+
+        self.ui.pushButton.pressed.connect(self.create_user)
         # self.ui.test_db_btn.pressed.connect(self.test_connection_db)
         
         # Loading the GIF
@@ -102,6 +116,7 @@ class MainWindow(QMainWindow):
 
         self.lista = []
         self.show()
+
         # ------------------------ #
         
     ########################################################################
@@ -120,7 +135,13 @@ class MainWindow(QMainWindow):
     ## ==> END Configuration GUI ##
 
 
+    # Btn open socila url combobox
+    def open_social_url(self):
+        webbrowser.open(self.ui.social_comboBox.currentText())
 
+    def create_user(self):
+        UserWidget = ChannelHistory("1",None,"Carmelo","23/05/2022")
+        self.ui.channel_list_widget.addWidget(UserWidget)
 
     ########################################################################
     ## ----- Scraping Settings ----- ##
@@ -182,11 +203,7 @@ class MainWindow(QMainWindow):
 
 
     def start_scraping(self):
-        self.reset_user()
 
-        # Cluster state
-        # cluster = self.ui.cluster_spinBox.value() if self.ui.cluster_spinBox.isEnabled() else False 
-        print("ciao")
         # Input URL 
         if not self.ui.url_Input.text():
         # if "https://www.youtube.com/channel" not in self.ui.url_Input.text():
@@ -197,6 +214,8 @@ class MainWindow(QMainWindow):
 
         # Final controll
         if self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
+            self.reset_user()
+
             self.animation_top_panel()
             print(self.c_panel.ui.central_panel_frame.height())
 
@@ -217,7 +236,7 @@ class MainWindow(QMainWindow):
             self.serialReaderChannelScraping = Channel_Scraping(self.ui, self.c_panel.ui)
             self.serialReaderChannelScraping.receivedPacketSignal.connect(self.return_data_scraping)
             # When signal finish, start inserting data
-            self.serialReaderChannelScraping.finished.connect(self.insert_data_channel)
+            # self.serialReaderChannelScraping.finished.connect(self.insert_data_channel)
             self.serialReaderChannelScraping.start()
 
 
@@ -230,15 +249,21 @@ class MainWindow(QMainWindow):
             
             elif "links" in packet.keys():
                 for l,t,v,idx in zip(packet["links"], packet["title"], packet["visual"], packet["index"]):
-                    if t not in set(self.lista):
+                    if l not in set(self.lista):
                         print(idx, l)
-                        self.c_panel.ui.tableWidget.setItem(idx, 0, QTableWidgetItem(str(idx)))
+                        idx_tab = QTableWidgetItem(str(idx+1))
+                        idx_tab.setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
+                        self.c_panel.ui.tableWidget.setItem(idx, 0, idx_tab)
                         self.c_panel.ui.tableWidget.setItem(idx, 1, QTableWidgetItem(l))
                         self.c_panel.ui.tableWidget.setItem(idx, 2, QTableWidgetItem(t))
                         self.c_panel.ui.tableWidget.setItem(idx, 3, QTableWidgetItem(v))
-                    self.lista.append(t)
+                    self.lista.append(l)
             
             elif "channel_data" in packet.keys():
+                # Insert data in the left-panel-channel-info
+                self.packet_data = packet["channel_data"]
+                self.insert_data_channel()
+
                 # Hide_Selenium_Layout , Full_Size_Table , Resize_Top_Panel
                 self.animation_top_panel()  
                 self.animation_central_panel()
@@ -247,10 +272,9 @@ class MainWindow(QMainWindow):
                 self.ui.stop_scraping_btn.hide()
                 self.ui.start_scraping_btn.show()
                 # Save data variable
-                self.packet_data = packet["channel_data"]
 
         except Exception as e:
-            print(f"Programm stopped without signals pakcet: ERROR {e}")
+            print(f"Programm stopped without signals packet: ERROR {e}")
 
 
 
@@ -337,8 +361,10 @@ class MainWindow(QMainWindow):
         self.ui.totViews_channel.setText("Total views")
         self.ui.totSubs_channel.setText("Subscribers")
         self.ui.joinedDate_channel.setText("Joined Date")
+        self.ui.social_comboBox.setEnabled(False)
         self.ui.social_comboBox.clear()
         self.ui.social_comboBox.addItem("Social")
+        self.ui.btn_combo_box.hide()
         self.ui.description_channel.clear()
         self.ui.description_channel.setText("Channel description")
 
