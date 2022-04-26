@@ -215,6 +215,7 @@ class Channel_Scraping(QThread):
         video_info = {"links":[], "title":[], "visual":[], "index":[]}
         index = 0
         while True:
+
             try:
                 WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(
                     (By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")))
@@ -234,28 +235,30 @@ class Channel_Scraping(QThread):
                     index+=1            
 
 
-
+    
                 # Deleting video-div during the scrolling 
-                div = self.driver.find_elements(By.XPATH, "//div[@id='items']//ytd-grid-video-renderer")
-                for element in div:
-                    try: 
+   
+                try: 
+                    div = self.driver.find_elements(By.XPATH, "//div[@id='items']//ytd-grid-video-renderer")
+                    for element in div:
                         self.driver.execute_script("""var element = arguments[0]; 
                         element.parentNode.removeChild(element);""", element)
-                    except Exception: print("err")
-                try: 
-                    div = self.driver.find_element(By.XPATH, "//div[@id='items']//ytd-continuation-item-renderer")
-                    self.driver.execute_script("""var element = arguments[0]; 
-                    element.parentNode.removeChild(element);""", div)
                 except Exception: print("err")
-                    
                 
             except:
                 # Interrupt the script if doesn't find any div to delete
                 break
             
+            
             # Find the page for scrolling
             html = self.driver.find_element(By.TAG_NAME,'html')
             html.send_keys(Keys.END)
+
+            try:
+                div = self.driver.find_element(By.XPATH, "//div[@id='items']//ytd-continuation-item-renderer")
+                self.driver.execute_script("""var element = arguments[0]; 
+                    element.parentNode.removeChild(element);""", div)
+            except Exception: print("err")
 
             if not test:
                 self.receivedPacketSignal.emit(video_info)

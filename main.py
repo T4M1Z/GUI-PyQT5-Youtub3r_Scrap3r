@@ -367,6 +367,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_combo_box.hide()
         self.ui.description_channel.clear()
         self.ui.description_channel.setText("Channel description")
+        self.ui.country_channel.setText("Country")
 
 
     def animation_top_panel(self):

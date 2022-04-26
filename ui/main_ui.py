@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'third_gui_style_upYSGKyH.ui'
+## Form generated from reading UI file 'third_gui_style_upxEvUaO.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -871,7 +871,7 @@ class Ui_MainWindow(object):
         self.scrollArea1.setWidgetResizable(True)
         self.scroll_widget = QWidget()
         self.scroll_widget.setObjectName(u"scroll_widget")
-        self.scroll_widget.setGeometry(QRect(0, 0, 270, 38))
+        self.scroll_widget.setGeometry(QRect(0, 0, 296, 41))
         self.scroll_widget.setStyleSheet(u"\n"
 "	background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));\n"
 "")
@@ -1531,51 +1531,35 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_17.addWidget(self.username_channel)
 
-        self.frame_34 = QFrame(self.frame_31)
-        self.frame_34.setObjectName(u"frame_34")
-        self.frame_34.setMinimumSize(QSize(0, 25))
-        self.frame_34.setMaximumSize(QSize(16777215, 35))
-        self.frame_34.setStyleSheet(u"QFrame{\n"
-"	border: 1px solid  rgb(91, 91, 91);\n"
-"	background-color: rgb(55, 55, 55);\n"
-"	border-bottom-left-radius:0px;\n"
-"	border-top-left-radius:2px;\n"
-"	border-bottom-right-radius:0px;\n"
-"	border-top-right-radius:2px;\n"
-"	padding:5px;\n"
-"\n"
+        self.country_channel = QLineEdit(self.frame_31)
+        self.country_channel.setObjectName(u"country_channel")
+        self.country_channel.setMinimumSize(QSize(0, 28))
+        self.country_channel.setFont(font16)
+        self.country_channel.setStyleSheet(u"QLineEdit{\n"
+"background-color: rgb(55, 55, 55);\n"
+"	color: rgb(181, 181, 181);\n"
+"border: 1px solid  rgb(91, 91, 91);\n"
+"border-bottom-left-radius:0px;\n"
+"border-top-left-radius:2px;\n"
+"border-bottom-right-radius:0px;\n"
+"border-top-right-radius:2px;\n"
+"padding:5px;\n"
 "}\n"
 "\n"
-"\n"
-"QFrame::hover{background-color: rgb(59, 59, 59);}\n"
+"QLineEdit::hover{background-color: rgb(59, 59, 59);}\n"
 "\n"
 "\n"
 "QLineEdit::focus{\n"
 "	border:1px solid  rgb(121,121, 121);\n"
-"}")
-        self.frame_34.setFrameShape(QFrame.StyledPanel)
-        self.frame_34.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_28 = QHBoxLayout(self.frame_34)
-        self.horizontalLayout_28.setSpacing(0)
-        self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
-        self.horizontalLayout_28.setContentsMargins(28, 0, 37, 0)
-        self.country_channel = QLabel(self.frame_34)
-        self.country_channel.setObjectName(u"country_channel")
-        self.country_channel.setMinimumSize(QSize(48, 0))
-        self.country_channel.setMaximumSize(QSize(16777215, 24))
-        self.country_channel.setFont(font16)
-        self.country_channel.setStyleSheet(u"\n"
-"	color: rgb(181, 181, 181);\n"
+"}\n"
 "\n"
-"border:none;\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));\n"
 "")
+        self.country_channel.setFrame(True)
         self.country_channel.setAlignment(Qt.AlignCenter)
+        self.country_channel.setDragEnabled(False)
+        self.country_channel.setReadOnly(True)
 
-        self.horizontalLayout_28.addWidget(self.country_channel)
-
-
-        self.verticalLayout_17.addWidget(self.frame_34)
+        self.verticalLayout_17.addWidget(self.country_channel)
 
         self.totVideo_channel = QLineEdit(self.frame_31)
         self.totVideo_channel.setObjectName(u"totVideo_channel")
@@ -1714,13 +1698,14 @@ class Ui_MainWindow(object):
         self.social_comboBox.setStyleSheet(u"QComboBox{\n"
 "	border: 1px solid  rgb(91, 91, 91);\n"
 "	background-color: rgb(55, 55, 55);\n"
-"\n"
+"padding-right:10px;\n"
 "	color: rgb(181, 181, 181);\n"
 "padding-left:10px;\n"
 "\n"
 "		}\n"
 "QComboBox::drop-down \n"
 "{\n"
+"\n"
 "    border: 0px; /* This seems to replace the whole arrow of the combo box */\n"
 "}\n"
 "\n"
@@ -1731,9 +1716,9 @@ class Ui_MainWindow(object):
 "/* Define a new custom arrow icon for the combo box */\n"
 "QComboBox::down-arrow {\n"
 "	image: url(:/16x16/icons/16x16/cil-arrow-bottom.png);\n"
-"    width: 14px;\n"
-"    height: 14px;\n"
-"	padding-right:6px;\n"
+"\n"
+"padding-right:5px;\n"
+"\n"
 "padding-bottom:2px;\n"
 "}\n"
 "\n"
@@ -1929,7 +1914,9 @@ class Ui_MainWindow(object):
         self.username_channel.setInputMask("")
         self.username_channel.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.username_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Username", None))
+        self.country_channel.setInputMask("")
         self.country_channel.setText(QCoreApplication.translate("MainWindow", u"Country", None))
+        self.country_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Joined date", None))
         self.totVideo_channel.setInputMask("")
         self.totVideo_channel.setText(QCoreApplication.translate("MainWindow", u"Total videos", None))
         self.totVideo_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Joined date", None))
@@ -1942,14 +1929,14 @@ class Ui_MainWindow(object):
         self.joinedDate_channel.setInputMask("")
         self.joinedDate_channel.setText(QCoreApplication.translate("MainWindow", u"Joined Date", None))
         self.joinedDate_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Subscribers", None))
-        self.social_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Social", None))
+        self.social_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Socials", None))
 
         self.btn_combo_box.setText("")
         self.description_channel.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Roboto'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Channel description</p></body></html>", None))
+"</style></head><body style=\" font-family:'Roboto'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">Channel description</span></p></body></html>", None))
         self.description_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Channel description", None))
         self.drag_btn.setText("")
     # retranslateUi
