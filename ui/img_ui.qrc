@@ -1,3 +1,5 @@
+
+
 <RCC>
   <qresource prefix="16x16">
     <file>icons/16x16/cil-arrow-bottom.png</file>
@@ -270,9 +272,14 @@
     <file>icons/connection/connection-on-24.png</file>
     <file>icons/connection/connection-off-24.png</file>
   </qresource>
+  <qresource prefix="loading">
+    <file>icons/loading/loading_circle_16.gif</file>
+  </qresource>
   <qresource prefix="database">
     <file>icons/db/db_s.svg</file>
     <file>icons/db/db_s_white.svg</file>
     <file>icons/db/reload_db.png</file>
+    <file>icons/db/exit_db.png</file>
+    <file>icons/db/db_s_exit.svg</file>
   </qresource>
 </RCC>

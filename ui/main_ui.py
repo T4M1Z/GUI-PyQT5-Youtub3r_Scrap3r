@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'third_gui_style_upxEvUaO.ui'
+## Form generated from reading UI file 'third_gui_style_upYghcvB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -446,28 +446,37 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setSpacing(8)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(15, 15, 15, 15)
-        self.frame_4 = QFrame(self.left_panel)
-        self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setMinimumSize(QSize(0, 230))
-        self.frame_4.setMaximumSize(QSize(330, 230))
-        self.frame_4.setStyleSheet(u"QFrame #frame_4{\n"
+        self.db_settings_frame = QFrame(self.left_panel)
+        self.db_settings_frame.setObjectName(u"db_settings_frame")
+        self.db_settings_frame.setMaximumSize(QSize(16777215, 16777215))
+        self.db_settings_frame.setFrameShape(QFrame.StyledPanel)
+        self.db_settings_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_14 = QVBoxLayout(self.db_settings_frame)
+        self.verticalLayout_14.setSpacing(8)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.top_db_frame = QFrame(self.db_settings_frame)
+        self.top_db_frame.setObjectName(u"top_db_frame")
+        self.top_db_frame.setMinimumSize(QSize(0, 230))
+        self.top_db_frame.setMaximumSize(QSize(330, 230))
+        self.top_db_frame.setStyleSheet(u"QFrame #top_db_frame{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
 "border-radius:3px;\n"
 "}")
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_4 = QVBoxLayout(self.frame_4)
+        self.top_db_frame.setFrameShape(QFrame.StyledPanel)
+        self.top_db_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_4 = QVBoxLayout(self.top_db_frame)
         self.verticalLayout_4.setSpacing(7)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 4)
-        self.frame_7 = QFrame(self.frame_4)
+        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 13)
+        self.frame_7 = QFrame(self.top_db_frame)
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_7)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(-1, 0, -1, 3)
+        self.horizontalLayout_9.setContentsMargins(-1, 0, -1, 0)
         self.label_4 = QLabel(self.frame_7)
         self.label_4.setObjectName(u"label_4")
         font3 = QFont()
@@ -481,13 +490,13 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.frame_7)
 
-        self.frame_8 = QFrame(self.frame_4)
+        self.frame_8 = QFrame(self.top_db_frame)
         self.frame_8.setObjectName(u"frame_8")
         self.frame_8.setFrameShape(QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_10 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_10.setContentsMargins(-1, 0, -1, 9)
         self.label_5 = QLabel(self.frame_8)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setMinimumSize(QSize(0, 0))
@@ -502,7 +511,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.frame_8)
 
-        self.frame_10 = QFrame(self.frame_4)
+        self.frame_10 = QFrame(self.top_db_frame)
         self.frame_10.setObjectName(u"frame_10")
         self.frame_10.setMaximumSize(QSize(16777215, 80))
         self.frame_10.setFrameShape(QFrame.StyledPanel)
@@ -525,7 +534,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.frame_10)
 
-        self.frame_11 = QFrame(self.frame_4)
+        self.frame_11 = QFrame(self.top_db_frame)
         self.frame_11.setObjectName(u"frame_11")
         self.frame_11.setFrameShape(QFrame.StyledPanel)
         self.frame_11.setFrameShadow(QFrame.Raised)
@@ -569,23 +578,23 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.frame_11)
 
 
-        self.verticalLayout_3.addWidget(self.frame_4)
+        self.verticalLayout_14.addWidget(self.top_db_frame)
 
-        self.frame_5 = QFrame(self.left_panel)
-        self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setMinimumSize(QSize(0, 0))
-        self.frame_5.setMaximumSize(QSize(330, 200))
-        self.frame_5.setStyleSheet(u"QFrame #frame_5{\n"
+        self.middle_db_frame = QFrame(self.db_settings_frame)
+        self.middle_db_frame.setObjectName(u"middle_db_frame")
+        self.middle_db_frame.setMinimumSize(QSize(0, 0))
+        self.middle_db_frame.setMaximumSize(QSize(330, 200))
+        self.middle_db_frame.setStyleSheet(u"QFrame #middle_db_frame{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
 "border-radius:3px;\n"
 "}")
-        self.frame_5.setFrameShape(QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.frame_5)
+        self.middle_db_frame.setFrameShape(QFrame.StyledPanel)
+        self.middle_db_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_6 = QVBoxLayout(self.middle_db_frame)
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.frame_14 = QFrame(self.frame_5)
+        self.frame_14 = QFrame(self.middle_db_frame)
         self.frame_14.setObjectName(u"frame_14")
         self.frame_14.setFrameShape(QFrame.StyledPanel)
         self.frame_14.setFrameShadow(QFrame.Raised)
@@ -602,7 +611,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.frame_14)
 
-        self.frame_9 = QFrame(self.frame_5)
+        self.frame_9 = QFrame(self.middle_db_frame)
         self.frame_9.setObjectName(u"frame_9")
         self.frame_9.setFrameShape(QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QFrame.Raised)
@@ -677,25 +686,25 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.frame_9)
 
-        self.frame_20 = QFrame(self.frame_5)
+        self.frame_20 = QFrame(self.middle_db_frame)
         self.frame_20.setObjectName(u"frame_20")
         self.frame_20.setFrameShape(QFrame.StyledPanel)
         self.frame_20.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_15 = QHBoxLayout(self.frame_20)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.horizontalLayout_15.setContentsMargins(-1, 0, 15, 0)
-        self.url_Input_2 = QLineEdit(self.frame_20)
-        self.url_Input_2.setObjectName(u"url_Input_2")
-        self.url_Input_2.setMinimumSize(QSize(160, 30))
-        self.url_Input_2.setMaximumSize(QSize(16777215, 30))
+        self.db_connection_input = QLineEdit(self.frame_20)
+        self.db_connection_input.setObjectName(u"db_connection_input")
+        self.db_connection_input.setMinimumSize(QSize(160, 30))
+        self.db_connection_input.setMaximumSize(QSize(16777215, 30))
         font9 = QFont()
         font9.setFamily(u"Segoe UI")
         font9.setPointSize(9)
         font9.setBold(False)
         font9.setWeight(50)
-        self.url_Input_2.setFont(font9)
-        self.url_Input_2.setCursor(QCursor(Qt.IBeamCursor))
-        self.url_Input_2.setStyleSheet(u"QLineEdit{\n"
+        self.db_connection_input.setFont(font9)
+        self.db_connection_input.setCursor(QCursor(Qt.IBeamCursor))
+        self.db_connection_input.setStyleSheet(u"QLineEdit{\n"
 "background-color:  rgb(214, 214, 214);\n"
 "color: #545454;\n"
 "border: 1px solid  #ffffff;\n"
@@ -709,18 +718,18 @@ class Ui_MainWindow(object):
 "	border:1px solid  rgb(121,121, 121);\n"
 "}")
 
-        self.horizontalLayout_15.addWidget(self.url_Input_2)
+        self.horizontalLayout_15.addWidget(self.db_connection_input)
 
 
         self.verticalLayout_6.addWidget(self.frame_20)
 
-        self.frame_21 = QFrame(self.frame_5)
+        self.frame_21 = QFrame(self.middle_db_frame)
         self.frame_21.setObjectName(u"frame_21")
         self.frame_21.setFrameShape(QFrame.StyledPanel)
         self.frame_21.setFrameShadow(QFrame.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.frame_21)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setContentsMargins(13, 4, -1, 0)
+        self.verticalLayout_8.setContentsMargins(13, 4, 13, 0)
         self.label_9 = QLabel(self.frame_21)
         self.label_9.setObjectName(u"label_9")
         font10 = QFont()
@@ -734,25 +743,32 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.frame_21)
 
-        self.frame_22 = QFrame(self.frame_5)
+        self.frame_22 = QFrame(self.middle_db_frame)
         self.frame_22.setObjectName(u"frame_22")
         self.frame_22.setFrameShape(QFrame.StyledPanel)
         self.frame_22.setFrameShadow(QFrame.Raised)
         self.verticalLayout_11 = QVBoxLayout(self.frame_22)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.verticalLayout_11.setContentsMargins(-1, 14, -1, -1)
-        self.start_scraping_btn_3 = QPushButton(self.frame_22)
-        self.start_scraping_btn_3.setObjectName(u"start_scraping_btn_3")
-        self.start_scraping_btn_3.setMinimumSize(QSize(110, 35))
-        self.start_scraping_btn_3.setMaximumSize(QSize(110, 35))
+        self.frame_27 = QFrame(self.frame_22)
+        self.frame_27.setObjectName(u"frame_27")
+        self.frame_27.setFrameShape(QFrame.StyledPanel)
+        self.frame_27.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_28 = QHBoxLayout(self.frame_27)
+        self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
+        self.horizontalLayout_28.setContentsMargins(0, 0, -1, 0)
+        self.db_connect_btn = QPushButton(self.frame_27)
+        self.db_connect_btn.setObjectName(u"db_connect_btn")
+        self.db_connect_btn.setMinimumSize(QSize(110, 35))
+        self.db_connect_btn.setMaximumSize(QSize(110, 35))
         font11 = QFont()
         font11.setFamily(u"Segoe UI Semibold")
         font11.setPointSize(10)
         font11.setBold(True)
         font11.setWeight(75)
-        self.start_scraping_btn_3.setFont(font11)
-        self.start_scraping_btn_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.start_scraping_btn_3.setStyleSheet(u"QPushButton{ \n"
+        self.db_connect_btn.setFont(font11)
+        self.db_connect_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.db_connect_btn.setStyleSheet(u"QPushButton{ \n"
 "border:2px solid #7E7E7E;\n"
 "\n"
 "	background-color:  #CECECE;\n"
@@ -772,7 +788,21 @@ class Ui_MainWindow(object):
 "	background-color: rgb(210, 210, 210);\n"
 "}")
 
-        self.verticalLayout_11.addWidget(self.start_scraping_btn_3)
+        self.horizontalLayout_28.addWidget(self.db_connect_btn)
+
+        self.loading_gif = QLabel(self.frame_27)
+        self.loading_gif.setObjectName(u"loading_gif")
+        self.loading_gif.setMinimumSize(QSize(40, 40))
+        self.loading_gif.setMaximumSize(QSize(40, 40))
+
+        self.horizontalLayout_28.addWidget(self.loading_gif)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_28.addItem(self.horizontalSpacer_4)
+
+
+        self.verticalLayout_11.addWidget(self.frame_27)
 
 
         self.verticalLayout_6.addWidget(self.frame_22)
@@ -781,197 +811,58 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setStretch(1, 1)
         self.verticalLayout_6.setStretch(2, 1)
 
-        self.verticalLayout_3.addWidget(self.frame_5)
+        self.verticalLayout_14.addWidget(self.middle_db_frame)
 
-        self.frame_6 = QFrame(self.left_panel)
-        self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setMinimumSize(QSize(0, 242))
-        self.frame_6.setStyleSheet(u"QFrame #frame_6{\n"
+
+        self.verticalLayout_3.addWidget(self.db_settings_frame)
+
+        self.bottom_db_frame = QFrame(self.left_panel)
+        self.bottom_db_frame.setObjectName(u"bottom_db_frame")
+        self.bottom_db_frame.setMinimumSize(QSize(0, 242))
+        self.bottom_db_frame.setStyleSheet(u"QFrame #bottom_db_frame{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
 "border-radius:3px;\n"
 "}")
-        self.frame_6.setFrameShape(QFrame.StyledPanel)
-        self.frame_6.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_12 = QVBoxLayout(self.frame_6)
+        self.bottom_db_frame.setFrameShape(QFrame.StyledPanel)
+        self.bottom_db_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_12 = QVBoxLayout(self.bottom_db_frame)
         self.verticalLayout_12.setSpacing(0)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
-        self.db_channel_history = QFrame(self.frame_6)
-        self.db_channel_history.setObjectName(u"db_channel_history")
-        self.db_channel_history.setFrameShape(QFrame.StyledPanel)
-        self.db_channel_history.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_18 = QVBoxLayout(self.db_channel_history)
+        self.stackedWidget = QStackedWidget(self.bottom_db_frame)
+        self.stackedWidget.setObjectName(u"stackedWidget")
+        self.stackedWidget.setStyleSheet(u"background-color: #4A4A4A;")
+        self.page_1 = QWidget()
+        self.page_1.setObjectName(u"page_1")
+        self.verticalLayout_15 = QVBoxLayout(self.page_1)
+        self.verticalLayout_15.setSpacing(0)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.db_status_layout = QVBoxLayout()
+        self.db_status_layout.setObjectName(u"db_status_layout")
+
+        self.verticalLayout_15.addLayout(self.db_status_layout)
+
+        self.stackedWidget.addWidget(self.page_1)
+        self.page_2 = QWidget()
+        self.page_2.setObjectName(u"page_2")
+        self.verticalLayout_18 = QVBoxLayout(self.page_2)
         self.verticalLayout_18.setSpacing(0)
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
-        self.frame_35 = QFrame(self.db_channel_history)
-        self.frame_35.setObjectName(u"frame_35")
-        self.frame_35.setMinimumSize(QSize(0, 41))
-        self.frame_35.setStyleSheet(u"QFrame{\n"
-"background-color: rgb(55, 55, 55);\n"
-"border-top-left-radius:2px;\n"
-"border-top-right-radius:2px;\n"
-"}")
-        self.frame_35.setFrameShape(QFrame.StyledPanel)
-        self.frame_35.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout = QHBoxLayout(self.frame_35)
-        self.horizontalLayout.setSpacing(6)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(13, 9, 13, 9)
-        self.label_14 = QLabel(self.frame_35)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setMinimumSize(QSize(15, 0))
-        self.label_14.setStyleSheet(u"image: url(:/database/icons/db/db_s_white.svg);")
+        self.db_channels_history = QVBoxLayout()
+        self.db_channels_history.setObjectName(u"db_channels_history")
+        self.db_channels_history.setContentsMargins(-1, -1, 0, -1)
 
-        self.horizontalLayout.addWidget(self.label_14)
+        self.verticalLayout_18.addLayout(self.db_channels_history)
 
-        self.label_15 = QLabel(self.frame_35)
-        self.label_15.setObjectName(u"label_15")
-        font12 = QFont()
-        font12.setFamily(u"Segoe UI Semibold")
-        font12.setPointSize(12)
-        self.label_15.setFont(font12)
-        self.label_15.setStyleSheet(u"QLabel{\n"
-"	color:white;\n"
-"}")
+        self.stackedWidget.addWidget(self.page_2)
 
-        self.horizontalLayout.addWidget(self.label_15)
-
-        self.refresh_db_btn = QPushButton(self.frame_35)
-        self.refresh_db_btn.setObjectName(u"refresh_db_btn")
-        self.refresh_db_btn.setMinimumSize(QSize(15, 15))
-        self.refresh_db_btn.setMaximumSize(QSize(15, 15))
-        self.refresh_db_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.refresh_db_btn.setStyleSheet(u"QPushButton{\n"
-"image: url(:/database/icons/db/reload_db.png);\n"
-"border-radius:4px;\n"
-"}\n"
-"\n"
-"QPushButton::hover{\n"
-"	background-color: rgb(63, 63, 63);\n"
-"}\n"
-"\n"
-"QPushButton::pressed{\n"
-"	background-color: rgb(43, 43, 43);\n"
-"}\n"
-"")
-
-        self.horizontalLayout.addWidget(self.refresh_db_btn)
-
-        self.horizontalLayout.setStretch(1, 1)
-        self.horizontalLayout.setStretch(2, 5)
-
-        self.verticalLayout_18.addWidget(self.frame_35)
-
-        self.scrollArea1 = QScrollArea(self.db_channel_history)
-        self.scrollArea1.setObjectName(u"scrollArea1")
-        self.scrollArea1.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
-        self.scrollArea1.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea1.setWidgetResizable(True)
-        self.scroll_widget = QWidget()
-        self.scroll_widget.setObjectName(u"scroll_widget")
-        self.scroll_widget.setGeometry(QRect(0, 0, 296, 41))
-        self.scroll_widget.setStyleSheet(u"\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));\n"
-"")
-        self.verticalLayout_19 = QVBoxLayout(self.scroll_widget)
-        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
-        self.verticalLayout_19.setContentsMargins(9, -1, -1, -1)
-        self.channel_list_widget = QVBoxLayout()
-        self.channel_list_widget.setSpacing(0)
-        self.channel_list_widget.setObjectName(u"channel_list_widget")
-        self.channel_list_widget.setContentsMargins(-1, 0, -1, 13)
-
-        self.verticalLayout_19.addLayout(self.channel_list_widget)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_19.addItem(self.verticalSpacer)
-
-        self.scrollArea1.setWidget(self.scroll_widget)
-
-        self.verticalLayout_18.addWidget(self.scrollArea1)
+        self.verticalLayout_12.addWidget(self.stackedWidget)
 
 
-        self.verticalLayout_12.addWidget(self.db_channel_history)
-
-        self.db_status_offline = QFrame(self.frame_6)
-        self.db_status_offline.setObjectName(u"db_status_offline")
-        self.db_status_offline.setFrameShape(QFrame.StyledPanel)
-        self.db_status_offline.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_15 = QVBoxLayout(self.db_status_offline)
-        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
-        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
-        self.frame_2 = QFrame(self.db_status_offline)
-        self.frame_2.setObjectName(u"frame_2")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.frame_2.sizePolicy().hasHeightForWidth())
-        self.frame_2.setSizePolicy(sizePolicy5)
-        self.frame_2.setMinimumSize(QSize(0, 0))
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_14 = QVBoxLayout(self.frame_2)
-        self.verticalLayout_14.setSpacing(5)
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
-        self.frame_26 = QFrame(self.frame_2)
-        self.frame_26.setObjectName(u"frame_26")
-        self.frame_26.setFrameShape(QFrame.StyledPanel)
-        self.frame_26.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_20 = QHBoxLayout(self.frame_26)
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.horizontalLayout_20.setContentsMargins(-1, 9, -1, 9)
-        self.label_10 = QLabel(self.frame_26)
-        self.label_10.setObjectName(u"label_10")
-        sizePolicy.setHeightForWidth(self.label_10.sizePolicy().hasHeightForWidth())
-        self.label_10.setSizePolicy(sizePolicy)
-        self.label_10.setMinimumSize(QSize(242, 124))
-        self.label_10.setMaximumSize(QSize(16777215, 150))
-        self.label_10.setStyleSheet(u"QLabel{\n"
-"	\n"
-"	image: url(:/database/icons/db/db_s.svg);\n"
-"}")
-
-        self.horizontalLayout_20.addWidget(self.label_10)
-
-
-        self.verticalLayout_14.addWidget(self.frame_26)
-
-        self.label_12 = QLabel(self.frame_2)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setMinimumSize(QSize(260, 0))
-        self.label_12.setFont(font12)
-        self.label_12.setStyleSheet(u"color: rgb(255, 255, 255);")
-        self.label_12.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_14.addWidget(self.label_12)
-
-        self.label_13 = QLabel(self.frame_2)
-        self.label_13.setObjectName(u"label_13")
-        sizePolicy5.setHeightForWidth(self.label_13.sizePolicy().hasHeightForWidth())
-        self.label_13.setSizePolicy(sizePolicy5)
-        self.label_13.setMinimumSize(QSize(260, 0))
-        font13 = QFont()
-        font13.setFamily(u"Segoe UI Semibold")
-        font13.setBold(False)
-        font13.setWeight(50)
-        self.label_13.setFont(font13)
-        self.label_13.setStyleSheet(u"color: rgb(207, 207, 207);")
-        self.label_13.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_14.addWidget(self.label_13)
-
-
-        self.verticalLayout_15.addWidget(self.frame_2)
-
-
-        self.verticalLayout_12.addWidget(self.db_status_offline)
-
-
-        self.verticalLayout_3.addWidget(self.frame_6)
+        self.verticalLayout_3.addWidget(self.bottom_db_frame)
 
 
         self.horizontalLayout_18.addWidget(self.left_panel)
@@ -1043,9 +934,9 @@ class Ui_MainWindow(object):
         self.frame_13 = QFrame(self.border_scrap_setting)
         self.frame_13.setObjectName(u"frame_13")
         self.frame_13.setMaximumSize(QSize(16777215, 16777215))
-        font14 = QFont()
-        font14.setPointSize(10)
-        self.frame_13.setFont(font14)
+        font12 = QFont()
+        font12.setPointSize(10)
+        self.frame_13.setFont(font12)
         self.frame_13.setStyleSheet(u"border:none;\n"
 "background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(53, 59, 69, 0), stop:1 rgba(91, 99, 115, 0));")
         self.frame_13.setFrameShape(QFrame.StyledPanel)
@@ -1054,34 +945,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setSpacing(5)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
-        self.pushButton = QPushButton(self.frame_13)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(45, 23))
-        self.pushButton.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(85, 255, 127);\n"
-" }\n"
-"\n"
-"QPushButton::hover{\n"
-"	background-color: rgb(150, 255, 134);\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed{\n"
-"	background-color: rgb(68, 162, 74);\n"
-"}")
-
-        self.horizontalLayout_12.addWidget(self.pushButton)
-
         self.channel_radioBtn = QRadioButton(self.frame_13)
         self.channel_radioBtn.setObjectName(u"channel_radioBtn")
         self.channel_radioBtn.setMinimumSize(QSize(0, 35))
         self.channel_radioBtn.setMaximumSize(QSize(100, 35))
-        font15 = QFont()
-        font15.setFamily(u"Segoe UI Semibold")
-        font15.setPointSize(9)
-        font15.setBold(False)
-        font15.setWeight(50)
-        self.channel_radioBtn.setFont(font15)
+        font13 = QFont()
+        font13.setFamily(u"Segoe UI Semibold")
+        font13.setPointSize(9)
+        font13.setBold(False)
+        font13.setWeight(50)
+        self.channel_radioBtn.setFont(font13)
         self.channel_radioBtn.setStyleSheet(u"\n"
 "QRadioButton{background-color:  rgb(214, 214, 214);\n"
 "color: #545454;\n"
@@ -1107,7 +980,7 @@ class Ui_MainWindow(object):
         self.video_radioBtn.setObjectName(u"video_radioBtn")
         self.video_radioBtn.setMinimumSize(QSize(0, 35))
         self.video_radioBtn.setMaximumSize(QSize(100, 35))
-        self.video_radioBtn.setFont(font15)
+        self.video_radioBtn.setFont(font13)
         self.video_radioBtn.setStyleSheet(u"\n"
 "QRadioButton{background-color:  rgb(214, 214, 214);\n"
 "color: #545454;\n"
@@ -1190,7 +1063,7 @@ class Ui_MainWindow(object):
         self.label_3.setObjectName(u"label_3")
         self.label_3.setEnabled(True)
         self.label_3.setMinimumSize(QSize(55, 0))
-        self.label_3.setFont(font15)
+        self.label_3.setFont(font13)
         self.label_3.setStyleSheet(u"color: #545454;\n"
 "border:none;\n"
 "")
@@ -1219,7 +1092,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName(u"label_2")
         self.label_2.setMinimumSize(QSize(65, 0))
         self.label_2.setMaximumSize(QSize(16777215, 16777215))
-        self.label_2.setFont(font15)
+        self.label_2.setFont(font13)
         self.label_2.setStyleSheet(u"color: #545454;\n"
 "border:none;\n"
 "")
@@ -1297,7 +1170,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_12.addWidget(self.frame_17)
 
-        self.horizontalLayout_12.setStretch(2, 2)
+        self.horizontalLayout_12.setStretch(1, 2)
 
         self.verticalLayout_9.addWidget(self.frame_13)
 
@@ -1413,11 +1286,11 @@ class Ui_MainWindow(object):
         self.central_panel_layout.setContentsMargins(-1, 0, -1, -1)
         self.frame_12 = QFrame(self.frame_center)
         self.frame_12.setObjectName(u"frame_12")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.frame_12.sizePolicy().hasHeightForWidth())
-        self.frame_12.setSizePolicy(sizePolicy6)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.frame_12.sizePolicy().hasHeightForWidth())
+        self.frame_12.setSizePolicy(sizePolicy5)
         self.frame_12.setFrameShape(QFrame.StyledPanel)
         self.frame_12.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_30 = QHBoxLayout(self.frame_12)
@@ -1500,11 +1373,11 @@ class Ui_MainWindow(object):
         self.username_channel = QLineEdit(self.frame_31)
         self.username_channel.setObjectName(u"username_channel")
         self.username_channel.setMinimumSize(QSize(0, 28))
-        font16 = QFont()
-        font16.setFamily(u"Roboto")
-        font16.setBold(False)
-        font16.setWeight(50)
-        self.username_channel.setFont(font16)
+        font14 = QFont()
+        font14.setFamily(u"Roboto")
+        font14.setBold(False)
+        font14.setWeight(50)
+        self.username_channel.setFont(font14)
         self.username_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1534,7 +1407,7 @@ class Ui_MainWindow(object):
         self.country_channel = QLineEdit(self.frame_31)
         self.country_channel.setObjectName(u"country_channel")
         self.country_channel.setMinimumSize(QSize(0, 28))
-        self.country_channel.setFont(font16)
+        self.country_channel.setFont(font14)
         self.country_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1564,7 +1437,7 @@ class Ui_MainWindow(object):
         self.totVideo_channel = QLineEdit(self.frame_31)
         self.totVideo_channel.setObjectName(u"totVideo_channel")
         self.totVideo_channel.setMinimumSize(QSize(0, 28))
-        self.totVideo_channel.setFont(font16)
+        self.totVideo_channel.setFont(font14)
         self.totVideo_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1594,7 +1467,7 @@ class Ui_MainWindow(object):
         self.totViews_channel = QLineEdit(self.frame_31)
         self.totViews_channel.setObjectName(u"totViews_channel")
         self.totViews_channel.setMinimumSize(QSize(0, 28))
-        self.totViews_channel.setFont(font16)
+        self.totViews_channel.setFont(font14)
         self.totViews_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1624,7 +1497,7 @@ class Ui_MainWindow(object):
         self.totSubs_channel = QLineEdit(self.frame_31)
         self.totSubs_channel.setObjectName(u"totSubs_channel")
         self.totSubs_channel.setMinimumSize(QSize(0, 28))
-        self.totSubs_channel.setFont(font16)
+        self.totSubs_channel.setFont(font14)
         self.totSubs_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1654,7 +1527,7 @@ class Ui_MainWindow(object):
         self.joinedDate_channel = QLineEdit(self.frame_31)
         self.joinedDate_channel.setObjectName(u"joinedDate_channel")
         self.joinedDate_channel.setMinimumSize(QSize(0, 28))
-        self.joinedDate_channel.setFont(font16)
+        self.joinedDate_channel.setFont(font14)
         self.joinedDate_channel.setStyleSheet(u"QLineEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1694,7 +1567,7 @@ class Ui_MainWindow(object):
         self.social_comboBox.setObjectName(u"social_comboBox")
         self.social_comboBox.setMinimumSize(QSize(0, 28))
         self.social_comboBox.setMaximumSize(QSize(16777215, 28))
-        self.social_comboBox.setFont(font16)
+        self.social_comboBox.setFont(font14)
         self.social_comboBox.setStyleSheet(u"QComboBox{\n"
 "	border: 1px solid  rgb(91, 91, 91);\n"
 "	background-color: rgb(55, 55, 55);\n"
@@ -1734,12 +1607,12 @@ class Ui_MainWindow(object):
         self.btn_combo_box.setObjectName(u"btn_combo_box")
         self.btn_combo_box.setMinimumSize(QSize(28, 28))
         self.btn_combo_box.setMaximumSize(QSize(28, 28))
-        font17 = QFont()
-        font17.setFamily(u"Segoe UI Semibold")
-        font17.setPointSize(9)
-        font17.setBold(True)
-        font17.setWeight(75)
-        self.btn_combo_box.setFont(font17)
+        font15 = QFont()
+        font15.setFamily(u"Segoe UI Semibold")
+        font15.setPointSize(9)
+        font15.setBold(True)
+        font15.setWeight(75)
+        self.btn_combo_box.setFont(font15)
         self.btn_combo_box.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_combo_box.setStyleSheet(u"QPushButton{ \n"
 "	border: 1px solid  rgb(91, 91, 91);\n"
@@ -1768,9 +1641,9 @@ class Ui_MainWindow(object):
         self.description_channel.setObjectName(u"description_channel")
         self.description_channel.setMinimumSize(QSize(0, 105))
         self.description_channel.setMaximumSize(QSize(16777215, 105))
-        font18 = QFont()
-        font18.setFamily(u"Roboto")
-        self.description_channel.setFont(font18)
+        font16 = QFont()
+        font16.setFamily(u"Roboto")
+        self.description_channel.setFont(font16)
         self.description_channel.setStyleSheet(u"QTextEdit{\n"
 "background-color: rgb(55, 55, 55);\n"
 "	color: rgb(181, 181, 181);\n"
@@ -1872,6 +1745,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
+        self.stackedWidget.setCurrentIndex(0)
+
+
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
@@ -1890,18 +1766,11 @@ class Ui_MainWindow(object):
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"New connection", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Paster your connection string</p></body></html>", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"i", None))
-        self.url_Input_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Connection string", None))
+        self.db_connection_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Connection string", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Ex. mongodb+srv://username:password@cluster.mongoDB...", None))
-        self.start_scraping_btn_3.setText(QCoreApplication.translate("MainWindow", u"Connect", None))
-        self.label_14.setText("")
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" text-decoration: underline;\">Channels History</span></p></body></html>", None))
-        self.refresh_db_btn.setText("")
-        self.label_10.setText("")
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" text-decoration: underline;\">MongoDB cluster is offline</span></p></body></html>", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"The data will not be saved after \n"
-"the scraping process", None))
+        self.db_connect_btn.setText(QCoreApplication.translate("MainWindow", u"Connect", None))
+        self.loading_gif.setText("")
         self.left_panel_btn.setText("")
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"clicca", None))
         self.channel_radioBtn.setText(QCoreApplication.translate("MainWindow", u"Channel", None))
         self.video_radioBtn.setText(QCoreApplication.translate("MainWindow", u"Video", None))
         self.url_Input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Link url", None))
@@ -1935,8 +1804,8 @@ class Ui_MainWindow(object):
         self.description_channel.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Roboto'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">Channel description</span></p></body></html>", None))
+"</style></head><body style=\" font-family:'Roboto'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Channel description</p></body></html>", None))
         self.description_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Channel description", None))
         self.drag_btn.setText("")
     # retranslateUi

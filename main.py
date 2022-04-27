@@ -38,9 +38,12 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
         # ----- WIDGET ------- #
         self.c_panel = CenterPanel()
-    
+        self.animation = Animation(self.ui, self.c_panel)
+        self.DB_offline = DBOffline()
+        self.DB_history_channel = DBHistoryChannel(self.ui)
 
         # ----- MOVE WINDOW ----- #
         def moveWindow(event):
@@ -66,13 +69,13 @@ class MainWindow(QMainWindow):
         
         self.ui.btn_combo_box.hide()
 
-        # self.ui.db_channel_history.hide()
-        self.ui.db_status_offline.hide()
+        self.ui.loading_gif.hide()
+        self.DB_history_channel.ui.refresh_gif.hide()
 
-        
+        self.ui.db_status_layout.addWidget(self.DB_offline)
+        self.ui.db_channels_history.addWidget(self.DB_history_channel)
 
-
-        self.c_panel.ui.right_bottom_frame.hide()# Table widget hide
+        self.c_panel.ui.right_bottom_frame.hide() # Table widget hide
         self.ui.social_comboBox.setEnabled(False)
 
 
@@ -101,15 +104,16 @@ class MainWindow(QMainWindow):
         self.ui.cluster_checkBox.toggled.connect(self.enable_cluster)
         self.ui.start_scraping_btn.pressed.connect(self.start_scraping)
         self.ui.stop_scraping_btn.pressed.connect(self.stop_scraping)
-        self.ui.left_panel_btn.pressed.connect(self.show_left_panel)
+        self.ui.left_panel_btn.pressed.connect(self.animation.show_left_panel)
         self.ui.btn_combo_box.pressed.connect(self.open_social_url)
+        self.ui.db_connect_btn.pressed.connect(self.test_connection_db)
+        self.DB_history_channel.ui.refresh_db_btn.pressed.connect(self.refresh_channels_list)
 
-        self.ui.pushButton.pressed.connect(self.create_user)
         # self.ui.test_db_btn.pressed.connect(self.test_connection_db)
         
         # Loading the GIF
-        self.movie = QMovie("ui/icons/loading/loading_circle.gif")
-        # self.ui.label_gif.setMovie(self.movie)
+        self.movie = QMovie("ui/icons/loading/loading_circle_2.gif")
+        self.ui.loading_gif.setMovie(self.movie)
         
         # Set left panel Closed
         self.ui.left_panel.setMaximumWidth(0)
@@ -139,74 +143,105 @@ class MainWindow(QMainWindow):
     def open_social_url(self):
         webbrowser.open(self.ui.social_comboBox.currentText())
 
-    def create_user(self):
-        UserWidget = ChannelHistory("1",None,"Carmelo","23/05/2022")
-        self.ui.channel_list_widget.addWidget(UserWidget)
 
-    ########################################################################
-    ## ----- Scraping Settings ----- ##
     # GIF Animation
     def startAnimation(self):
         self.movie.start()
+
+    ########################################################################
+    ## ----- Scraping Settings ----- ##
         
-
-
     def enable_cluster(self):
         # If you want to use cluster
         if self.ui.cluster_checkBox.isChecked():
             print("add cluster option")
+            self.animation.animation_db_settings_frame()
         else: 
             print("remove cluster option")
+            self.animation.animation_db_settings_frame()
             # self.ui.cluster_checkBox.setEnabled(False)
 
 
     # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
     def test_connection_db(self):
-        self.ui.username_db.setStyleSheet(stylesheet.input_style)
-        self.ui.password_db.setStyleSheet(stylesheet.input_style) 
+        self.ui.db_connection_input.setStyleSheet(stylesheet.input_style) 
 
-        if not self.ui.username_db.text() or not self.ui.password_db.text():
-            self.ui.username_db.setStyleSheet(stylesheet.input_style_error)
-            self.ui.password_db.setStyleSheet(stylesheet.input_style_error)
-
+        if not self.ui.db_connection_input.text():
+            self.ui.db_connection_input.setStyleSheet(stylesheet.input_style_error)
         else:
             ### - Starting QTrhead - ###
-            self.serialReaderDatabase = MongoDB(self.ui.username_db.text(), 
-                                                self.ui.password_db.text())
+            self.serialReaderDatabase = DBConnection(self.ui.db_connection_input.text(), "first_connection")
             self.serialReaderDatabase.receivedPacketSignal.connect(self.return_status_db)
             self.serialReaderDatabase.start()
 
             # Start loading GIF
             self.movie.start()
-            self.ui.label_gif.show()
-    # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
+            self.ui.loading_gif.show()
+
+    def return_status_db(self, return_status, query):
+
+        if return_status == "first_connection":
+            self.ui.db_connection_input.setStyleSheet(stylesheet.input_style)
+            # Cleaning previous widget
+            self.layout_cleaning(self.DB_history_channel.ui.channel_list_widget)
+
+            # Display History Channels after connected to Database
+            FaderWidget(self.ui.stackedWidget.currentWidget(), self.ui.stackedWidget.widget(1))
+            self.ui.stackedWidget.setCurrentIndex(1)
+            self.animation.animation_db_settings_frame()
+
+            # Fill the history channel with the data inside the database
+            for idx, channel in enumerate(query):
+                UserWidget = ChannelHistory(idx+1,channel["profile_img"],channel["username"],channel["joined_date"])
+                self.DB_history_channel.ui.channel_list_widget.addWidget(UserWidget)
+
+        if return_status == "refresh_channels_list":
+            self.layout_cleaning(self.DB_history_channel.ui.channel_list_widget)
+            for idx, channel in enumerate(query):
+                UserWidget = ChannelHistory(idx+1,channel["profile_img"],channel["username"],channel["joined_date"])
+                self.DB_history_channel.ui.channel_list_widget.addWidget(UserWidget)
+            print("fine refresh")
+                    # Start loading GIF
+            self.movie.stop()
+            self.DB_history_channel.ui.refresh_gif.hide()
+            self.DB_history_channel.ui.refresh_db_btn.show()
 
 
-    # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
-    def return_status_db(self, return_status):
-        if return_status == "connected":
-            self.ui.status_db_connection.setText("ONLINE")
-            self.ui.status_db_connection.setStyleSheet(stylesheet.db_online)
-            self.serialReaderDatabase.stop()
-        else: 
-            if "error" in return_status:
-                self.ui.username_db.setStyleSheet(stylesheet.input_style_error)
-                self.ui.password_db.setStyleSheet(stylesheet.input_style_error)
-            self.ui.status_db_connection.setText("OFFLINE")
-            self.ui.status_db_connection.setStyleSheet(stylesheet.db_offline)
-            self.serialReaderDatabase.stop()
+        if "error" in return_status:
+            self.ui.db_connection_input.setStyleSheet(stylesheet.input_style_error)
+            print(f"Error connection: {return_status}")
+
+        self.serialReaderDatabase.stop()
 
         # Stop loading GIF
         self.movie.stop()
-        self.ui.label_gif.hide()
-    # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
+        self.ui.loading_gif.hide()
 
+    def exit_database(self):
+        print("ciao sono il main")
+
+
+    def refresh_channels_list(self):
+        # Loading the GIF   
+        self.movie = QMovie("ui/icons/loading/loading_circle_16.gif")
+        self.DB_history_channel.ui.refresh_db_btn.hide()
+        self.DB_history_channel.ui.refresh_gif.setMovie(self.movie)
+        self.DB_history_channel.ui.refresh_gif.setScaledContents(True)
+        # Start GIF Animation
+        self.movie.start()
+        self.DB_history_channel.ui.refresh_gif.show()
+        ### - Starting QTrhead - ###
+        self.serialReaderDatabase = DBConnection(self.ui.db_connection_input.text(), "refresh_channels_list")
+        self.serialReaderDatabase.receivedPacketSignal.connect(self.return_status_db)
+        self.serialReaderDatabase.start()
+
+
+    # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
 
     def start_scraping(self):
 
         # Input URL 
         if not self.ui.url_Input.text():
-        # if "https://www.youtube.com/channel" not in self.ui.url_Input.text():
             self.ui.url_Input.setStyleSheet(stylesheet.input_style_error)
         else: 
             self.ui.url_Input.setStyleSheet(stylesheet.input_style)
@@ -216,15 +251,15 @@ class MainWindow(QMainWindow):
         if self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
             self.reset_user()
 
-            self.animation_top_panel()
-            print(self.c_panel.ui.central_panel_frame.height())
+            # Top panel animation
+            self.animation.animation_top_panel()
 
             if self.c_panel.ui.central_panel_frame.height() == 0:
-                self.animation_central_panel("resize")
-                self.animation_bottom_left_panel("resize")
-                self.animation_bottom_panel("resize")
+                self.animation.animation_central_panel("resize")
+                self.animation.animation_bottom_left_panel("resize")
+                self.animation.animation_bottom_panel("resize")
             else:
-                self.animation_bottom_panel()
+                self.animation.animation_bottom_panel()
 
             self.ui.start_scraping_btn.hide()
             self.ui.stop_scraping_btn.show()
@@ -265,9 +300,9 @@ class MainWindow(QMainWindow):
                 self.insert_data_channel()
 
                 # Hide_Selenium_Layout , Full_Size_Table , Resize_Top_Panel
-                self.animation_top_panel()  
-                self.animation_central_panel()
-                self.animation_bottom_left_panel()
+                self.animation.animation_top_panel()
+                self.animation.animation_central_panel()
+                self.animation.animation_bottom_left_panel()
                 # Btn start and stop
                 self.ui.stop_scraping_btn.hide()
                 self.ui.start_scraping_btn.show()
@@ -325,8 +360,8 @@ class MainWindow(QMainWindow):
         for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
             self.c_panel.ui.selenium_layout.itemAt(i).widget().setParent(None)
         
-        self.animation_top_panel()
-        self.animation_bottom_panel()
+        self.animation.animation_top_panel()
+        self.animation.animation_bottom_panel()
 
 
 
@@ -335,17 +370,6 @@ class MainWindow(QMainWindow):
     ##############################################################
     ## ==> END Scraping configuration ##
 
-
-    def download_image(self, link):
-        print(link)
-        if len(link) > 2:
-            img_data = requests.get(link).content
-            with open('ui/icons/channel/profile_new.jpg', 'wb') as handler:
-                handler.write(img_data)
-
-            pixmap = QtGui.QPixmap('ui/icons/channel/profile_new.jpg')
-            self.ui.profile_image.setPixmap(pixmap.scaled(134,134))
-            self.ui.profile_image.adjustSize()
 
 
     def reset_user(self):
@@ -370,80 +394,26 @@ class MainWindow(QMainWindow):
         self.ui.country_channel.setText("Country")
 
 
-    def animation_top_panel(self):
-        self.top_panel = QtCore.QPropertyAnimation(self.ui.scraping_setting_frame, b"maximumHeight")                
-        if self.ui.scraping_setting_frame.height() > 0:
-            h1, h2 = 80,0
-        else:
-            h1, h2 = 0,80
-        self.top_panel.setDuration(500)
-        self.top_panel.setStartValue(h1)
-        self.top_panel.setEndValue(h2)
-        self.top_panel.start()
+    def download_image(self, link):
+        print(link)
+        if len(link) > 2:
+            img_data = requests.get(link).content
+            with open('ui/icons/channel/profile_new.jpg', 'wb') as handler:
+                handler.write(img_data)
 
-    def animation_bottom_panel(self, param = None):
-        self.bottom_panel = QtCore.QPropertyAnimation(self.c_panel.ui.scraping_monitoring_frame, b"maximumHeight")
-        if param: pass
-        else:
-            if self.c_panel.ui.scraping_monitoring_frame.height() > 0:
-                h1, h2 = 800,0
-            else:
-                h1, h2 = 0,800
-            self.bottom_panel.setDuration(400)
-            self.bottom_panel.setStartValue(h1)
-            self.bottom_panel.setEndValue(h2)
-            self.bottom_panel.start()
+            pixmap = QtGui.QPixmap('ui/icons/channel/profile_new.jpg')
+            self.ui.profile_image.setPixmap(pixmap.scaled(134,134))
+            self.ui.profile_image.adjustSize()
 
-    def animation_central_panel(self, param = None):
-        self.central_panel = QtCore.QPropertyAnimation(self.c_panel.ui.central_panel_frame, b"maximumHeight")
-        if param:
-            self.c_panel.ui.central_panel_frame.setMinimumHeight(300)
-            h1, h2 = 0,10000
-        else:
-            self.c_panel.ui.central_panel_frame.setMinimumHeight(0)
-            h1, h2 = self.c_panel.ui.central_panel_frame.height(),0
 
-        self.central_panel.setDuration(400)
-        self.central_panel.setStartValue(h1)
-        self.central_panel.setEndValue(h2)
-        self.central_panel.start()
-
-    def animation_bottom_left_panel(self, param = None):
-        print(self.c_panel.ui.splitter_2.height())
-        print(self.c_panel.ui.splitter_2.width())
-        self.bottom_left_panel = QtCore.QPropertyAnimation(self.c_panel.ui.left_bottom_frame, b"maximumWidth")
-        
-        if param:
-            self.c_panel.ui.left_bottom_frame.setMinimumWidth(400)
-            h1, h2 = 0,10000
-        else:
-            if self.c_panel.ui.left_bottom_frame.width() > 0:
-                self.c_panel.ui.left_bottom_frame.setMinimumWidth(0)
-                h1, h2 = self.c_panel.ui.left_bottom_frame.width(),0
-            else:
-                self.c_panel.ui.left_bottom_frame.setMinimumWidth(400)
-                h1, h2 = 0,800
-        self.bottom_left_panel.setStartValue(h1)
-        self.bottom_left_panel.setEndValue(h2)
-        self.bottom_left_panel.start()
-
-    def show_left_panel(self):
-        if self.ui.left_panel.width() > 0:
-            self.left_panel_animation = QtCore.QPropertyAnimation(self.ui.left_panel, b"maximumWidth")
-            self.ui.left_panel_btn.setStyleSheet(stylesheet.left_panel_btn("right"))
-            h1, h2 = 360,0
-            self.left_panel_animation.setDuration(300)
-            self.left_panel_animation.setStartValue(h1)
-            self.left_panel_animation.setEndValue(h2)
-            self.left_panel_animation.start()
-        else:
-            self.left_panel_animation = QtCore.QPropertyAnimation(self.ui.left_panel, b"maximumWidth")
-            h1, h2 = 0,360
-            self.ui.left_panel_btn.setStyleSheet(stylesheet.left_panel_btn("left"))
-            self.left_panel_animation.setDuration(350)
-            self.left_panel_animation.setStartValue(h1)
-            self.left_panel_animation.setEndValue(h2)
-            self.left_panel_animation.start()
+    def layout_cleaning(self, layout):
+        # Deleting previuous selenium layout in the layout
+            # Delete elements inside a layout
+            # self.ui.db_status_layout.removeWidget(self.DB_offline)
+            # self.DB_offline.deleteLater()
+            # self.DB_offline = None
+        for i in reversed(range(layout.count())): 
+            layout.itemAt(i).widget().setParent(None)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

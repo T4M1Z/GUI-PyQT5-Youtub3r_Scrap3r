@@ -3,42 +3,36 @@ from unicodedata import name
 
 input_style = """
     QLineEdit{
-        background-color: rgb(55, 55, 55);
-        color: rgb(255, 255, 255);
-        border: 1px solid  rgb(91, 91, 91);
-        border-bottom-left-radius:0px;
-        border-top-left-radius:2px;
-        border-bottom-right-radius:0px;
-        border-top-right-radius:2px;
-        padding:5px;
+        background-color:  rgb(214, 214, 214);
+        color: #545454;
+        border: 1px solid  #ffffff;
+        border-radius:2px;
+        padding-left:7px;
     }
 
     QLineEdit::hover{
-        background-color: rgb(59, 59, 59);
+        background-color:  rgb(210, 210, 210);
         }
 
     QLineEdit::focus{
-        border:1px solid  rgb(121,121, 121);
+	    border:1px solid  rgb(121,121, 121);
     }
 """
 input_style_error = """
     QLineEdit{
-        background-color: rgb(55, 55, 55);
-        color: rgb(255, 255, 255);
-        border:1px solid rgb(195, 75, 75);
-        border-bottom-left-radius:0px;
-        border-top-left-radius:2px;
-        border-bottom-right-radius:0px;
-        border-top-right-radius:2px;
-        padding:5px;
+        background-color:  rgb(194, 194, 194);
+        color: #545454;
+        border: 1px solid  rgb(195,75,75);
+        border-radius:2px;
+        padding-left:7px;
     }
 
     QLineEdit::hover{
-        background-color: rgb(59, 59, 59);
+        background-color:  rgb(210, 210, 210);
         }
 
     QLineEdit::focus{
-        border:1px solid rgb(195, 75, 75);
+	    border:1px solid  rgb(195,75,75);
     }
 """
 
