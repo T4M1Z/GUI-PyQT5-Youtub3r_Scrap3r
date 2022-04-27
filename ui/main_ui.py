@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'third_gui_style_upYghcvB.ui'
+## Form generated from reading UI file 'third_gui_style_upvStCXr.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -22,13 +22,13 @@ class Ui_MainWindow(object):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1209, 820)
+        MainWindow.resize(1209, 830)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QSize(1200, 820))
+        MainWindow.setMinimumSize(QSize(1200, 830))
         MainWindow.setMaximumSize(QSize(16777215, 16777215))
         font = QFont()
         font.setFamily(u"Oswald ExtraLight")
@@ -405,7 +405,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setContentsMargins(0, 15, 15, 15)
         self.frame_25 = QFrame(self.frame_3)
         self.frame_25.setObjectName(u"frame_25")
-        self.frame_25.setMinimumSize(QSize(0, 740))
+        self.frame_25.setMinimumSize(QSize(0, 750))
         self.frame_25.setFrameShape(QFrame.StyledPanel)
         self.frame_25.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_24 = QHBoxLayout(self.frame_25)
@@ -414,7 +414,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24.setContentsMargins(0, -1, 0, -1)
         self.frame_23 = QFrame(self.frame_25)
         self.frame_23.setObjectName(u"frame_23")
-        self.frame_23.setMinimumSize(QSize(0, 725))
+        self.frame_23.setMinimumSize(QSize(0, 735))
         self.frame_23.setStyleSheet(u"QFrame #frame_23{\n"
 "border-right: 4px solid black;\n"
 "border-bottom: 10px solid black;\n"
@@ -436,7 +436,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.left_panel.sizePolicy().hasHeightForWidth())
         self.left_panel.setSizePolicy(sizePolicy3)
         self.left_panel.setMinimumSize(QSize(0, 0))
-        self.left_panel.setMaximumSize(QSize(330, 16777215))
+        self.left_panel.setMaximumSize(QSize(360, 16777215))
         self.left_panel.setStyleSheet(u"QFrame #left_panel{\n"
 "background-color: #616161\n"
 "}")
@@ -469,14 +469,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_4 = QVBoxLayout(self.top_db_frame)
         self.verticalLayout_4.setSpacing(7)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 13)
+        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 4)
         self.frame_7 = QFrame(self.top_db_frame)
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_7)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_9.setContentsMargins(-1, 0, -1, 3)
         self.label_4 = QLabel(self.frame_7)
         self.label_4.setObjectName(u"label_4")
         font3 = QFont()
@@ -496,7 +496,7 @@ class Ui_MainWindow(object):
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_10 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(-1, 0, -1, 9)
+        self.horizontalLayout_10.setContentsMargins(-1, 0, -1, 0)
         self.label_5 = QLabel(self.frame_8)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setMinimumSize(QSize(0, 0))
@@ -583,7 +583,7 @@ class Ui_MainWindow(object):
         self.middle_db_frame = QFrame(self.db_settings_frame)
         self.middle_db_frame.setObjectName(u"middle_db_frame")
         self.middle_db_frame.setMinimumSize(QSize(0, 0))
-        self.middle_db_frame.setMaximumSize(QSize(330, 200))
+        self.middle_db_frame.setMaximumSize(QSize(330, 205))
         self.middle_db_frame.setStyleSheet(u"QFrame #middle_db_frame{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
@@ -594,6 +594,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6 = QVBoxLayout(self.middle_db_frame)
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(-1, -1, -1, 9)
         self.frame_14 = QFrame(self.middle_db_frame)
         self.frame_14.setObjectName(u"frame_14")
         self.frame_14.setFrameShape(QFrame.StyledPanel)
@@ -729,7 +730,7 @@ class Ui_MainWindow(object):
         self.frame_21.setFrameShadow(QFrame.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.frame_21)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setContentsMargins(13, 4, 13, 0)
+        self.verticalLayout_8.setContentsMargins(13, 4, -1, 0)
         self.label_9 = QLabel(self.frame_21)
         self.label_9.setObjectName(u"label_9")
         font10 = QFont()
@@ -1745,9 +1746,6 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
-
-
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
@@ -1804,8 +1802,8 @@ class Ui_MainWindow(object):
         self.description_channel.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Roboto'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Channel description</p></body></html>", None))
+"</style></head><body style=\" font-family:'Roboto'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">Channel description</span></p></body></html>", None))
         self.description_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Channel description", None))
         self.drag_btn.setText("")
     # retranslateUi

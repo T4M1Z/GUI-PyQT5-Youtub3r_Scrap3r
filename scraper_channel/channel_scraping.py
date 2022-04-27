@@ -131,7 +131,7 @@ class Channel_Scraping(QThread):
 
         ###########################################
         ## ============ COOKIE ZONE ============ ## 
-
+        print(os.getcwd())
         try:
             WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH,"//div[@class='VfPpkd-dgl2Hf-ppHlrf-sM5MNb']//button"))).click()
             time.sleep(2)
@@ -220,24 +220,30 @@ class Channel_Scraping(QThread):
                 WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(
                     (By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")))
                 links_video = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")
-                title = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='video-title']")
-                visual = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='metadata-line']//span[1]")
-                # date = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='metadata-line']//span[2]")
-                # duration = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='overlays']//span[@id='text']")
+                # title = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='video-title']")
+                # visual = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='metadata-line']//span[1]")
+                # # date = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='metadata-line']//span[2]")
+                # # duration = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='overlays']//span[@id='text']")
 
-                for l,t,v in zip(links_video,title,visual):
-                    self.c_panel_ui.tableWidget.setRowCount(index+1)   
-                    video_info["links"].append(l.get_attribute("href"))
-                    video_info["title"].append(t.text)
-                    video_info["visual"].append(v.text)
-                    video_info["index"].append(index)
+                # for l,t,v in zip(links_video,title,visual):
+                #     self.c_panel_ui.tableWidget.setRowCount(index+1)   
+                #     video_info["links"].append(l.get_attribute("href"))
+                #     video_info["title"].append(t.text)
+                #     video_info["visual"].append(v.text)
+                #     video_info["index"].append(index)
 
-                    index+=1            
+                #     index+=1
+                for link in links_video:
+                    a_file = open("link.txt", "r")
+                    list_of_lines = a_file.readlines()
+                    list_of_lines.append(link.get_attribute("href")+"\n")
+                    a_file = open("link.txt", "w")
+                    a_file.writelines(list_of_lines)
+                    a_file.close()
 
 
     
                 # Deleting video-div during the scrolling 
-   
                 try: 
                     div = self.driver.find_elements(By.XPATH, "//div[@id='items']//ytd-grid-video-renderer")
                     for element in div:
@@ -245,8 +251,10 @@ class Channel_Scraping(QThread):
                         element.parentNode.removeChild(element);""", element)
                 except Exception: print("err")
                 
-            except:
+            except Exception as e:
+                print(e)
                 # Interrupt the script if doesn't find any div to delete
+                print("errore totale")
                 break
             
             
@@ -260,8 +268,8 @@ class Channel_Scraping(QThread):
                     element.parentNode.removeChild(element);""", div)
             except Exception: print("err")
 
-            if not test:
-                self.receivedPacketSignal.emit(video_info)
+            # if not test:
+            #     self.receivedPacketSignal.emit(video_info)
 
             # print(f"scrolling [{n+1}/{scroll}] ")
 

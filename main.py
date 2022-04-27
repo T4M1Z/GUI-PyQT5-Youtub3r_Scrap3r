@@ -12,7 +12,7 @@
 
 import os
 import sys
-import requests
+import requests 
 import webbrowser
 
 from modules import *

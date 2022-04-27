@@ -1,8 +1,11 @@
+from ast import arg
 from pymongo import MongoClient
 from PyQt5.QtCore import QThread, pyqtSignal
-
+import threading
 import time
 import datetime
+
+_FINISH = False
 
 class DBConnection(QThread): 
     receivedPacketSignal = pyqtSignal(str,list)
@@ -22,26 +25,31 @@ class DBConnection(QThread):
         print("is running")
         while self.isRunning:
             try:
-                try:
-                    self.client = MongoClient(self.string)
-                    if self.client.admin.command('ismaster')["topologyVersion"]:
-                        self.history_channel_query()
+                import certifi
+                ca = certifi.where()
+                self.client = MongoClient(self.string, tlsCAFile=ca)
+                if self.client.admin.command('ismaster')["topologyVersion"]:
+                    self.history_channel_query()
+                    self.receivedPacketSignal.emit("connected",[])
 
-                    break
+                break
+
+
                 
-                except:
-                    # Strange Error from notebook   
-                    import certifi
-                    ca = certifi.where()
-                    self.client = MongoClient(self.string, tlsCAFile=ca)
-                    if self.client.admin.command('ismaster')["topologyVersion"]:
-                        self.history_channel_query()
-                        self.receivedPacketSignal.emit("connected",[])
-                    break
-                    
             except Exception as e:
                 self.receivedPacketSignal.emit("error " + str(e), [])
                 break
+
+        print("arrivato errore ora certifi")   
+
+
+
+    def connection_db(self):
+        print("db first try")
+        self.client = MongoClient(self.string)
+        if self.client.admin.command('ismaster')["topologyVersion"]:
+            self.history_channel_query()
+
 
     def history_channel_query(self):
         db = self.client['channels_analytics']
