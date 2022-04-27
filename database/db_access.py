@@ -12,7 +12,7 @@ class DBConnection(QThread):
         self.isRunning = False
         self.string = string
         self.mode = mode
-        "mongodb+srv://root:root@mongodb-main.nqvqc.mongodb.net/test?authSource=admin&replicaSet=atlas-w2onn2-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true"
+        
 
     def stop(self):
         self.isRunning = False
