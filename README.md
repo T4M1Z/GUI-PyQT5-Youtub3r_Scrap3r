@@ -15,4 +15,4 @@ This is a 2days work, this time I wanted to start from the design of the applica
 <img src="https://user-images.githubusercontent.com/97179746/164894513-27114e68-2b38-422e-b47c-cc80def66908.png" width="700" height="370" />
 
 ## Version 0.4.DatabaseIntegration
-<img src="https://user-images.githubusercontent.com/97179746/164894513-27114e68-2b38-422e-b47c-cc80def66908.png" width="700" height="370" />
+<img src="https://user-images.githubusercontent.com/97179746/165836232-f71eeeb5-785c-4efe-ad97-fe312b0269fa.png" width="700" height="370" />
