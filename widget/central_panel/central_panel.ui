@@ -493,9 +493,6 @@ QHeaderView::section:checked:hover{
 	background-color: rgb(75, 75, 75);
 }</string>
                       </property>
-                      <property name="selectionMode">
-                       <enum>QAbstractItemView::MultiSelection</enum>
-                      </property>
                      </widget>
                     </item>
                    </layout>
