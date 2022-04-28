@@ -13,3 +13,6 @@ This is a 2days work, this time I wanted to start from the design of the applica
 
 ## Version 0.4
 <img src="https://user-images.githubusercontent.com/97179746/164894513-27114e68-2b38-422e-b47c-cc80def66908.png" width="700" height="370" />
+
+## Version 0.4.DatabaseIntegration
+<img src="https://user-images.githubusercontent.com/97179746/164894513-27114e68-2b38-422e-b47c-cc80def66908.png" width="700" height="370" />
