@@ -1,5 +1,5 @@
 from ui.main_ui import Ui_MainWindow
-from functions import UIFunctions
+from functions import UIFunctions, DataFrameModel
 from ui import stylesheet
 from scraper_channel.channel_scraping import Channel_Scraping
 from scraper_channel.test_db import MongoDB
@@ -12,3 +12,5 @@ from widget.db_history_channel.db_history_channel import DBHistoryChannel
 from database.db_access import DBConnection
 
 from animation import Animation, FaderWidget
+
+from global_variables import GlobalVariables

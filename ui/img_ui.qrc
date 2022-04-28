@@ -267,6 +267,7 @@
     <file>icons/channel/profile_new.jpg</file>
     <file>icons/channel/chart_btn.svg</file>
     <file>icons/channel/user_btn.svg</file>
+    <file>icons/channel/remove_btn.svg</file>
   </qresource>
   <qresource prefix="connection">
     <file>icons/connection/connection-on-24.png</file>

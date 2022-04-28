@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'central_panelxEqYYQ.ui'
+## Form generated from reading UI file 'central_panelGkMnYW.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -202,38 +202,16 @@ class Ui_Form(object):
         self.horizontalLayout_30 = QHBoxLayout(self.frame_28)
         self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
         self.horizontalLayout_30.setContentsMargins(0, 0, 0, 0)
-        self.tableWidget = QTableWidget(self.frame_28)
-        if (self.tableWidget.columnCount() < 4):
-            self.tableWidget.setColumnCount(4)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        if (self.tableWidget.rowCount() < 1):
-            self.tableWidget.setRowCount(1)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        __qtablewidgetitem4.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
-        self.tableWidget.setItem(0, 1, __qtablewidgetitem4)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        __qtablewidgetitem5.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
-        self.tableWidget.setItem(0, 3, __qtablewidgetitem5)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setEnabled(True)
-        font = QFont()
-        font.setFamily(u"Roboto")
-        self.tableWidget.setFont(font)
-        self.tableWidget.setStyleSheet(u"QTableWidget{\n"
+        self.tableView = QTableView(self.frame_28)
+        self.tableView.setObjectName(u"tableView")
+        self.tableView.setStyleSheet(u"QTableView{\n"
 "	border-radius:8px;\n"
 "	border: none;\n"
 "}\n"
 "\n"
 "\n"
 "\n"
-"QTableWidget, QHeaderView::section, QTableWidget QTableCornerButton:section\n"
+"QTableView, QHeaderView::section, QTableView QTableCornerButton:section\n"
 "{\n"
 "	background-color: rgb(77, 77, 77);\n"
 "    color: #fff;\n"
@@ -241,13 +219,13 @@ class Ui_Form(object):
 "\n"
 "}\n"
 "\n"
-"QTableWidget::item:selected\n"
+"QTableView::item:selected\n"
 "{\n"
 "	background-color: rgb(56, 56, 56);\n"
 "}\n"
 "\n"
 "\n"
-"QTableWidget QTableCornerButton::section {\n"
+"QTableView QTableCornerButton::section {\n"
 "background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));\n"
 "}\n"
 "\n"
@@ -271,8 +249,8 @@ class Ui_Form(object):
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(75, 75, 75);\n"
 "}\n"
-"QHeaderView::section:"
-                        "checked{/*\u4e0d\u53d6\u6d88\u9ad8\u4eae*/\n"
+"QHeaderView::section:checked{/*"
+                        "\u4e0d\u53d6\u6d88\u9ad8\u4eae*/\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(75, 75, 75);\n"
 "}\n"
@@ -283,23 +261,9 @@ class Ui_Form(object):
 "QHeaderView::section:checked:hover{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(75, 75, 75);\n"
-"}\n"
-"")
-        self.tableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.tableWidget.setAlternatingRowColors(False)
-        self.tableWidget.setShowGrid(True)
-        self.tableWidget.setSortingEnabled(False)
-        self.tableWidget.setRowCount(1)
-        self.tableWidget.setColumnCount(4)
-        self.tableWidget.horizontalHeader().setHighlightSections(True)
-        self.tableWidget.horizontalHeader().setProperty("showSortIndicator", False)
-        self.tableWidget.horizontalHeader().setStretchLastSection(False)
-        self.tableWidget.verticalHeader().setVisible(False)
-        self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
-        self.tableWidget.verticalHeader().setHighlightSections(False)
-        self.tableWidget.verticalHeader().setProperty("showSortIndicator", False)
+"}")
 
-        self.horizontalLayout_30.addWidget(self.tableWidget)
+        self.horizontalLayout_30.addWidget(self.tableView)
 
 
         self.horizontalLayout_29.addWidget(self.frame_28)
@@ -355,18 +319,5 @@ class Ui_Form(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">-- START SCRAPING --	</p></body></html>", None))
-        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"ID", None));
-        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"Link url", None));
-        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"Title", None));
-        ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("Form", u"Views", None));
-
-        __sortingEnabled = self.tableWidget.isSortingEnabled()
-        self.tableWidget.setSortingEnabled(False)
-        self.tableWidget.setSortingEnabled(__sortingEnabled)
-
     # retranslateUi
 

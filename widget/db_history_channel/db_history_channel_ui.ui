@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>606</width>
+    <width>342</width>
     <height>676</height>
    </rect>
   </property>
@@ -71,7 +71,7 @@ border-top-right-radius:2px;
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,0,0">
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,0,0,0">
          <property name="spacing">
           <number>6</number>
          </property>
@@ -122,16 +122,38 @@ border-top-right-radius:2px;
           </widget>
          </item>
          <item>
+          <widget class="QLabel" name="refresh_gif">
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>24</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="refresh_db_btn">
            <property name="minimumSize">
             <size>
-             <width>15</width>
+             <width>24</width>
              <height>15</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>15</width>
+             <width>24</width>
              <height>15</height>
             </size>
            </property>
@@ -206,10 +228,30 @@ QPushButton::pressed{
          <string notr="true">background-color: rgb(74, 74, 74);</string>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_1">
+         <property name="styleSheet">
+          <string notr="true">QWidget #page_1{
+	background-color: qlineargradient(spread:pad, x1:0.512, y1:1, x2:0.511182, y2:0, stop:0 rgba(57, 57, 57, 255), stop:1 rgba(71, 71, 71, 255));
+}</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QScrollArea" name="scrollArea1">
             <property name="styleSheet">
@@ -226,8 +268,8 @@ QPushButton::pressed{
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>584</width>
-               <height>478</height>
+               <width>338</width>
+               <height>631</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -272,9 +314,34 @@ QPushButton::pressed{
          </layout>
         </widget>
         <widget class="QWidget" name="page_2">
+         <property name="styleSheet">
+          <string notr="true">QWidget #page_2{
+background-color: qlineargradient(spread:pad, x1:0.512, y1:1, x2:0.511182, y2:0, stop:0 rgba(57, 57, 57, 255), stop:1 rgba(97, 97, 97, 255));
+}</string>
+         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QFrame" name="frame">
+            <property name="styleSheet">
+             <string notr="true">QFrame #frame{
+	background-color: qlineargradient(spread:pad, x1:0.512, y1:1, x2:0.511182, y2:0, stop:0 rgba(57, 57, 57, 255), stop:1 rgba(71, 71, 71, 255));
+}</string>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -282,6 +349,15 @@ QPushButton::pressed{
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="leftMargin">
+              <number>18</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>18</number>
+             </property>
              <item>
               <spacer name="verticalSpacer_2">
                <property name="orientation">
@@ -306,7 +382,7 @@ QPushButton::pressed{
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>104</height>
+                 <height>98</height>
                 </size>
                </property>
                <property name="font">
@@ -326,18 +402,18 @@ border-radius:4px;
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0">
+               <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,0">
                 <property name="spacing">
                  <number>0</number>
                 </property>
                 <property name="leftMargin">
-                 <number>0</number>
+                 <number>14</number>
                 </property>
                 <property name="topMargin">
                  <number>6</number>
                 </property>
                 <property name="rightMargin">
-                 <number>0</number>
+                 <number>14</number>
                 </property>
                 <property name="bottomMargin">
                  <number>15</number>
@@ -353,7 +429,7 @@ border-radius:4px;
                   <property name="font">
                    <font>
                     <family>Segoe UI Semibold</family>
-                    <pointsize>20</pointsize>
+                    <pointsize>15</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -385,7 +461,32 @@ border-radius:4px;
                    <string notr="true">color: rgb(253, 111, 96);</string>
                   </property>
                   <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Remember that if you are not connected to a database &lt;span style=&quot; text-decoration: underline;&quot;&gt;&lt;br&gt;all the data will not be saved&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you are not connected to a database &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_4">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI Semibold</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(223, 111, 96);</string>
+                  </property>
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;all the data will not be saved&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -397,6 +498,9 @@ border-radius:4px;
              </item>
              <item>
               <widget class="QFrame" name="frame_3">
+               <property name="styleSheet">
+                <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));</string>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
@@ -408,7 +512,7 @@ border-radius:4px;
                  <number>14</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>25</number>
+                 <number>35</number>
                 </property>
                 <item>
                  <spacer name="horizontalSpacer">
@@ -424,23 +528,23 @@ border-radius:4px;
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton">
+                 <widget class="QPushButton" name="db_exit_yes_btn">
                   <property name="minimumSize">
                    <size>
-                    <width>130</width>
-                    <height>45</height>
+                    <width>100</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>130</width>
-                    <height>45</height>
+                    <width>16777215</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
                     <family>Segoe UI Semibold</family>
-                    <pointsize>16</pointsize>
+                    <pointsize>13</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -453,7 +557,7 @@ border-radius:4px;
 background-color: rgb(190, 79, 64);
 color: #ffffff;
 border-radius: 5px;
-border: 2px solid white;
+border: 2px solid rgb(221, 221, 221);
 }
 
 QPushButton::hover{
@@ -472,23 +576,23 @@ background-color: rgb(190, 79, 64);
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_2">
+                 <widget class="QPushButton" name="db_exit_no_btn">
                   <property name="minimumSize">
                    <size>
-                    <width>130</width>
-                    <height>45</height>
+                    <width>100</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>130</width>
-                    <height>45</height>
+                    <width>16777215</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
                     <family>Segoe UI Semibold</family>
-                    <pointsize>16</pointsize>
+                    <pointsize>13</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -501,7 +605,7 @@ background-color: rgb(190, 79, 64);
 	background-color: rgb(119, 177, 88);
 color: #ffffff;
 border-radius: 5px;
-border: 2px solid white;
+border: 2px solid rgb(221, 221, 221);
 }
 
 QPushButton::hover{
@@ -537,12 +641,18 @@ QPushButton::pressed{
               <widget class="QLabel" name="label_3">
                <property name="minimumSize">
                 <size>
-                 <width>0</width>
+                 <width>100</width>
                  <height>300</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
                <property name="styleSheet">
-                <string notr="true">image: url(:/database/icons/db/db_s_exit.svg);</string>
+                <string notr="true">image: url(:/database/icons/db/db_s_exit.svg);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));</string>
                </property>
                <property name="text">
                 <string/>

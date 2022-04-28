@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'channel_history_uianYIXJ.ui'
+## Form generated from reading UI file 'channel_history_uirDTlhO.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,7 +21,7 @@ class Ui_user(object):
     def setupUi(self, user):
         if user.objectName():
             user.setObjectName(u"user")
-        user.resize(335, 65)
+        user.resize(458, 65)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -123,29 +123,48 @@ class Ui_user(object):
         self.horizontalLayout_3 = QHBoxLayout(self.frame_btn)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.user_btn = QPushButton(self.frame_btn)
-        self.user_btn.setObjectName(u"user_btn")
-        self.user_btn.setMinimumSize(QSize(16, 16))
-        self.user_btn.setMaximumSize(QSize(16, 16))
-        self.user_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.user_btn.setStyleSheet(u"QPushButton{image: url(:/channel/icons/channel/user_btn.svg);\n"
-"border:none;\n"
+        self.remove_btn = QPushButton(self.frame_btn)
+        self.remove_btn.setObjectName(u"remove_btn")
+        self.remove_btn.setMinimumSize(QSize(15, 15))
+        self.remove_btn.setMaximumSize(QSize(15, 15))
+        self.remove_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.remove_btn.setStyleSheet(u"QPushButton{\n"
+"	image: url(:/channel/icons/channel/remove_btn.svg);\n"
+"border-radius:8px;\n"
 "}\n"
-"")
+"\n"
+"QPushButton::hover{\n"
+"	\n"
+"	background-color: rgb(218, 218, 218);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton::pressed{\n"
+"	background-color: rgb(198, 198, 198);\n"
+"}")
 
-        self.horizontalLayout_3.addWidget(self.user_btn)
+        self.horizontalLayout_3.addWidget(self.remove_btn)
 
         self.chart_btn = QPushButton(self.frame_btn)
         self.chart_btn.setObjectName(u"chart_btn")
-        self.chart_btn.setMinimumSize(QSize(20, 20))
-        self.chart_btn.setMaximumSize(QSize(20, 20))
+        self.chart_btn.setMinimumSize(QSize(17, 17))
+        self.chart_btn.setMaximumSize(QSize(17, 17))
         self.chart_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.chart_btn.setStyleSheet(u"QPushButton{\n"
 "image: url(:/channel/icons/channel/chart_btn.svg);\n"
 "border:none;\n"
+"border-radius:8px;\n"
 "}\n"
 "\n"
-"")
+"QPushButton::hover{\n"
+"	\n"
+"	background-color: rgb(218, 218, 218);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton::pressed{\n"
+"	background-color: rgb(198, 198, 198);\n"
+"}")
 
         self.horizontalLayout_3.addWidget(self.chart_btn)
 
@@ -171,7 +190,7 @@ class Ui_user(object):
         self.profile_photo.setText("")
         self.username_label.setText(QCoreApplication.translate("user", u"Examplename_23", None))
         self.last_update_label.setText(QCoreApplication.translate("user", u"last_update: 24/04/2022", None))
-        self.user_btn.setText("")
+        self.remove_btn.setText("")
         self.chart_btn.setText("")
     # retranslateUi
 

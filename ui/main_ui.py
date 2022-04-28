@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'third_gui_style_upvStCXr.ui'
+## Form generated from reading UI file 'third_gui_style_upaedUCW.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -22,13 +22,13 @@ class Ui_MainWindow(object):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1209, 830)
+        MainWindow.resize(1227, 913)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QSize(1200, 830))
+        MainWindow.setMinimumSize(QSize(1200, 820))
         MainWindow.setMaximumSize(QSize(16777215, 16777215))
         font = QFont()
         font.setFamily(u"Oswald ExtraLight")
@@ -405,7 +405,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setContentsMargins(0, 15, 15, 15)
         self.frame_25 = QFrame(self.frame_3)
         self.frame_25.setObjectName(u"frame_25")
-        self.frame_25.setMinimumSize(QSize(0, 750))
+        sizePolicy3 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.frame_25.sizePolicy().hasHeightForWidth())
+        self.frame_25.setSizePolicy(sizePolicy3)
+        self.frame_25.setMinimumSize(QSize(0, 740))
+        self.frame_25.setMaximumSize(QSize(16777215, 16777215))
         self.frame_25.setFrameShape(QFrame.StyledPanel)
         self.frame_25.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_24 = QHBoxLayout(self.frame_25)
@@ -414,7 +420,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24.setContentsMargins(0, -1, 0, -1)
         self.frame_23 = QFrame(self.frame_25)
         self.frame_23.setObjectName(u"frame_23")
-        self.frame_23.setMinimumSize(QSize(0, 735))
+        sizePolicy3.setHeightForWidth(self.frame_23.sizePolicy().hasHeightForWidth())
+        self.frame_23.setSizePolicy(sizePolicy3)
+        self.frame_23.setMinimumSize(QSize(0, 725))
+        self.frame_23.setMaximumSize(QSize(16777215, 16777215))
         self.frame_23.setStyleSheet(u"QFrame #frame_23{\n"
 "border-right: 4px solid black;\n"
 "border-bottom: 10px solid black;\n"
@@ -430,13 +439,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_18.setContentsMargins(0, 0, 0, 0)
         self.left_panel = QFrame(self.frame_23)
         self.left_panel.setObjectName(u"left_panel")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.left_panel.sizePolicy().hasHeightForWidth())
         self.left_panel.setSizePolicy(sizePolicy3)
         self.left_panel.setMinimumSize(QSize(0, 0))
-        self.left_panel.setMaximumSize(QSize(360, 16777215))
+        self.left_panel.setMaximumSize(QSize(16777215, 16777215))
         self.left_panel.setStyleSheet(u"QFrame #left_panel{\n"
 "background-color: #616161\n"
 "}")
@@ -458,7 +464,7 @@ class Ui_MainWindow(object):
         self.top_db_frame = QFrame(self.db_settings_frame)
         self.top_db_frame.setObjectName(u"top_db_frame")
         self.top_db_frame.setMinimumSize(QSize(0, 230))
-        self.top_db_frame.setMaximumSize(QSize(330, 230))
+        self.top_db_frame.setMaximumSize(QSize(16777215, 230))
         self.top_db_frame.setStyleSheet(u"QFrame #top_db_frame{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
@@ -469,14 +475,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_4 = QVBoxLayout(self.top_db_frame)
         self.verticalLayout_4.setSpacing(7)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 4)
+        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 13)
         self.frame_7 = QFrame(self.top_db_frame)
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_7)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(-1, 0, -1, 3)
+        self.horizontalLayout_9.setContentsMargins(-1, 2, -1, 0)
         self.label_4 = QLabel(self.frame_7)
         self.label_4.setObjectName(u"label_4")
         font3 = QFont()
@@ -496,7 +502,7 @@ class Ui_MainWindow(object):
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_10 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_10.setContentsMargins(-1, 0, -1, 9)
         self.label_5 = QLabel(self.frame_8)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setMinimumSize(QSize(0, 0))
@@ -540,10 +546,15 @@ class Ui_MainWindow(object):
         self.frame_11.setFrameShadow(QFrame.Raised)
         self.verticalLayout_5 = QVBoxLayout(self.frame_11)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(-1, 2, -1, -1)
+        self.verticalLayout_5.setContentsMargins(-1, 0, -1, 14)
         self.start_scraping_btn_2 = QPushButton(self.frame_11)
         self.start_scraping_btn_2.setObjectName(u"start_scraping_btn_2")
-        self.start_scraping_btn_2.setMinimumSize(QSize(170, 38))
+        sizePolicy4 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.start_scraping_btn_2.sizePolicy().hasHeightForWidth())
+        self.start_scraping_btn_2.setSizePolicy(sizePolicy4)
+        self.start_scraping_btn_2.setMinimumSize(QSize(0, 38))
         self.start_scraping_btn_2.setMaximumSize(QSize(170, 38))
         font6 = QFont()
         font6.setFamily(u"Segoe UI Semibold")
@@ -583,7 +594,7 @@ class Ui_MainWindow(object):
         self.middle_db_frame = QFrame(self.db_settings_frame)
         self.middle_db_frame.setObjectName(u"middle_db_frame")
         self.middle_db_frame.setMinimumSize(QSize(0, 0))
-        self.middle_db_frame.setMaximumSize(QSize(330, 205))
+        self.middle_db_frame.setMaximumSize(QSize(16777215, 200))
         self.middle_db_frame.setStyleSheet(u"QFrame #middle_db_frame{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
@@ -594,7 +605,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_6 = QVBoxLayout(self.middle_db_frame)
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(-1, -1, -1, 9)
         self.frame_14 = QFrame(self.middle_db_frame)
         self.frame_14.setObjectName(u"frame_14")
         self.frame_14.setFrameShape(QFrame.StyledPanel)
@@ -647,11 +657,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setContentsMargins(5, 4, 9, -1)
         self.pushButton_2 = QPushButton(self.frame_15)
         self.pushButton_2.setObjectName(u"pushButton_2")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-        self.pushButton_2.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
+        self.pushButton_2.setSizePolicy(sizePolicy5)
         self.pushButton_2.setMinimumSize(QSize(10, 10))
         self.pushButton_2.setMaximumSize(QSize(10, 10))
         font8 = QFont()
@@ -696,7 +706,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.setContentsMargins(-1, 0, 15, 0)
         self.db_connection_input = QLineEdit(self.frame_20)
         self.db_connection_input.setObjectName(u"db_connection_input")
-        self.db_connection_input.setMinimumSize(QSize(160, 30))
+        self.db_connection_input.setMinimumSize(QSize(0, 30))
         self.db_connection_input.setMaximumSize(QSize(16777215, 30))
         font9 = QFont()
         font9.setFamily(u"Segoe UI")
@@ -730,7 +740,7 @@ class Ui_MainWindow(object):
         self.frame_21.setFrameShadow(QFrame.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.frame_21)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setContentsMargins(13, 4, -1, 0)
+        self.verticalLayout_8.setContentsMargins(13, 4, 13, 0)
         self.label_9 = QLabel(self.frame_21)
         self.label_9.setObjectName(u"label_9")
         font10 = QFont()
@@ -760,7 +770,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_28.setContentsMargins(0, 0, -1, 0)
         self.db_connect_btn = QPushButton(self.frame_27)
         self.db_connect_btn.setObjectName(u"db_connect_btn")
-        self.db_connect_btn.setMinimumSize(QSize(110, 35))
+        sizePolicy4.setHeightForWidth(self.db_connect_btn.sizePolicy().hasHeightForWidth())
+        self.db_connect_btn.setSizePolicy(sizePolicy4)
+        self.db_connect_btn.setMinimumSize(QSize(0, 35))
         self.db_connect_btn.setMaximumSize(QSize(110, 35))
         font11 = QFont()
         font11.setFamily(u"Segoe UI Semibold")
@@ -793,7 +805,7 @@ class Ui_MainWindow(object):
 
         self.loading_gif = QLabel(self.frame_27)
         self.loading_gif.setObjectName(u"loading_gif")
-        self.loading_gif.setMinimumSize(QSize(40, 40))
+        self.loading_gif.setMinimumSize(QSize(0, 40))
         self.loading_gif.setMaximumSize(QSize(40, 40))
 
         self.horizontalLayout_28.addWidget(self.loading_gif)
@@ -870,9 +882,9 @@ class Ui_MainWindow(object):
 
         self.left_panel_btn = QPushButton(self.frame_23)
         self.left_panel_btn.setObjectName(u"left_panel_btn")
-        sizePolicy.setHeightForWidth(self.left_panel_btn.sizePolicy().hasHeightForWidth())
-        self.left_panel_btn.setSizePolicy(sizePolicy)
-        self.left_panel_btn.setMinimumSize(QSize(20, 0))
+        sizePolicy3.setHeightForWidth(self.left_panel_btn.sizePolicy().hasHeightForWidth())
+        self.left_panel_btn.setSizePolicy(sizePolicy3)
+        self.left_panel_btn.setMinimumSize(QSize(0, 0))
         self.left_panel_btn.setMaximumSize(QSize(20, 16777215))
         self.left_panel_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.left_panel_btn.setStyleSheet(u"QPushButton{\n"
@@ -895,6 +907,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_24.addWidget(self.frame_23)
 
+        self.horizontalSpacer_6 = QSpacerItem(0, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_24.addItem(self.horizontalSpacer_6)
+
+        self.horizontalLayout_24.setStretch(1, 1)
 
         self.horizontalLayout_6.addWidget(self.frame_25)
 
@@ -1282,22 +1299,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.addWidget(self.frame_30)
 
         self.central_panel_layout = QHBoxLayout()
-        self.central_panel_layout.setSpacing(3)
+        self.central_panel_layout.setSpacing(0)
         self.central_panel_layout.setObjectName(u"central_panel_layout")
         self.central_panel_layout.setContentsMargins(-1, 0, -1, -1)
-        self.frame_12 = QFrame(self.frame_center)
-        self.frame_12.setObjectName(u"frame_12")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.frame_12.sizePolicy().hasHeightForWidth())
-        self.frame_12.setSizePolicy(sizePolicy5)
-        self.frame_12.setFrameShape(QFrame.StyledPanel)
-        self.frame_12.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_30 = QHBoxLayout(self.frame_12)
-        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
-        self.horizontalLayout_30.setContentsMargins(-1, 9, -1, 9)
-        self.frame_left = QFrame(self.frame_12)
+        self.channel_data_frame = QFrame(self.frame_center)
+        self.channel_data_frame.setObjectName(u"channel_data_frame")
+        sizePolicy3.setHeightForWidth(self.channel_data_frame.sizePolicy().hasHeightForWidth())
+        self.channel_data_frame.setSizePolicy(sizePolicy3)
+        self.channel_data_frame.setMaximumSize(QSize(16777215, 16777215))
+        self.channel_data_frame.setFrameShape(QFrame.StyledPanel)
+        self.channel_data_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_19 = QVBoxLayout(self.channel_data_frame)
+        self.verticalLayout_19.setSpacing(0)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalLayout_19.setContentsMargins(-1, 9, 9, 9)
+        self.frame_left = QFrame(self.channel_data_frame)
         self.frame_left.setObjectName(u"frame_left")
         self.frame_left.setMinimumSize(QSize(220, 550))
         self.frame_left.setMaximumSize(QSize(220, 550))
@@ -1679,10 +1695,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.addWidget(self.frame_29)
 
 
-        self.horizontalLayout_30.addWidget(self.frame_left)
+        self.verticalLayout_19.addWidget(self.frame_left)
 
 
-        self.central_panel_layout.addWidget(self.frame_12)
+        self.central_panel_layout.addWidget(self.channel_data_frame)
 
 
         self.verticalLayout_13.addLayout(self.central_panel_layout)
@@ -1746,6 +1762,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
+        self.stackedWidget.setCurrentIndex(0)
+
+
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
@@ -1802,8 +1821,8 @@ class Ui_MainWindow(object):
         self.description_channel.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Roboto'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">Channel description</span></p></body></html>", None))
+"</style></head><body style=\" font-family:'Roboto'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Channel description</p></body></html>", None))
         self.description_channel.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Channel description", None))
         self.drag_btn.setText("")
     # retranslateUi

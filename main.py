@@ -12,9 +12,10 @@
 
 import os
 import sys
+from tkinter import Variable
 import requests 
 import webbrowser
-
+import pandas as pd
 from modules import *
 # from PyQt5.QtChart import QCandlestickSeries, QCandlestickSet, QChart, QChartView, QLineSeries
 from PyQt5.QtWidgets import QFileDialog, QFrame, QGraphicsOpacityEffect, QHBoxLayout, QLabel, QMainWindow, QPushButton
@@ -27,8 +28,6 @@ from PyQt5 import QtWebEngineWidgets
 from PyQt5.QtCore import QObject, QThread, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QGraphicsOpacityEffect
 from PyQt5.QtCore import QPropertyAnimation, QParallelAnimationGroup, QPoint
-
-
 
 
 class MainWindow(QMainWindow):
@@ -65,12 +64,14 @@ class MainWindow(QMainWindow):
 
         # ------ Settings ------ #
         self.door = False
+
         self.ui.stop_scraping_btn.hide()
         
         self.ui.btn_combo_box.hide()
 
         self.ui.loading_gif.hide()
         self.DB_history_channel.ui.refresh_gif.hide()
+
 
         self.ui.db_status_layout.addWidget(self.DB_offline)
         self.ui.db_channels_history.addWidget(self.DB_history_channel)
@@ -87,16 +88,17 @@ class MainWindow(QMainWindow):
         self.c_panel.ui.scraping_monitoring_frame.setMaximumHeight(0)
         
         # Width of columns in QTable monitoring
-        header = self.c_panel.ui.tableWidget.horizontalHeader()
-        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(1, QHeaderView.Stretch)
-        header.setSectionResizeMode(2, QHeaderView.Stretch)
-        header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
+        self.c_panel.ui.tableView.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        # header = self.c_panel.ui.tableWidget.horizontalHeader()
+        # header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        # header.setSectionResizeMode(1, QHeaderView.Stretch)
+        # header.setSectionResizeMode(2, QHeaderView.Stretch)
+        # header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
 
-        item1 = self.c_panel.ui.tableWidget.horizontalHeaderItem(0)
-        item1.setForeground(QtGui.QColor(255, 0, 0))
-        item1.setBackground(QtGui.QColor(0, 0, 0))  # Black background! does not work!!
-        self.c_panel.ui.tableWidget.setHorizontalHeaderItem(0, item1)
+        # item1 = self.c_panel.ui.tableWidget.horizontalHeaderItem(0)
+        # item1.setForeground(QtGui.QColor(255, 0, 0))
+        # item1.setBackground(QtGui.QColor(0, 0, 0))  # Black background! does not work!!
+        # self.c_panel.ui.tableWidget.setHorizontalHeaderItem(0, item1)
 
 
         # ------ Actions ------ #
@@ -109,12 +111,19 @@ class MainWindow(QMainWindow):
         self.ui.db_connect_btn.pressed.connect(self.test_connection_db)
         self.DB_history_channel.ui.refresh_db_btn.pressed.connect(self.refresh_channels_list)
 
+
         # self.ui.test_db_btn.pressed.connect(self.test_connection_db)
         
         # Loading the GIF
         self.movie = QMovie("ui/icons/loading/loading_circle_2.gif")
         self.ui.loading_gif.setMovie(self.movie)
-        
+
+        # Loading the GIF 2
+        self.movie_2 = QMovie("ui/icons/loading/loading_circle_16.gif")
+        self.DB_history_channel.ui.refresh_gif.setMovie(self.movie_2)
+        self.DB_history_channel.ui.refresh_gif.setScaledContents(True)
+
+
         # Set left panel Closed
         self.ui.left_panel.setMaximumWidth(0)
 
@@ -169,8 +178,10 @@ class MainWindow(QMainWindow):
         if not self.ui.db_connection_input.text():
             self.ui.db_connection_input.setStyleSheet(stylesheet.input_style_error)
         else:
+            GlobalVariables.DB_STRING = self.ui.db_connection_input.text()
+
             ### - Starting QTrhead - ###
-            self.serialReaderDatabase = DBConnection(self.ui.db_connection_input.text(), "first_connection")
+            self.serialReaderDatabase = DBConnection(GlobalVariables.DB_STRING, "first_connection")
             self.serialReaderDatabase.receivedPacketSignal.connect(self.return_status_db)
             self.serialReaderDatabase.start()
 
@@ -181,6 +192,9 @@ class MainWindow(QMainWindow):
     def return_status_db(self, return_status, query):
 
         if return_status == "first_connection":
+            GlobalVariables.DATABASE = True
+            print("CONNESSIONE AL DATABSE AVVENUTA CON SUCCESSO ")
+            
             self.ui.db_connection_input.setStyleSheet(stylesheet.input_style)
             # Cleaning previous widget
             self.layout_cleaning(self.DB_history_channel.ui.channel_list_widget)
@@ -192,22 +206,35 @@ class MainWindow(QMainWindow):
 
             # Fill the history channel with the data inside the database
             for idx, channel in enumerate(query):
-                UserWidget = ChannelHistory(idx+1,channel["profile_img"],channel["username"],channel["joined_date"])
+                UserWidget = ChannelHistory([self.ui, self.c_panel, self.DB_history_channel], idx+1,channel["profile_img"],channel["username"],channel["timestamp"], channel["_id"])
                 self.DB_history_channel.ui.channel_list_widget.addWidget(UserWidget)
+
+        ####################################################################################################################
 
         if return_status == "refresh_channels_list":
             self.layout_cleaning(self.DB_history_channel.ui.channel_list_widget)
             for idx, channel in enumerate(query):
-                UserWidget = ChannelHistory(idx+1,channel["profile_img"],channel["username"],channel["joined_date"])
+                UserWidget = ChannelHistory([self.ui, self.c_panel, self.DB_history_channel], idx+1,channel["profile_img"],channel["username"],channel["timestamp"], channel["_id"])
                 self.DB_history_channel.ui.channel_list_widget.addWidget(UserWidget)
+
             print("fine refresh")
                     # Start loading GIF
-            self.movie.stop()
+            self.movie_2.stop()
             self.DB_history_channel.ui.refresh_gif.hide()
             self.DB_history_channel.ui.refresh_db_btn.show()
 
+        ####################################################################################################################
 
+        if return_status == "insert_data_channel":
+            print("Dati inseriti correttamente")
+
+        ####################################################################################################################
+        
         if "error" in return_status:
+            GlobalVariables.DATABASE = False
+            GlobalVariables.DB_STRING = ""
+
+            print("ERRORE DI CONNESSIONE AL DATABASE")
             self.ui.db_connection_input.setStyleSheet(stylesheet.input_style_error)
             print(f"Error connection: {return_status}")
 
@@ -217,21 +244,19 @@ class MainWindow(QMainWindow):
         self.movie.stop()
         self.ui.loading_gif.hide()
 
+        ####################################################################################################################
+
     def exit_database(self):
         print("ciao sono il main")
 
 
     def refresh_channels_list(self):
-        # Loading the GIF   
-        self.movie = QMovie("ui/icons/loading/loading_circle_16.gif")
         self.DB_history_channel.ui.refresh_db_btn.hide()
-        self.DB_history_channel.ui.refresh_gif.setMovie(self.movie)
-        self.DB_history_channel.ui.refresh_gif.setScaledContents(True)
         # Start GIF Animation
-        self.movie.start()
+        self.movie_2.start()
         self.DB_history_channel.ui.refresh_gif.show()
         ### - Starting QTrhead - ###
-        self.serialReaderDatabase = DBConnection(self.ui.db_connection_input.text(), "refresh_channels_list")
+        self.serialReaderDatabase = DBConnection(GlobalVariables.DB_STRING, "refresh_channels_list")
         self.serialReaderDatabase.receivedPacketSignal.connect(self.return_status_db)
         self.serialReaderDatabase.start()
 
@@ -239,7 +264,6 @@ class MainWindow(QMainWindow):
     # ||||||||||||||||||||||||||||||||||||||||||||||||| Da sistemare ||||||||||||||||||||||||||||||||||||||||||||||||| #
 
     def start_scraping(self):
-
         # Input URL 
         if not self.ui.url_Input.text():
             self.ui.url_Input.setStyleSheet(stylesheet.input_style_error)
@@ -250,6 +274,11 @@ class MainWindow(QMainWindow):
         # Final controll
         if self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
             self.reset_user()
+            # Reset the boolean for the selection of the history channel
+            GlobalVariables.ANIMATION_SELECTION = 0
+
+            # User data animation
+            self.animation.animation_channel_data_frame()
 
             # Top panel animation
             self.animation.animation_top_panel()
@@ -265,7 +294,7 @@ class MainWindow(QMainWindow):
             self.ui.stop_scraping_btn.show()
 
             # Clear links in the QWidget Tabel
-            self.c_panel.ui.tableWidget.clearContents()
+            self.c_panel.ui.tableView.reset()
 
             ### - Starting QTrhead - ###
             self.serialReaderChannelScraping = Channel_Scraping(self.ui, self.c_panel.ui)
@@ -282,27 +311,28 @@ class MainWindow(QMainWindow):
             if "message" in packet.keys():
                 print(packet["message"])
             
-            elif "links" in packet.keys():
-                for l,t,v,idx in zip(packet["links"], packet["title"], packet["visual"], packet["index"]):
-                    if l not in set(self.lista):
-                        print(idx, l)
-                        idx_tab = QTableWidgetItem(str(idx+1))
-                        idx_tab.setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
-                        self.c_panel.ui.tableWidget.setItem(idx, 0, idx_tab)
-                        self.c_panel.ui.tableWidget.setItem(idx, 1, QTableWidgetItem(l))
-                        self.c_panel.ui.tableWidget.setItem(idx, 2, QTableWidgetItem(t))
-                        self.c_panel.ui.tableWidget.setItem(idx, 3, QTableWidgetItem(v))
-                    self.lista.append(l)
             
             elif "channel_data" in packet.keys():
                 # Insert data in the left-panel-channel-info
                 self.packet_data = packet["channel_data"]
+
+                # Insert data into database if is active
+                if GlobalVariables.DATABASE:
+                    ### - Starting QTrhead - ###
+                    GlobalVariables.CHANNEL_DATA = self.packet_data
+                    self.serialReaderDatabase = DBConnection(GlobalVariables.DB_STRING, "insert_data_channel")
+                    self.serialReaderDatabase.receivedPacketSignal.connect(self.return_status_db)
+                    self.serialReaderDatabase.start()
+                
+                # Insert data into the GUI panel
                 self.insert_data_channel()
 
                 # Hide_Selenium_Layout , Full_Size_Table , Resize_Top_Panel
                 self.animation.animation_top_panel()
                 self.animation.animation_central_panel()
                 self.animation.animation_bottom_left_panel()
+                self.animation.animation_channel_data_frame()
+
                 # Btn start and stop
                 self.ui.stop_scraping_btn.hide()
                 self.ui.start_scraping_btn.show()
@@ -348,6 +378,8 @@ class MainWindow(QMainWindow):
         self.ui.stop_scraping_btn.hide()
         self.ui.start_scraping_btn.show()
 
+        GlobalVariables.ANIMATION_SELECTION = 1
+
 
 
     def stop_scraping(self):
@@ -362,6 +394,7 @@ class MainWindow(QMainWindow):
         
         self.animation.animation_top_panel()
         self.animation.animation_bottom_panel()
+        self.animation.animation_channel_data_frame()
 
 
 
@@ -414,6 +447,10 @@ class MainWindow(QMainWindow):
             # self.DB_offline = None
         for i in reversed(range(layout.count())): 
             layout.itemAt(i).widget().setParent(None)
+
+
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

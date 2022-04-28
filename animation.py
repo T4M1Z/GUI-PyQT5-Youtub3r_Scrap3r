@@ -78,16 +78,16 @@ class Animation:
         if self.ui.left_panel.width() > 0:
             self.left_panel_animation = QtCore.QPropertyAnimation(self.ui.left_panel, b"maximumWidth")
             self.ui.left_panel_btn.setStyleSheet(stylesheet.left_panel_btn("right"))
-            h1, h2 = 360,0
+            h1, h2 = 340,0
             self.left_panel_animation.setDuration(300)
             self.left_panel_animation.setStartValue(h1)
             self.left_panel_animation.setEndValue(h2)
             self.left_panel_animation.start()
         else:
             self.left_panel_animation = QtCore.QPropertyAnimation(self.ui.left_panel, b"maximumWidth")
-            h1, h2 = 0,360
+            h1, h2 = 0,340
             self.ui.left_panel_btn.setStyleSheet(stylesheet.left_panel_btn("left"))
-            self.left_panel_animation.setDuration(350)
+            self.left_panel_animation.setDuration(300)
             self.left_panel_animation.setStartValue(h1)
             self.left_panel_animation.setEndValue(h2)
             self.left_panel_animation.start()
@@ -107,6 +107,22 @@ class Animation:
             self.left_panel_animation.setStartValue(h1)
             self.left_panel_animation.setEndValue(h2)
             self.left_panel_animation.start()
+
+    def animation_channel_data_frame(self):
+        if self.ui.channel_data_frame.width() > 0:
+            self.channel_data_frame_animation = QtCore.QPropertyAnimation(self.ui.channel_data_frame, b"maximumWidth")
+            h1, h2 = 237,0
+            self.channel_data_frame_animation.setDuration(300)
+            self.channel_data_frame_animation.setStartValue(h1)
+            self.channel_data_frame_animation.setEndValue(h2)
+            self.channel_data_frame_animation.start()
+        else:
+            self.channel_data_frame_animation = QtCore.QPropertyAnimation(self.ui.channel_data_frame, b"maximumWidth")
+            h1, h2 = 0,237
+            self.channel_data_frame_animation.setDuration(300)
+            self.channel_data_frame_animation.setStartValue(h1)
+            self.channel_data_frame_animation.setEndValue(h2)
+            self.channel_data_frame_animation.start()
 
 
 # Fading bewtween stackedwidget page

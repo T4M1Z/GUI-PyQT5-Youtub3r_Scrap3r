@@ -5,9 +5,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from sympy import Q
+from functions import DataFrameModel
 import time
 import os
 import win32gui
+import pandas as pd
 from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import QThread, pyqtSignal
@@ -17,6 +20,7 @@ import win32gui
 import win32con
 import winxpgui
 import win32api
+from datetime import datetime    
 user32 = ctypes.windll.user32
 width,height = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
@@ -208,22 +212,26 @@ class Channel_Scraping(QThread):
         # scroll = 30
 
         # Scroll the page and load more videos
-        time.sleep(1)
+        # time.sleep(1)
 
         # print(f"Questo è lo scroll: {scroll}")
-        # Dict for qt signals
-        video_info = {"links":[], "title":[], "visual":[], "index":[]}
-        index = 0
+        # # Dict for qt signals
+        # video_info = {"links":[], "title":[], "visual":[], "duration":[]}
+
+        with open("link.txt", "w") as file:
+            file.write("Links,Title" + "\n")
+            file.close
+
         while True:
 
             try:
                 WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(
                     (By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")))
                 links_video = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='thumbnail']")
-                # title = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='video-title']")
+                title = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//a[@id='video-title']")
                 # visual = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='metadata-line']//span[1]")
                 # # date = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='metadata-line']//span[2]")
-                # # duration = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='overlays']//span[@id='text']")
+                # duration = self.driver.find_elements(By.XPATH, "//div[@id='contents']//ytd-item-section-renderer//div[3]//ytd-grid-renderer//div//div[@id='overlays']//span[@id='text']")
 
                 # for l,t,v in zip(links_video,title,visual):
                 #     self.c_panel_ui.tableWidget.setRowCount(index+1)   
@@ -233,11 +241,11 @@ class Channel_Scraping(QThread):
                 #     video_info["index"].append(index)
 
                 #     index+=1
-                for link in links_video:
-                    a_file = open("link.txt", "r")
+                for l, t in zip(links_video, title):
+                    a_file = open("link.txt", "r", encoding="utf-8")
                     list_of_lines = a_file.readlines()
-                    list_of_lines.append(link.get_attribute("href")+"\n")
-                    a_file = open("link.txt", "w")
+                    list_of_lines.append(l.get_attribute("href")+","+ t.text.replace(",","") + "\n")
+                    a_file = open("link.txt", "w", encoding="utf-8")
                     a_file.writelines(list_of_lines)
                     a_file.close()
 
@@ -268,8 +276,6 @@ class Channel_Scraping(QThread):
                     element.parentNode.removeChild(element);""", div)
             except Exception: print("err")
 
-            # if not test:
-            #     self.receivedPacketSignal.emit(video_info)
 
             # print(f"scrolling [{n+1}/{scroll}] ")
 
@@ -283,6 +289,8 @@ class Channel_Scraping(QThread):
         #         f.writelines("\n")
         # f.close()
 
+        if not test:
+            self.receivedPacketSignal.emit({"pandas":""})
 
         # __ INFO CHANNEL __
         self.driver.get(self.url[:-6]+"/about")
@@ -337,10 +345,15 @@ class Channel_Scraping(QThread):
         except:
             print(f"[CHANNEL][SOCIAL] Error: No social?")
 
-
-        if not test:
-            self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date, "tot_visual": tot_visual, "tot_video":len(video_info["links"]),
-                        "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc}})
+        # Insert data into TableView
+        df = pd.read_csv("link.txt")
+        model = DataFrameModel(df)
+        self.c_panel_ui.tableView.setModel(model)
+        print(df)
+        if not test:    
+            self.receivedPacketSignal.emit({"channel_data":{"username": username,"location": location, "joined_date":joined_date, "tot_visual": tot_visual, "tot_video":str(df["Links"].count()),
+                        "subs":subs, "profile_img": profile_img, "cover_img":cover_img, "social": socials_lst, "channel_desc":channel_desc.replace("Description", ""),
+                        "links": df["Links"].to_list(), "video_title":df["Title"].to_list(), "timestamp":str(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))}})
 
         self.c_panel_ui.right_bottom_frame.show()
 

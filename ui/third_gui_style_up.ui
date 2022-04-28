@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1209</width>
-    <height>820</height>
+    <width>1227</width>
+    <height>913</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -712,10 +712,22 @@ background-color: #3B3B3B;}</string>
           </property>
           <item>
            <widget class="QFrame" name="frame_25">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
               <height>740</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="frameShape">
@@ -724,7 +736,7 @@ background-color: #3B3B3B;}</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_24">
+            <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="0,1">
              <property name="spacing">
               <number>6</number>
              </property>
@@ -736,10 +748,22 @@ background-color: #3B3B3B;}</string>
              </property>
              <item>
               <widget class="QFrame" name="frame_23">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="minimumSize">
                 <size>
                  <width>0</width>
                  <height>725</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -776,7 +800,7 @@ border-bottom-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 rgb(40,40,4
                 <item>
                  <widget class="QFrame" name="left_panel">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -789,7 +813,7 @@ border-bottom-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 rgb(40,40,4
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>330</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -860,7 +884,7 @@ background-color: #616161
                         </property>
                         <property name="maximumSize">
                          <size>
-                          <width>330</width>
+                          <width>16777215</width>
                           <height>230</height>
                          </size>
                         </property>
@@ -882,7 +906,7 @@ border-radius:3px;
                           <number>7</number>
                          </property>
                          <property name="bottomMargin">
-                          <number>4</number>
+                          <number>13</number>
                          </property>
                          <item>
                           <widget class="QFrame" name="frame_7">
@@ -894,10 +918,10 @@ border-radius:3px;
                            </property>
                            <layout class="QHBoxLayout" name="horizontalLayout_9">
                             <property name="topMargin">
-                             <number>0</number>
+                             <number>2</number>
                             </property>
                             <property name="bottomMargin">
-                             <number>3</number>
+                             <number>0</number>
                             </property>
                             <item>
                              <widget class="QLabel" name="label_4">
@@ -931,7 +955,7 @@ border-radius:3px;
                              <number>0</number>
                             </property>
                             <property name="bottomMargin">
-                             <number>0</number>
+                             <number>9</number>
                             </property>
                             <item>
                              <widget class="QLabel" name="label_5">
@@ -1018,13 +1042,22 @@ database to collect data?</string>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_5">
                             <property name="topMargin">
-                             <number>2</number>
+                             <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>14</number>
                             </property>
                             <item>
                              <widget class="QPushButton" name="start_scraping_btn_2">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
                               <property name="minimumSize">
                                <size>
-                                <width>170</width>
+                                <width>0</width>
                                 <height>38</height>
                                </size>
                               </property>
@@ -1087,7 +1120,7 @@ QPushButton::pressed{
                         </property>
                         <property name="maximumSize">
                          <size>
-                          <width>330</width>
+                          <width>16777215</width>
                           <height>200</height>
                          </size>
                         </property>
@@ -1307,7 +1340,7 @@ QPushButton::pressed{
                              <widget class="QLineEdit" name="db_connection_input">
                               <property name="minimumSize">
                                <size>
-                                <width>160</width>
+                                <width>0</width>
                                 <height>30</height>
                                </size>
                               </property>
@@ -1366,6 +1399,9 @@ QLineEdit::focus{
                             <property name="topMargin">
                              <number>4</number>
                             </property>
+                            <property name="rightMargin">
+                             <number>13</number>
+                            </property>
                             <property name="bottomMargin">
                              <number>0</number>
                             </property>
@@ -1420,9 +1456,15 @@ QLineEdit::focus{
                                </property>
                                <item>
                                 <widget class="QPushButton" name="db_connect_btn">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
                                  <property name="minimumSize">
                                   <size>
-                                   <width>110</width>
+                                   <width>0</width>
                                    <height>35</height>
                                   </size>
                                  </property>
@@ -1473,7 +1515,7 @@ QPushButton::pressed{
                                 <widget class="QLabel" name="loading_gif">
                                  <property name="minimumSize">
                                   <size>
-                                   <width>40</width>
+                                   <width>0</width>
                                    <height>40</height>
                                   </size>
                                  </property>
@@ -1555,6 +1597,9 @@ border-radius:3px;
                         <property name="styleSheet">
                          <string notr="true">background-color: #4A4A4A;</string>
                         </property>
+                        <property name="currentIndex">
+                         <number>0</number>
+                        </property>
                         <widget class="QWidget" name="page_1">
                          <layout class="QVBoxLayout" name="verticalLayout_15">
                           <property name="spacing">
@@ -1614,14 +1659,14 @@ border-radius:3px;
                 <item>
                  <widget class="QPushButton" name="left_panel_btn">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>20</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -1657,6 +1702,19 @@ background-color: rgb(75, 75, 75);
                 </item>
                </layout>
               </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </widget>
