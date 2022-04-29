@@ -8,3 +8,6 @@ class GlobalVariables:
     CHANNEL_DATA = {}
 
     ANIMATION_SELECTION = 0
+
+    MAIN_UI = ""
+    C_PANEL = ""

@@ -43,9 +43,10 @@ class ChannelHistory(QWidget):
             with open('ui/icons/channel/profile_new.jpg', 'wb') as handler:
                 handler.write(img_data)
 
-            pixmap = QtGui.QPixmap('ui/icons/channel/profile_new.jpg')
-            self.ui_main.profile_image.setPixmap(pixmap.scaled(134,134))
-            self.ui_main.profile_image.adjustSize()
+            self.ui_main.profile_image.setStyleSheet(f"""
+                    border:2px solid rgb(90, 90, 90);
+                    border-image: url('ui/icons/channel/profile_new.jpg'); 
+                    """)
 
         else:
             with open(f'widget/channel_history/profile_picture/profile_new_{self.idx}.jpg', 'wb') as handler:
@@ -94,6 +95,16 @@ class ChannelHistory(QWidget):
         self.ui_main.btn_combo_box.show()
         self.ui_main.social_comboBox.clear()
         self.ui_main.social_comboBox.addItem("Social")
+        
+        if self.ui_main.channel_data_frame.width() == 0:
+            self.animation.animation_channel_data_frame()
+
+        if self.ui_cpanel.ui.right_bottom_frame.height() == 0:
+            self.animation.animation_bottom_right_panel()
+
+        if self.ui_cpanel.ui.central_panel_frame.height() > 0:
+            self.animation.animation_central_panel()
+
 
         try:
             self.download_picture(query[0]["profile_img"])
@@ -123,10 +134,9 @@ class ChannelHistory(QWidget):
 
         # Insert data into TableView
         if GlobalVariables.ANIMATION_SELECTION == 0:
-            self.ui_cpanel.ui.right_bottom_frame.show()
             self.animation.animation_central_panel()
-            self.animation.animation_bottom_left_panel()
-            self.animation.animation_bottom_panel()
+            # self.animation.animation_bottom_left_panel()
+            self.animation.animation_bottom_right_panel()
             GlobalVariables.ANIMATION_SELECTION = 1
         
         try:

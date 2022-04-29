@@ -42,7 +42,7 @@ class MainWindow(QMainWindow):
         self.c_panel = CenterPanel()
         self.animation = Animation(self.ui, self.c_panel)
         self.DB_offline = DBOffline()
-        self.DB_history_channel = DBHistoryChannel(self.ui)
+        self.DB_history_channel = DBHistoryChannel(self.ui, self.c_panel)
 
         # ----- MOVE WINDOW ----- #
         def moveWindow(event):
@@ -73,10 +73,14 @@ class MainWindow(QMainWindow):
         self.DB_history_channel.ui.refresh_gif.hide()
 
 
+        self.c_panel.ui.left_bottom_frame.hide()
+
+        self.ui.channel_data_frame.setMaximumWidth(0)
+
         self.ui.db_status_layout.addWidget(self.DB_offline)
         self.ui.db_channels_history.addWidget(self.DB_history_channel)
 
-        self.c_panel.ui.right_bottom_frame.hide() # Table widget hide
+        # self.c_panel.ui.right_bottom_frame.hide() # Table widget hide
         self.ui.social_comboBox.setEnabled(False)
 
 
@@ -85,7 +89,7 @@ class MainWindow(QMainWindow):
         # self.ui.label_gif.hide()
         
         # Hide monitoring panel
-        self.c_panel.ui.scraping_monitoring_frame.setMaximumHeight(0)
+        # self.c_panel.ui.scraping_monitoring_frame.setMaximumHeight(0)
         
         # Width of columns in QTable monitoring
         self.c_panel.ui.tableView.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
@@ -125,7 +129,7 @@ class MainWindow(QMainWindow):
 
 
         # Set left panel Closed
-        self.ui.left_panel.setMaximumWidth(0)
+        # self.ui.left_panel.setMaximumWidth(0)
 
         self.lista = []
         self.show()
@@ -273,22 +277,28 @@ class MainWindow(QMainWindow):
 
         # Final controll
         if self.ui.url_Input.styleSheet() != stylesheet.input_style_error:
-            self.reset_user()
             # Reset the boolean for the selection of the history channel
             GlobalVariables.ANIMATION_SELECTION = 0
 
             # User data animation
-            self.animation.animation_channel_data_frame()
+            if self.ui.channel_data_frame.width() > 0:
+                self.animation.animation_channel_data_frame()
+
+            self.reset_user()
+
 
             # Top panel animation
-            self.animation.animation_top_panel()
+            # self.animation.animation_top_panel()
 
             if self.c_panel.ui.central_panel_frame.height() == 0:
-                self.animation.animation_central_panel("resize")
-                self.animation.animation_bottom_left_panel("resize")
-                self.animation.animation_bottom_panel("resize")
+                self.animation.animation_central_panel() # Layout selenium
+                self.animation.animation_bottom_left_panel() # monitoring
+                if self.c_panel.ui.right_bottom_frame.height() > 0:
+                    self.animation.animation_bottom_right_panel()
             else:
-                self.animation.animation_bottom_panel()
+                self.animation.animation_bottom_left_panel()
+
+
 
             self.ui.start_scraping_btn.hide()
             self.ui.stop_scraping_btn.show()
@@ -328,9 +338,10 @@ class MainWindow(QMainWindow):
                 self.insert_data_channel()
 
                 # Hide_Selenium_Layout , Full_Size_Table , Resize_Top_Panel
-                self.animation.animation_top_panel()
+                # self.animation.animation_top_panel()
                 self.animation.animation_central_panel()
                 self.animation.animation_bottom_left_panel()
+                self.animation.animation_bottom_right_panel()
                 self.animation.animation_channel_data_frame()
 
                 # Btn start and stop
@@ -389,12 +400,15 @@ class MainWindow(QMainWindow):
         self.ui.start_scraping_btn.show()
         self.ui.stop_scraping_btn.hide()
         
+        self.c_panel.ui.left_bottom_frame.hide()
+        self.c_panel.ui.right_bottom_frame.hide()
+
         for i in reversed(range(self.c_panel.ui.selenium_layout.count())): 
             self.c_panel.ui.selenium_layout.itemAt(i).widget().setParent(None)
         
-        self.animation.animation_top_panel()
-        self.animation.animation_bottom_panel()
-        self.animation.animation_channel_data_frame()
+        # self.animation.animation_top_panel()
+        self.animation.animation_bottom_left_panel()
+        # self.animation.animation_channel_data_frame()
 
 
 
@@ -434,9 +448,14 @@ class MainWindow(QMainWindow):
             with open('ui/icons/channel/profile_new.jpg', 'wb') as handler:
                 handler.write(img_data)
 
-            pixmap = QtGui.QPixmap('ui/icons/channel/profile_new.jpg')
-            self.ui.profile_image.setPixmap(pixmap.scaled(134,134))
-            self.ui.profile_image.adjustSize()
+            # pixmap = QtGui.QPixmap('ui/icons/channel/profile_new.jpg')
+            # self.ui.profile_image.setPixmap(pixmap.scaled(134,134))
+
+            self.ui.profile_image.setStyleSheet(f"""
+                    border:2px solid rgb(90, 90, 90);
+                    border-image: url('ui/icons/channel/profile_new.jpg'); 
+                    """)
+
 
 
     def layout_cleaning(self, layout):

@@ -1,19 +1,20 @@
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
 from widget.db_history_channel.db_history_channel_ui import Ui_Form
-from animation import FaderWidget
+from animation import FaderWidget, Animation
 from global_variables import GlobalVariables
 from database.db_access import DBConnection
 from widget.channel_history.channel_history import ChannelHistory
 
 class DBHistoryChannel(QWidget):
-    def __init__(self, ui_main = None):
+    def __init__(self, ui_main = None, c_panel = None):
         super().__init__()
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.ui_main = ui_main
+        self.c_panel = c_panel
 
-
+        self.animation = Animation(self.ui_main, self.c_panel)
 
         
         self.ui.exit_db_btn.pressed.connect(self.exit_selection)
@@ -29,25 +30,32 @@ class DBHistoryChannel(QWidget):
         self.ui.refresh_db_btn.hide()
 
     def confirm_exit(self):
-
         GlobalVariables.DATABASE = False    
         GlobalVariables.DB_STRING = ""
 
         # Animation open Database Info
-        self.left_panel_animation = QtCore.QPropertyAnimation(self.ui_main.db_settings_frame, b"maximumHeight")
-        h1, h2 = 0,450
-        self.left_panel_animation.setDuration(750)
-        self.left_panel_animation.setStartValue(h1)
-        self.left_panel_animation.setEndValue(h2)
-        self.left_panel_animation.start()
-
+        # self.left_panel_animation = QtCore.QPropertyAnimation(self.ui_main.db_settings_frame, b"maximumHeight")
+        # h1, h2 = 0,450
+        # self.left_panel_animation.setDuration(750)
+        # self.left_panel_animation.setStartValue(h1)
+        # self.left_panel_animation.setEndValue(h2)
+        # self.left_panel_animation.start()
+        self.animation.animation_db_settings_frame()
+        if self.ui_main.channel_data_frame.width() > 0:
+            self.animation.animation_channel_data_frame()
+        self.animation.animation_bottom_right_panel()
+        if self.c_panel.ui.central_panel_frame.width == 0:
+            self.animation.animation_central_panel()
+        
+        self.c_panel.ui.left_bottom_frame.hide()
+        self.c_panel.ui.right_bottom_frame.hide()
         # Restore DB_Offline widget page
         FaderWidget(self.ui_main.stackedWidget.currentWidget(), self.ui_main.stackedWidget.widget(0))
         self.ui_main.stackedWidget.setCurrentIndex(0)
         # Reset string test 
         self.ui_main.db_connection_input.setText("")
         # Restore initial user history page and btn
-        FaderWidget(self.ui.stackedWidget.currentWidget(), self.ui.stackedWidget.widget(0))
+        # FaderWidget(self.ui.stackedWidget.currentWidget(), self.ui.stackedWidget.widget(0))
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.exit_db_btn.show()
         self.ui.refresh_db_btn.show()

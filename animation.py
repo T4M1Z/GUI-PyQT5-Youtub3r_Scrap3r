@@ -28,26 +28,29 @@ class Animation:
         self.top_panel.setEndValue(h2)
         self.top_panel.start()
 
-    def animation_bottom_panel(self, param = None):
-        self.bottom_panel = QtCore.QPropertyAnimation(self.c_panel.ui.scraping_monitoring_frame, b"maximumHeight")
-        if param: pass
+    def animation_bottom_right_panel(self, param = None):
+        self.bottom_panel = QtCore.QPropertyAnimation(self.c_panel.ui.right_bottom_frame, b"maximumHeight")
+
+        if self.c_panel.ui.right_bottom_frame.height() > 0:
+            self.c_panel.ui.right_bottom_frame.setMaximumWidth(0)
+            self.c_panel.ui.right_bottom_frame.hide()
+            h1, h2 = 10000,0
         else:
-            if self.c_panel.ui.scraping_monitoring_frame.height() > 0:
-                h1, h2 = 800,0
-            else:
-                h1, h2 = 0,800
-            self.bottom_panel.setDuration(400)
-            self.bottom_panel.setStartValue(h1)
-            self.bottom_panel.setEndValue(h2)
-            self.bottom_panel.start()
+            self.c_panel.ui.right_bottom_frame.setMaximumWidth(10000)
+            self.c_panel.ui.right_bottom_frame.show()
+            h1, h2 = 0,10000
+        self.bottom_panel.setDuration(400)
+        self.bottom_panel.setStartValue(h1)
+        self.bottom_panel.setEndValue(h2)
+        self.bottom_panel.start()
 
     def animation_central_panel(self, param = None):
         self.central_panel = QtCore.QPropertyAnimation(self.c_panel.ui.central_panel_frame, b"maximumHeight")
-        if param:
-            self.c_panel.ui.central_panel_frame.setMinimumHeight(300)
+        if self.c_panel.ui.central_panel_frame.height() == 0:
+            # self.c_panel.ui.central_panel_frame.setMinimumHeight(10000)
             h1, h2 = 0,10000
         else:
-            self.c_panel.ui.central_panel_frame.setMinimumHeight(0)
+            # self.c_panel.ui.central_panel_frame.setMinimumHeight(0)
             h1, h2 = self.c_panel.ui.central_panel_frame.height(),0
 
         self.central_panel.setDuration(400)
@@ -56,20 +59,16 @@ class Animation:
         self.central_panel.start()
 
     def animation_bottom_left_panel(self, param = None):
-        print(self.c_panel.ui.splitter_2.height())
-        print(self.c_panel.ui.splitter_2.width())
-        self.bottom_left_panel = QtCore.QPropertyAnimation(self.c_panel.ui.left_bottom_frame, b"maximumWidth")
-        
-        if param:
-            self.c_panel.ui.left_bottom_frame.setMinimumWidth(400)
-            h1, h2 = 0,10000
+        self.bottom_left_panel = QtCore.QPropertyAnimation(self.c_panel.ui.left_bottom_frame, b"maximumHeight")
+        if self.c_panel.ui.left_bottom_frame.height() > 0:
+            self.c_panel.ui.left_bottom_frame.hide()
+            self.c_panel.ui.left_bottom_frame.setMaximumWidth(0)
+            h1, h2 = self.c_panel.ui.left_bottom_frame.height(),0
         else:
-            if self.c_panel.ui.left_bottom_frame.width() > 0:
-                self.c_panel.ui.left_bottom_frame.setMinimumWidth(0)
-                h1, h2 = self.c_panel.ui.left_bottom_frame.width(),0
-            else:
-                self.c_panel.ui.left_bottom_frame.setMinimumWidth(400)
-                h1, h2 = 0,800
+            self.c_panel.ui.left_bottom_frame.show()
+            self.c_panel.ui.left_bottom_frame.setMaximumWidth(10000)
+            h1, h2 = 0,10000
+
         self.bottom_left_panel.setStartValue(h1)
         self.bottom_left_panel.setEndValue(h2)
         self.bottom_left_panel.start()

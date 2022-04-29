@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'central_panelGkMnYW.ui'
+## Form generated from reading UI file 'central_panelyysHem.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -25,6 +25,7 @@ class Ui_Form(object):
 "background-color: qlineargradient(spread:pad, x1:0, y1:0.0116818, x2:1, y2:1, stop:1 rgba(0, 0, 0, 0));")
         self.horizontalLayout_2 = QHBoxLayout(Form)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, -1, 7, -1)
         self.splitter_2 = QSplitter(Form)
         self.splitter_2.setObjectName(u"splitter_2")
         self.splitter_2.setOrientation(Qt.Vertical)
@@ -40,7 +41,7 @@ class Ui_Form(object):
         self.central_panel_frame = QFrame(self.layoutWidget)
         self.central_panel_frame.setObjectName(u"central_panel_frame")
         self.central_panel_frame.setEnabled(True)
-        self.central_panel_frame.setMinimumSize(QSize(0, 300))
+        self.central_panel_frame.setMinimumSize(QSize(0, 0))
         self.central_panel_frame.setMaximumSize(QSize(16777215, 16777215))
         self.central_panel_frame.setStyleSheet(u"border:none;\n"
 "")
@@ -96,7 +97,7 @@ class Ui_Form(object):
         self.scraping_monitoring_frame = QFrame(self.horizontalLayoutWidget_2)
         self.scraping_monitoring_frame.setObjectName(u"scraping_monitoring_frame")
         self.scraping_monitoring_frame.setEnabled(True)
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.scraping_monitoring_frame.sizePolicy().hasHeightForWidth())
@@ -114,35 +115,41 @@ class Ui_Form(object):
         self.splitter = QSplitter(self.scraping_monitoring_frame)
         self.splitter.setObjectName(u"splitter")
         self.splitter.setEnabled(True)
-        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.splitter.sizePolicy().hasHeightForWidth())
-        self.splitter.setSizePolicy(sizePolicy1)
+        sizePolicy.setHeightForWidth(self.splitter.sizePolicy().hasHeightForWidth())
+        self.splitter.setSizePolicy(sizePolicy)
         self.splitter.setLineWidth(1)
+        self.splitter.setMidLineWidth(0)
         self.splitter.setOrientation(Qt.Horizontal)
         self.splitter.setOpaqueResize(True)
-        self.splitter.setHandleWidth(2)
+        self.splitter.setHandleWidth(0)
         self.splitter.setChildrenCollapsible(False)
         self.layoutWidget1 = QWidget(self.splitter)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
         self.horizontalLayout_18 = QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
-        self.horizontalLayout_18.setSizeConstraint(QLayout.SetMaximumSize)
+        self.horizontalLayout_18.setSizeConstraint(QLayout.SetMinAndMaxSize)
         self.horizontalLayout_18.setContentsMargins(0, 0, 0, 0)
         self.left_bottom_frame = QFrame(self.layoutWidget1)
         self.left_bottom_frame.setObjectName(u"left_bottom_frame")
         self.left_bottom_frame.setEnabled(True)
-        self.left_bottom_frame.setMinimumSize(QSize(230, 0))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.left_bottom_frame.sizePolicy().hasHeightForWidth())
+        self.left_bottom_frame.setSizePolicy(sizePolicy1)
+        self.left_bottom_frame.setMinimumSize(QSize(0, 0))
+        self.left_bottom_frame.setMaximumSize(QSize(16777215, 16777215))
         self.left_bottom_frame.setStyleSheet(u"\n"
 "border:0px;")
         self.left_bottom_frame.setFrameShape(QFrame.StyledPanel)
         self.left_bottom_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_24 = QHBoxLayout(self.left_bottom_frame)
         self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
-        self.horizontalLayout_24.setContentsMargins(2, 2, 2, 2)
+        self.horizontalLayout_24.setContentsMargins(2, 2, 0, 2)
         self.frame_23 = QFrame(self.left_bottom_frame)
         self.frame_23.setObjectName(u"frame_23")
+        sizePolicy1.setHeightForWidth(self.frame_23.sizePolicy().hasHeightForWidth())
+        self.frame_23.setSizePolicy(sizePolicy1)
         self.frame_23.setStyleSheet(u"background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
 "border-radius:4px;")
@@ -177,12 +184,14 @@ class Ui_Form(object):
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setSizeConstraint(QLayout.SetMinAndMaxSize)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.right_bottom_frame = QFrame(self.horizontalLayoutWidget)
         self.right_bottom_frame.setObjectName(u"right_bottom_frame")
-        sizePolicy1.setHeightForWidth(self.right_bottom_frame.sizePolicy().hasHeightForWidth())
-        self.right_bottom_frame.setSizePolicy(sizePolicy1)
-        self.right_bottom_frame.setMinimumSize(QSize(230, 0))
+        sizePolicy.setHeightForWidth(self.right_bottom_frame.sizePolicy().hasHeightForWidth())
+        self.right_bottom_frame.setSizePolicy(sizePolicy)
+        self.right_bottom_frame.setMinimumSize(QSize(0, 0))
+        self.right_bottom_frame.setMaximumSize(QSize(16777215, 16777215))
         self.right_bottom_frame.setStyleSheet(u"\n"
 "border:0px;")
         self.right_bottom_frame.setFrameShape(QFrame.StyledPanel)
@@ -192,6 +201,8 @@ class Ui_Form(object):
         self.horizontalLayout_29.setContentsMargins(2, 2, 2, 2)
         self.frame_28 = QFrame(self.right_bottom_frame)
         self.frame_28.setObjectName(u"frame_28")
+        sizePolicy1.setHeightForWidth(self.frame_28.sizePolicy().hasHeightForWidth())
+        self.frame_28.setSizePolicy(sizePolicy1)
         self.frame_28.setStyleSheet(u"QFrame #frame_28{\n"
 "background-color: #4A4A4A;\n"
 "border:2px solid #7E7E7E;\n"
